@@ -1,25 +1,6 @@
-import { useEffect, useState } from 'react';
 import foodVideo from '../assets/videos/food_video.mp4';
 
 const HeroSection = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const heroSection = document.getElementById('hero');
-      if (heroSection) {
-        const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
-        const scrollPosition = window.scrollY + 100;
-        
-        setIsScrolled(scrollPosition > heroBottom);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <>
@@ -62,25 +43,6 @@ const HeroSection = () => {
           </div>
         </div>
       </section>
-
-      {/* Sticky Button - Shows after scrolling past hero */}
-      <div
-        className={`fixed top-6 right-6 sm:top-8 sm:right-8 md:right-12 z-[60] transition-all duration-500 ease-in-out ${
-          isScrolled
-            ? 'opacity-100 translate-y-0'
-            : 'opacity-0 -translate-y-10 pointer-events-none'
-        }`}
-      >
-        <a
-          href="https://thinnan.page.link/download"
-          className="group inline-flex items-center justify-center gap-2 px-8 sm:px-10 py-3 sm:py-4 bg-primary text-white rounded-full font-medium text-base sm:text-lg transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-primary/50 transform hover:scale-105 hover:bg-primary/90"
-        >
-          <span>download now</span>
-          <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-          </svg>
-        </a>
-      </div>
     </>
   );
 };
