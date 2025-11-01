@@ -155,7 +155,7 @@ function App() {
           <HeroSection />
           <ProblemSection />
           <ProblemMissionSection />
-          <FeaturesSection />
+          {/* <FeaturesSection /> */}
           <HowItWorksSection />
           <CommunitySection />
           <FoundersSection />
