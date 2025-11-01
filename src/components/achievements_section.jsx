@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 // Import achievements data
 import achievements from '../data/achievements';
@@ -10,7 +9,6 @@ const AchievementsSection = () => {
   const [selectedAchievement, setSelectedAchievement] = useState(null);
   const [showScrollIndicator, setShowScrollIndicator] = useState(false);
   const contentRef = useRef(null);
-  const navigate = useNavigate();
 
   // Number of items to display at once
   const VISIBLE_ITEMS = 4;
@@ -159,42 +157,47 @@ const AchievementsSection = () => {
                   <div
                     key={`${achievement.id}-${achievement.originalIndex}`}
                     onClick={() => handleDialClick(achievement.originalIndex)}
-                    className="relative cursor-pointer transform transition-all duration-700 ease-in-out"
+                    className="relative cursor-pointer transform transition-all duration-1000 ease-out"
                     style={{
                       opacity: isSelected ? 1 : Math.max(0.4, 1 - (distanceFromSelected * 0.2)),
                       transform: `scale(${isSelected ? 1 : 0.95})`,
+                      transition: 'all 1000ms cubic-bezier(0.4, 0.0, 0.2, 1)',
                     }}
                   >
                     {/* Active indicator line */}
                     <div 
-                      className="absolute left-0 top-0 bottom-0 w-1 rounded-r-full transition-all duration-700 ease-in-out"
+                      className="absolute left-0 top-0 bottom-0 w-1 rounded-r-full transition-all duration-1000"
                       style={{
                         backgroundColor: isSelected ? '#7C310A' : '#E5E7EB',
                         boxShadow: isSelected ? '0 0 10px rgba(124, 49, 10, 0.5)' : 'none',
+                        transition: 'all 1000ms cubic-bezier(0.4, 0.0, 0.2, 1)',
                       }}
                     ></div>
                     
                     <div 
-                      className="pl-6 pr-4 py-6 rounded-xl transition-all duration-700 ease-in-out hover:bg-gray-50"
+                      className="pl-6 pr-4 py-6 rounded-3xl transition-all duration-1000 hover:bg-gray-50"
                       style={{
                         background: isSelected 
                           ? 'linear-gradient(to right, rgba(124, 49, 10, 0.05), transparent)' 
                           : 'transparent',
+                        transition: 'all 1000ms cubic-bezier(0.4, 0.0, 0.2, 1)',
                       }}
                     >
                       {/* Date badge */}
                       <div className="flex items-center gap-2 mb-3">
                         <div 
-                          className="w-2 h-2 rounded-full transition-all duration-700 ease-in-out"
+                          className="w-2 h-2 rounded-full transition-all duration-1000"
                           style={{
                             backgroundColor: isSelected ? '#7C310A' : '#D1D5DB',
                             transform: isSelected ? 'scale(1.25)' : 'scale(1)',
+                            transition: 'all 1000ms cubic-bezier(0.4, 0.0, 0.2, 1)',
                           }}
                         ></div>
                         <span 
-                          className="text-sm font-medium transition-all duration-700 ease-in-out"
+                          className="text-sm font-medium transition-all duration-1000"
                           style={{
                             color: isSelected ? '#7C310A' : '#6B7280',
+                            transition: 'all 1000ms cubic-bezier(0.4, 0.0, 0.2, 1)',
                           }}
                         >
                           {achievement.date}
@@ -203,12 +206,13 @@ const AchievementsSection = () => {
                       
                       {/* Title - smooth size transitions */}
                       <h3 
-                        className="font-bold leading-tight transition-all duration-700 ease-in-out"
+                        className="font-bold leading-tight transition-all duration-1000"
                         style={{
                           fontSize: isSelected 
                             ? 'clamp(1.5rem, 3vw, 2.25rem)' 
                             : 'clamp(1.25rem, 2.5vw, 1.5rem)',
                           color: isSelected ? '#000000' : '#4B5563',
+                          transition: 'all 1000ms cubic-bezier(0.4, 0.0, 0.2, 1)',
                         }}
                       >
                         {achievement.title}
@@ -223,20 +227,21 @@ const AchievementsSection = () => {
           {/* Right Side - Expanded Card */}
           <div className="lg:col-span-7">
             <div 
-              className="relative group cursor-pointer transition-all duration-700 ease-in-out"
+              className="relative group cursor-pointer transition-all duration-1000"
               style={{
                 opacity: isAnimating ? 0.5 : 1,
                 transform: isAnimating ? 'scale(0.95)' : 'scale(1)',
+                transition: 'all 1000ms cubic-bezier(0.4, 0.0, 0.2, 1)',
               }}
               onClick={() => openModal(achievements[selectedIndex])}
             >
               {/* Card Container */}
-              <div className="relative rounded-2xl overflow-hidden bg-white shadow-2xl border border-gray-100 hover:shadow-accent/20 transition-all duration-500">
+              <div className="relative rounded-3xl overflow-hidden bg-white shadow-2xl border border-gray-100 hover:shadow-accent/20 transition-all duration-700" style={{ transition: 'all 700ms cubic-bezier(0.4, 0.0, 0.2, 1)' }}>
                 
                 {/* Image Section */}
                 <div className="relative h-64 sm:h-80 md:h-96 overflow-hidden">
                   {/* Image with parallax effect on hover */}
-                  <div className="absolute inset-0 transform group-hover:scale-110 transition-transform duration-700 ease-out">
+                  <div className="absolute inset-0 transform group-hover:scale-110 transition-transform duration-1000" style={{ transition: 'transform 1000ms cubic-bezier(0.4, 0.0, 0.2, 1)' }}>
                     <img 
                       src={achievements[selectedIndex].image}
                       alt={achievements[selectedIndex].title}
@@ -248,12 +253,12 @@ const AchievementsSection = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                   
                   {/* Floating badge */}
-                  <div className="absolute top-4 right-4 bg-black/80 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
+                  <div className="absolute top-4 right-4 bg-black/80 backdrop-blur-sm px-5 py-2.5 rounded-2xl border border-white/10 transition-all duration-700" style={{ transition: 'all 700ms cubic-bezier(0.4, 0.0, 0.2, 1)' }}>
                     <span className="text-white text-sm font-medium">{achievements[selectedIndex].date}</span>
                   </div>
                   
                   {/* Click indicator */}
-                  <div className="absolute bottom-4 right-4 bg-accent/90 backdrop-blur-sm p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110">
+                  <div className="absolute bottom-4 right-4 bg-accent/90 backdrop-blur-sm p-3 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-110" style={{ transition: 'all 500ms cubic-bezier(0.4, 0.0, 0.2, 1)' }}>
                     <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -277,12 +282,12 @@ const AchievementsSection = () => {
                 </div>
 
                 {/* Decorative corner accents */}
-                <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-accent/20 rounded-tl-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-accent/20 rounded-br-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-accent/20 rounded-tl-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ transition: 'opacity 500ms cubic-bezier(0.4, 0.0, 0.2, 1)' }}></div>
+                <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-accent/20 rounded-br-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ transition: 'opacity 500ms cubic-bezier(0.4, 0.0, 0.2, 1)' }}></div>
               </div>
 
               {/* Card shadow effect */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-accent/10 to-transparent rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
+              <div className="absolute -inset-4 bg-gradient-to-r from-accent/10 to-transparent rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10" style={{ transition: 'opacity 700ms cubic-bezier(0.4, 0.0, 0.2, 1)' }}></div>
             </div>
 
             {/* Navigation Dots - for all achievements */}
@@ -291,30 +296,18 @@ const AchievementsSection = () => {
                 <button
                   key={index}
                   onClick={() => handleDialClick(index)}
-                  className="transition-all duration-700 ease-in-out rounded-full"
+                  className="transition-all duration-1000 rounded-full"
                   style={{
                     width: index === selectedIndex ? '48px' : '8px',
                     height: '8px',
                     backgroundColor: index === selectedIndex ? '#7C310A' : '#D1D5DB',
+                    transition: 'all 1000ms cubic-bezier(0.4, 0.0, 0.2, 1)',
                   }}
                   aria-label={`Go to achievement ${index + 1}`}
                 ></button>
               ))}
             </div>
           </div>
-        </div>
-
-        {/* View All Button */}
-        <div className="mt-16 text-center">
-          <button
-            onClick={() => navigate('/achievements')}
-            className="inline-flex items-center gap-3 px-8 py-4 bg-black text-white rounded-full font-medium hover:bg-accent transition-all duration-300 shadow-lg hover:shadow-accent/30 group transform hover:scale-105"
-          >
-            <span>View all achievements</span>
-            <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </button>
         </div>
       </div>
 
@@ -331,7 +324,7 @@ const AchievementsSection = () => {
           }}
           onTouchEnd={handleTouchEnd}
         >
-          <div className="bg-white rounded-2xl sm:rounded-3xl w-full max-w-6xl max-h-[95vh] overflow-hidden flex flex-col relative shadow-2xl animate-scaleIn">
+          <div className="bg-white rounded-3xl sm:rounded-[2rem] w-full max-w-6xl max-h-[95vh] overflow-hidden flex flex-col relative shadow-2xl animate-scaleIn">
             {/* Close button with beautiful hover effect */}
             <button 
               className="absolute top-4 sm:top-6 right-4 sm:right-6 z-30 bg-white/90 hover:bg-accent rounded-full p-3 text-black hover:text-white transition-all duration-300 shadow-lg hover:shadow-accent/50 transform hover:rotate-90 hover:scale-110 group"
@@ -362,7 +355,7 @@ const AchievementsSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
                 
                 {/* Floating date badge */}
-                <div className="absolute bottom-6 left-6 bg-accent/90 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/20 shadow-lg animate-slideUp">
+                <div className="absolute bottom-6 left-6 bg-accent/90 backdrop-blur-md px-5 py-2.5 rounded-2xl border border-white/20 shadow-lg animate-slideUp">
                   <span className="text-white font-semibold text-sm">{selectedAchievement.date}</span>
                 </div>
               </div>
@@ -390,7 +383,7 @@ const AchievementsSection = () => {
                 {showScrollIndicator && (
                   <div className="absolute bottom-0 left-0 right-0 flex justify-center pb-4 pointer-events-none">
                     <div className="h-20 bg-gradient-to-t from-white via-white to-transparent w-full absolute bottom-0"></div>
-                    <div className="animate-bounce bg-accent/20 p-3 rounded-full z-10 backdrop-blur-sm border border-accent/30">
+                    <div className="animate-bounce bg-accent/20 p-3 rounded-2xl z-10 backdrop-blur-sm border border-accent/30">
                       <svg className="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                       </svg>
@@ -399,8 +392,8 @@ const AchievementsSection = () => {
                 )}
 
                 {/* Decorative corner elements */}
-                <div className="absolute top-0 right-0 w-24 h-24 border-t-2 border-r-2 border-accent/20 rounded-tr-2xl opacity-50"></div>
-                <div className="absolute bottom-0 left-0 w-24 h-24 border-b-2 border-l-2 border-accent/20 rounded-bl-2xl opacity-50"></div>
+                <div className="absolute top-0 right-0 w-24 h-24 border-t-2 border-r-2 border-accent/20 rounded-tr-3xl opacity-50"></div>
+                <div className="absolute bottom-0 left-0 w-24 h-24 border-b-2 border-l-2 border-accent/20 rounded-bl-3xl opacity-50"></div>
               </div>
             </div>
           </div>

@@ -12,14 +12,7 @@ const ProblemSection = () => (
     </div>
 
     <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 relative z-10">
-      {/* Scroll Indicator */}
-      <div className="flex justify-center mb-12 animate-bounce">
-        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-          <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-        </div>
-      </div>
+
 
       {/* Main Heading */}
       <div className="text-center mb-20 space-y-4">
