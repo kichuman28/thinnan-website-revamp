@@ -23,8 +23,6 @@ function App() {
     const hasSeenSplash = sessionStorage.getItem('hasSeenSplash');
     return hasSeenSplash !== 'true';
   });
-
-  const [showNavbar, setShowNavbar] = useState(false);
   
   // Prevent scrolling when splash screen is visible
   useEffect(() => {
@@ -40,28 +38,6 @@ function App() {
       document.body.style.overflow = 'auto';
     };
   }, [showSplash]);
-
-  // Handle navbar visibility on scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      const heroSection = document.getElementById('hero');
-      if (heroSection) {
-        const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
-        const scrollPosition = window.scrollY + 100;
-        
-        if (scrollPosition > heroBottom) {
-          setShowNavbar(true);
-        } else {
-          setShowNavbar(false);
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Check initial position
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // Structured data for the homepage
   const structuredData = [
@@ -140,16 +116,8 @@ function App() {
         className={`transition-opacity duration-500 ${showSplash ? 'opacity-0' : 'opacity-100'}`}
         style={{ visibility: showSplash ? 'hidden' : 'visible' }}
       >
-        {/* Navbar - Only shows after scrolling past hero */}
-        <div
-          className={`transition-all duration-500 ease-in-out ${
-            showNavbar
-              ? 'opacity-100 translate-y-0'
-              : 'opacity-0 -translate-y-full pointer-events-none'
-          }`}
-        >
-          <Navbar />
-        </div>
+        {/* Navbar - Always visible */}
+        <Navbar />
         
         <main>
           <HeroSection />
