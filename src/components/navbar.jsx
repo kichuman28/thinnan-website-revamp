@@ -126,19 +126,17 @@ const Navbar = () => {
           <div className="hidden md:flex flex-1 justify-center items-center space-x-6 lg:space-x-8">
             {isHomePage ? (
               <>
-                <NavLink href="#features">features</NavLink>
                 <NavLink href="#how-it-works">how it works</NavLink>
                 <NavLink href="#community">community</NavLink>
                 <NavLink href="#team">team</NavLink>
                 <NavLink href="#achievements">achievements</NavLink>
-                <NavLink href="#location">our home</NavLink>
+                <NavLink href="#download">download</NavLink>
               </>
             ) : (
               <>
-                <NavLink to="/#features">features</NavLink>
                 <NavLink to="/#how-it-works">how it works</NavLink>
                 <NavLink to="/#community">community</NavLink>
-                <NavLink to="/#team">Team</NavLink>
+                <NavLink to="/#team">team</NavLink>
                 {window.location.pathname === "/achievements" ? (
                   <NavLink to="/#achievements" className="text-accent">
                     achievements
@@ -146,7 +144,7 @@ const Navbar = () => {
                 ) : (
                   <NavLink to="/#achievements">achievements</NavLink>
                 )}
-                <NavLink to="/#location">our home</NavLink>
+                <NavLink to="/#download">download</NavLink>
               </>
             )}
           </div>
@@ -201,7 +199,6 @@ const Navbar = () => {
             <div className="flex flex-col space-y-4">
               {isHomePage ? (
                 <>
-                  <MobileNavLink href="#features">features</MobileNavLink>
                   <MobileNavLink href="#how-it-works">
                     how it works
                   </MobileNavLink>
@@ -210,11 +207,10 @@ const Navbar = () => {
                   <MobileNavLink href="#achievements">
                     achievements
                   </MobileNavLink>
-                  <MobileNavLink href="#location">our home</MobileNavLink>
+                  <MobileNavLink href="#download">download</MobileNavLink>
                 </>
               ) : (
                 <>
-                  <MobileNavLink to="/#features">features</MobileNavLink>
                   <MobileNavLink to="/#how-it-works">
                     how it works
                   </MobileNavLink>
@@ -229,7 +225,7 @@ const Navbar = () => {
                       achievements
                     </MobileNavLink>
                   )}
-                  <MobileNavLink to="/#location">our home</MobileNavLink>
+                  <MobileNavLink to="/#download">download</MobileNavLink>
                 </>
               )}
               <div className="pt-2">
