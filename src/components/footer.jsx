@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="bg-white text-gray-600 relative overflow-hidden">
+    <footer id="contact" className="bg-white text-gray-600 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 bg-white"></div>
       

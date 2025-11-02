@@ -12,11 +12,11 @@ import kishoreImg from '../assets/images/founders/kishore.png';
 import adwaithImg from '../assets/images/founders/adwaith.png';
 
 const FoundersSection = () => {
-  // State to track which sections are open
+  // State to track which sections are open (all open by default)
   const [openSections, setOpenSections] = useState({
-    founders: false,
-    advisors: false,
-    team: false
+    founders: true,
+    advisors: true,
+    team: true
   });
 
   // Organize team members by category
@@ -107,11 +107,18 @@ const FoundersSection = () => {
       style={{ animationDelay: `${index * 0.1}s`, animationFillMode: 'forwards' }}
     >
       {/* Image Container */}
-      <div className="relative w-full max-w-[280px] mx-auto pb-[100%] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+      <div className="relative w-full max-w-[280px] mx-auto rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500" style={{ aspectRatio: '1 / 1' }}>
         <img 
           src={member.image}
           alt={member.name}
-          className="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 transform hover:scale-110"
+          className="w-full h-full object-cover object-center grayscale hover:grayscale-0 transition-all duration-700 transform hover:scale-110"
+          style={{ 
+            width: '100%', 
+            height: '100%', 
+            objectFit: 'cover', 
+            objectPosition: 'center',
+            display: 'block'
+          }}
         />
         
         {/* Gradient overlay on hover */}
@@ -179,13 +186,13 @@ const FoundersSection = () => {
           <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden transition-all duration-500">
             <button
               onClick={() => toggleSection('founders')}
-              className="w-full px-6 sm:px-8 py-6 sm:py-8 flex items-center justify-between hover:bg-gray-50 transition-all duration-300 group"
+              className="w-full px-6 sm:px-8 py-6 sm:py-8 flex items-center justify-center gap-6 hover:bg-gray-50 transition-all duration-300 group"
             >
-              <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black group-hover:text-accent transition-colors duration-300">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black group-hover:text-accent transition-colors duration-300 text-center w-full">
                 Founders
               </h3>
               <div 
-                className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gray-100 group-hover:bg-accent/10 flex items-center justify-center transition-all duration-500"
+                className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gray-100 group-hover:bg-accent/10 flex items-center justify-center transition-all duration-500 shrink-0"
                 style={{
                   transform: openSections.founders ? 'rotate(180deg)' : 'rotate(0deg)',
                 }}
@@ -216,13 +223,13 @@ const FoundersSection = () => {
           <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden transition-all duration-500">
             <button
               onClick={() => toggleSection('advisors')}
-              className="w-full px-6 sm:px-8 py-6 sm:py-8 flex items-center justify-between hover:bg-gray-50 transition-all duration-300 group"
+              className="w-full px-6 sm:px-8 py-6 sm:py-8 flex items-center justify-center gap-6 hover:bg-gray-50 transition-all duration-300 group"
             >
-              <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black group-hover:text-accent transition-colors duration-300">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black group-hover:text-accent transition-colors duration-300 text-center w-full">
                 Advisors
               </h3>
               <div 
-                className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gray-100 group-hover:bg-accent/10 flex items-center justify-center transition-all duration-500"
+                className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gray-100 group-hover:bg-accent/10 flex items-center justify-center transition-all duration-500 shrink-0"
                 style={{
                   transform: openSections.advisors ? 'rotate(180deg)' : 'rotate(0deg)',
                 }}
@@ -252,13 +259,13 @@ const FoundersSection = () => {
           <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden transition-all duration-500">
             <button
               onClick={() => toggleSection('team')}
-              className="w-full px-6 sm:px-8 py-6 sm:py-8 flex items-center justify-between hover:bg-gray-50 transition-all duration-300 group"
+              className="w-full px-6 sm:px-8 py-6 sm:py-8 flex items-center justify-center gap-6 hover:bg-gray-50 transition-all duration-300 group"
             >
-              <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black group-hover:text-accent transition-colors duration-300">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black group-hover:text-accent transition-colors duration-300 text-center w-full">
                 Team
               </h3>
               <div 
-                className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gray-100 group-hover:bg-accent/10 flex items-center justify-center transition-all duration-500"
+                className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gray-100 group-hover:bg-accent/10 flex items-center justify-center transition-all duration-500 shrink-0"
                 style={{
                   transform: openSections.team ? 'rotate(180deg)' : 'rotate(0deg)',
                 }}

@@ -130,7 +130,7 @@ const Navbar = () => {
                 <NavLink href="#community">community</NavLink>
                 <NavLink href="#team">team</NavLink>
                 <NavLink href="#achievements">achievements</NavLink>
-                <NavLink href="#download">download</NavLink>
+                <NavLink href="#contact">contact</NavLink>
               </>
             ) : (
               <>
@@ -144,7 +144,7 @@ const Navbar = () => {
                 ) : (
                   <NavLink to="/#achievements">achievements</NavLink>
                 )}
-                <NavLink to="/#download">download</NavLink>
+                <NavLink to="/#contact">contact</NavLink>
               </>
             )}
           </div>
@@ -207,7 +207,7 @@ const Navbar = () => {
                   <MobileNavLink href="#achievements">
                     achievements
                   </MobileNavLink>
-                  <MobileNavLink href="#download">download</MobileNavLink>
+                  <MobileNavLink href="#contact">contact</MobileNavLink>
                 </>
               ) : (
                 <>
@@ -225,7 +225,7 @@ const Navbar = () => {
                       achievements
                     </MobileNavLink>
                   )}
-                  <MobileNavLink to="/#download">download</MobileNavLink>
+                  <MobileNavLink to="/#contact">contact</MobileNavLink>
                 </>
               )}
               <div className="pt-2">

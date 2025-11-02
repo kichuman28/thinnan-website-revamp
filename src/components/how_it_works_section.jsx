@@ -85,12 +85,12 @@ const HowItWorksSection = () => {
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16 sm:mb-20 md:mb-28">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-primary-text mb-4">
-            how thinnan works
-          </h2>
-          <p className="text-lg sm:text-xl text-secondary-grey max-w-2xl mx-auto">
-            From scroll to stove in three taps
-          </p>
+          <div className="inline-block">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-primary-text mb-3 relative">
+              how thinnan works
+              <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent to-transparent"></div>
+            </h2>
+          </div>
         </div>
 
         {/* Steps */}
