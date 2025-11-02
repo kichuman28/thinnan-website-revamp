@@ -137,19 +137,13 @@ const ProblemMissionSection = () => {
                     style={{
                       width: index === currentCard ? '40px' : '10px',
                       height: '10px',
-                      backgroundColor: index === currentCard ? '#FB6B23' : '#D1D5DB',
+                      // Use brown color codes for both active and inactive dots
+                      backgroundColor: index === currentCard ? '#8B5C2A' : '#C6A274',
                       transition: 'all 700ms cubic-bezier(0.4, 0.0, 0.2, 1)',
                     }}
                     aria-label={`Go to image ${index + 1}`}
                   ></button>
                 ))}
-              </div>
-
-              {/* Mobile Tap Indicator */}
-              <div className="absolute -bottom-20 left-1/2 transform -translate-x-1/2 lg:hidden animate-pulse">
-                <div className="bg-black/80 backdrop-blur-sm px-4 py-2.5 rounded-2xl border border-white/20 shadow-lg">
-                  <span className="text-white text-sm font-medium">👆 Tap to see more</span>
-                </div>
               </div>
             </div>
           </div>

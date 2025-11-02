@@ -15,8 +15,8 @@ const FoundersSection = () => {
   // State to track which sections are open (all open by default)
   const [openSections, setOpenSections] = useState({
     founders: true,
-    advisors: true,
-    team: true
+    advisors: false,
+    team: false
   });
 
   // Organize team members by category
