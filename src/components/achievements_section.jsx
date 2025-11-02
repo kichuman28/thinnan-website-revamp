@@ -150,11 +150,11 @@ const AchievementsSection = () => {
         </div>
 
         {/* Dial Design Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
           
           {/* Left Side - Dial/Navigation - Shows 3 items at a time */}
-          <div className="lg:col-span-5 relative overflow-hidden">
-            <div className="space-y-3" style={{ minHeight: '640px', height: '640px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
+          <div className="lg:col-span-5 relative overflow-hidden flex">
+            <div className="w-full" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '12px' }}>
               {visibleAchievements.map((achievement, displayIndex) => {
                 const isSelected = achievement.originalIndex === selectedIndex;
                 const distanceFromSelected = Math.abs(displayIndex - Math.floor(VISIBLE_ITEMS / 2));
@@ -171,7 +171,8 @@ const AchievementsSection = () => {
                       transform: `scale(${isSelected ? 1 : 0.96}) translateY(${isSelected ? '0' : '2px'})`,
                       transition: 'opacity 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                       height: 'auto',
-                      minHeight: '160px',
+                      minHeight: isSelected ? '220px' : '180px',
+                      flexGrow: isSelected ? 1.2 : 1,
                     }}
                   >
                     {/* Enhanced selection indicator - gradient border with glow */}
@@ -197,7 +198,7 @@ const AchievementsSection = () => {
                           ? 'linear-gradient(to right, rgba(124, 49, 10, 0.06), rgba(255, 255, 255, 0.3), transparent)' 
                           : 'transparent',
                         transition: 'background 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                        minHeight: '140px',
+                        minHeight: isSelected ? '200px' : '160px',
                       }}
                     >
                       {/* Hover shine effect */}
