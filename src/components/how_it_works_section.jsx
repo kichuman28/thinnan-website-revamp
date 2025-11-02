@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
-import addToCravings from '../assets/images/features/add_to_cravings.png';
-import getMatched from '../assets/images/features/get_matched.png';
-import addToChat from '../assets/images/features/add_to_chat.png';
-import planCookout from '../assets/images/features/plan_cookout.png';
-import shareStory from '../assets/images/features/share_story.png';
+import addToCravings from '../assets/images/how_it_works/add_to_cravings.png';
+import getMatched from '../assets/images/how_it_works/get_matched.png';
+import addToChat from '../assets/images/how_it_works/add_to_chat.png';
+import planCookout from '../assets/images/how_it_works/plan_cookout.png';
+import shareStory from '../assets/images/how_it_works/share_story.png';
 
 const HowItWorksSection = () => {
   const [visibleSteps, setVisibleSteps] = useState([]);
