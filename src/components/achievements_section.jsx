@@ -8,10 +8,22 @@ const AchievementsSection = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [selectedAchievement, setSelectedAchievement] = useState(null);
   const [showScrollIndicator, setShowScrollIndicator] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const contentRef = useRef(null);
 
   // Number of items to display at once
   const VISIBLE_ITEMS = 4;
+
+  // Check if mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024); // lg breakpoint
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Calculate which items to show based on selected index
   const getVisibleAchievements = () => {
@@ -32,14 +44,16 @@ const AchievementsSection = () => {
     }));
   };
 
-  // Auto-rotate through ALL achievements
+  // Auto-rotate through ALL achievements - ONLY on mobile
   useEffect(() => {
+    if (!isMobile) return; // Only auto-rotate on mobile
+    
     const interval = setInterval(() => {
       setSelectedIndex((prev) => (prev + 1) % achievements.length);
     }, 5000); // Change every 5 seconds
 
     return () => clearInterval(interval);
-  }, []);
+  }, [isMobile]);
 
   // Check if modal content needs scrolling
   useEffect(() => {
@@ -62,7 +76,7 @@ const AchievementsSection = () => {
     if (originalIndex !== selectedIndex && !isAnimating) {
       setIsAnimating(true);
       setSelectedIndex(originalIndex);
-      setTimeout(() => setIsAnimating(false), 500);
+      setTimeout(() => setIsAnimating(false), 700);
     }
   };
 
@@ -140,7 +154,7 @@ const AchievementsSection = () => {
           
           {/* Left Side - Dial/Navigation - Shows 4 items at a time */}
           <div className="lg:col-span-5 relative overflow-hidden">
-            <div className="space-y-3">
+            <div className="space-y-3" style={{ minHeight: '640px', height: '640px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
               {visibleAchievements.map((achievement, displayIndex) => {
                 const isSelected = achievement.originalIndex === selectedIndex;
                 const distanceFromSelected = Math.abs(displayIndex - Math.floor(VISIBLE_ITEMS / 2));
@@ -149,65 +163,98 @@ const AchievementsSection = () => {
                   <div
                     key={`${achievement.id}-${achievement.originalIndex}`}
                     onClick={() => handleDialClick(achievement.originalIndex)}
-                    className="relative cursor-pointer transform transition-all duration-1000 ease-out"
+                    className={`relative cursor-pointer transform transition-all duration-700 ease-out group ${
+                      isSelected ? 'z-10' : 'z-0'
+                    }`}
                     style={{
-                      opacity: isSelected ? 1 : Math.max(0.4, 1 - (distanceFromSelected * 0.2)),
-                      transform: `scale(${isSelected ? 1 : 0.95})`,
-                      transition: 'all 1000ms cubic-bezier(0.4, 0.0, 0.2, 1)',
+                      opacity: isSelected ? 1 : Math.max(0.5, 1 - (distanceFromSelected * 0.15)),
+                      transform: `scale(${isSelected ? 1 : 0.96}) translateY(${isSelected ? '0' : '2px'})`,
+                      transition: 'opacity 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                      height: 'auto',
+                      minHeight: '160px',
                     }}
                   >
-                    {/* Active indicator line */}
+                    {/* Enhanced selection indicator - gradient border with glow */}
                     <div 
-                      className="absolute left-0 top-0 bottom-0 w-1 rounded-r-full transition-all duration-1000"
+                      className={`absolute inset-0 rounded-3xl transition-all duration-700 ease-out ${
+                        isSelected ? 'opacity-100' : 'opacity-0 group-hover:opacity-40'
+                      }`}
                       style={{
-                        backgroundColor: isSelected ? '#7C310A' : '#E5E7EB',
-                        boxShadow: isSelected ? '0 0 10px rgba(124, 49, 10, 0.5)' : 'none',
-                        transition: 'all 1000ms cubic-bezier(0.4, 0.0, 0.2, 1)',
+                        background: isSelected 
+                          ? 'linear-gradient(135deg, rgba(124, 49, 10, 0.15), rgba(124, 49, 10, 0.05), rgba(124, 49, 10, 0.08))' 
+                          : 'linear-gradient(135deg, rgba(124, 49, 10, 0.08), rgba(124, 49, 10, 0.03), rgba(124, 49, 10, 0.08))',
+                        boxShadow: isSelected 
+                          ? 'inset 0 0 0 2px rgba(124, 49, 10, 0.25), 0 0 16px rgba(124, 49, 10, 0.12), 0 4px 12px rgba(124, 49, 10, 0.08)' 
+                          : 'inset 0 0 0 1px rgba(124, 49, 10, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04)',
+                        transition: 'all 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                       }}
                     ></div>
                     
                     <div 
-                      className="pl-6 pr-4 py-6 rounded-3xl transition-all duration-1000 hover:bg-gray-50"
+                      className="pl-6 pr-4 py-6 rounded-3xl transition-all duration-700 relative overflow-hidden"
                       style={{
                         background: isSelected 
-                          ? 'linear-gradient(to right, rgba(124, 49, 10, 0.05), transparent)' 
+                          ? 'linear-gradient(to right, rgba(124, 49, 10, 0.06), rgba(255, 255, 255, 0.3), transparent)' 
                           : 'transparent',
-                        transition: 'all 1000ms cubic-bezier(0.4, 0.0, 0.2, 1)',
+                        transition: 'background 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                        minHeight: '140px',
                       }}
                     >
-                      {/* Date badge */}
-                      <div className="flex items-center gap-2 mb-3">
+                      {/* Hover shine effect */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></div>
+                      
+                      {/* Date badge with dot */}
+                      <div className="flex items-center gap-3 mb-4">
                         <div 
-                          className="w-2 h-2 rounded-full transition-all duration-1000"
+                          className={`rounded-full transition-all duration-700 ${
+                            isSelected ? 'w-2.5 h-2.5' : 'w-2 h-2'
+                          }`}
                           style={{
-                            backgroundColor: isSelected ? '#7C310A' : '#D1D5DB',
-                            transform: isSelected ? 'scale(1.25)' : 'scale(1)',
-                            transition: 'all 1000ms cubic-bezier(0.4, 0.0, 0.2, 1)',
+                            background: isSelected 
+                              ? 'linear-gradient(135deg, rgba(124, 49, 10, 1), rgba(124, 49, 10, 0.8))' 
+                              : 'linear-gradient(135deg, rgba(124, 49, 10, 0.4), rgba(124, 49, 10, 0.2))',
+                            boxShadow: isSelected 
+                              ? '0 0 8px rgba(124, 49, 10, 0.5)' 
+                              : 'none',
+                            transform: isSelected ? 'scale(1.2)' : 'scale(1)',
+                            transition: 'all 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                            flexShrink: 0,
                           }}
                         ></div>
                         <span 
-                          className="text-sm font-medium transition-all duration-1000"
+                          className={`text-sm font-semibold transition-all duration-700 ${
+                            isSelected ? 'text-accent' : 'text-gray-500'
+                          } group-hover:text-accent`}
                           style={{
-                            color: isSelected ? '#7C310A' : '#6B7280',
-                            transition: 'all 1000ms cubic-bezier(0.4, 0.0, 0.2, 1)',
+                            transition: 'all 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                           }}
                         >
                           {achievement.date}
                         </span>
                       </div>
                       
-                      {/* Title - smooth size transitions */}
+                      {/* Title - fixed height to prevent layout shift */}
                       <h3 
-                        className="font-bold leading-tight transition-all duration-1000"
+                        className={`font-bold leading-tight transition-all duration-700 relative ${
+                          isSelected ? 'text-black' : 'text-gray-600 group-hover:text-gray-800'
+                        }`}
                         style={{
                           fontSize: isSelected 
                             ? 'clamp(1.5rem, 3vw, 2.25rem)' 
                             : 'clamp(1.25rem, 2.5vw, 1.5rem)',
-                          color: isSelected ? '#000000' : '#4B5563',
-                          transition: 'all 1000ms cubic-bezier(0.4, 0.0, 0.2, 1)',
+                          minHeight: 'clamp(2rem, 4vw, 3rem)',
+                          lineHeight: '1.2',
+                          transition: 'font-size 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94), color 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                          textShadow: isSelected 
+                            ? '0 1px 2px rgba(0, 0, 0, 0.03)' 
+                            : 'none',
                         }}
                       >
                         {achievement.title}
+                        {/* Gradient underline on hover for non-selected */}
+                        {!isSelected && (
+                          <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-accent to-transparent group-hover:w-full transition-all duration-500 ease-out"></span>
+                        )}
                       </h3>
                     </div>
                   </div>
@@ -219,16 +266,16 @@ const AchievementsSection = () => {
           {/* Right Side - Expanded Card */}
           <div className="lg:col-span-7">
             <div 
-              className="relative group cursor-pointer transition-all duration-1000"
+              className="relative group cursor-pointer transition-all duration-700"
               style={{
-                opacity: isAnimating ? 0.5 : 1,
-                transform: isAnimating ? 'scale(0.95)' : 'scale(1)',
-                transition: 'all 1000ms cubic-bezier(0.4, 0.0, 0.2, 1)',
+                opacity: isAnimating ? 0.6 : 1,
+                transform: isAnimating ? 'scale(0.97)' : 'scale(1)',
+                transition: 'all 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94)',
               }}
               onClick={() => openModal(achievements[selectedIndex])}
             >
               {/* Card Container */}
-              <div className="relative rounded-3xl overflow-hidden bg-white shadow-2xl border border-gray-100 hover:shadow-accent/20 transition-all duration-700" style={{ transition: 'all 700ms cubic-bezier(0.4, 0.0, 0.2, 1)' }}>
+              <div className="relative rounded-3xl overflow-hidden bg-white shadow-2xl border border-gray-100 hover:shadow-accent/20 transition-all duration-700 ease-out" style={{ transition: 'all 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94)' }}>
                 
                 {/* Image Section */}
                 <div className="relative h-64 sm:h-80 md:h-96 overflow-hidden">
@@ -423,6 +470,22 @@ const AchievementsSection = () => {
           to { 
             opacity: 1; 
             transform: translateY(0); 
+          }
+        }
+        
+        @keyframes ping {
+          75%, 100% {
+            transform: scale(2);
+            opacity: 0;
+          }
+        }
+        
+        @keyframes pulse {
+          0%, 100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.6;
           }
         }
         
