@@ -169,10 +169,13 @@ const AchievementsSection = () => {
                     style={{
                       opacity: isSelected ? 1 : Math.max(0.5, 1 - (distanceFromSelected * 0.15)),
                       transform: `scale(${isSelected ? 1 : 0.96}) translateY(${isSelected ? '0' : '2px'})`,
-                      transition: 'opacity 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                      transition: 'opacity 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94), background 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                       height: 'auto',
                       minHeight: isSelected ? '220px' : '180px',
                       flexGrow: isSelected ? 1.2 : 1,
+                      background: isSelected 
+                        ? 'linear-gradient(to right, rgba(124, 49, 10, 0.06), rgba(255, 255, 255, 0.3), transparent)' 
+                        : 'transparent',
                     }}
                   >
                     {/* Enhanced selection indicator - gradient border with glow */}
@@ -192,12 +195,8 @@ const AchievementsSection = () => {
                     ></div>
                     
                     <div 
-                      className="pl-6 pr-4 py-6 rounded-3xl transition-all duration-700 relative overflow-hidden"
+                      className="pl-6 pr-4 py-6 transition-all duration-700 relative"
                       style={{
-                        background: isSelected 
-                          ? 'linear-gradient(to right, rgba(124, 49, 10, 0.06), rgba(255, 255, 255, 0.3), transparent)' 
-                          : 'transparent',
-                        transition: 'background 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                         minHeight: isSelected ? '200px' : '160px',
                       }}
                     >
