@@ -146,7 +146,7 @@ const AchievementsSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
           
           {/* Left Side - Dial/Navigation - Shows 3 items at a time */}
-          <div className="lg:col-span-5 relative overflow-hidden flex">
+          <div className="hidden lg:flex lg:col-span-5 relative overflow-hidden">
             <div className="w-full" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '12px', willChange: 'auto' }}>
               {visibleAchievements.map((achievement, displayIndex) => {
                 const isSelected = achievement.originalIndex === selectedIndex;
@@ -259,7 +259,7 @@ const AchievementsSection = () => {
           </div>
 
           {/* Right Side - Expanded Card */}
-          <div className="lg:col-span-7">
+          <div className="col-span-12 lg:col-span-7">
             <div 
               className="relative group cursor-pointer transition-all duration-700"
               style={{
@@ -358,7 +358,7 @@ const AchievementsSection = () => {
       {/* Modal - Amazing UI with animations */}
       {selectedAchievement && (
         <div 
-          className="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center z-[100] p-2 sm:p-4 modal-backdrop animate-fadeIn"
+          className="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center z-[100] p-1 sm:p-2 md:p-4 modal-backdrop animate-fadeIn"
           onClick={handleModalClick}
           onTouchStart={(e) => {
             handleTouchStart.current = {
@@ -368,28 +368,22 @@ const AchievementsSection = () => {
           }}
           onTouchEnd={handleTouchEnd}
         >
-          <div className="bg-white rounded-3xl sm:rounded-[2rem] w-full max-w-6xl max-h-[95vh] overflow-hidden flex flex-col relative shadow-2xl animate-scaleIn">
+          <div className="bg-white rounded-2xl sm:rounded-3xl md:rounded-[2rem] w-full max-w-6xl max-h-[98vh] sm:max-h-[95vh] overflow-hidden flex flex-col relative shadow-2xl animate-scaleIn m-1 sm:m-2 md:m-4">
             {/* Close button with beautiful hover effect */}
             <button 
-              className="absolute top-4 sm:top-6 right-4 sm:right-6 z-30 bg-white/90 hover:bg-accent rounded-full p-3 text-black hover:text-white transition-all duration-300 shadow-lg hover:shadow-accent/50 transform hover:rotate-90 hover:scale-110 group"
+              className="absolute top-2 right-2 sm:top-3 sm:right-3 md:top-4 md:right-4 lg:top-6 lg:right-6 z-30 bg-white/90 hover:bg-accent rounded-full p-2 sm:p-2.5 md:p-3 text-black hover:text-white transition-all duration-300 shadow-lg hover:shadow-accent/50 transform hover:rotate-90 hover:scale-110 group"
               onClick={closeModal}
               aria-label="Close modal"
             >
-              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
 
-            {/* Swipe indicator for mobile */}
-            <div className="md:hidden absolute top-1/2 left-4 transform -translate-y-1/2 opacity-40 z-20 pointer-events-none animate-pulse">
-              <svg className="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </div>
             
             <div className="flex flex-col md:flex-row overflow-hidden h-full">
               {/* Image side with stunning overlay */}
-              <div className="w-full md:w-1/2 h-56 xs:h-64 sm:h-80 md:h-auto bg-black relative overflow-hidden">
+              <div className="w-full md:w-1/2 h-48 sm:h-56 md:h-64 lg:h-80 xl:h-auto bg-black relative overflow-hidden flex-shrink-0">
                 <img 
                   src={selectedAchievement.image} 
                   alt={selectedAchievement.title}
@@ -399,25 +393,25 @@ const AchievementsSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
                 
                 {/* Floating date badge */}
-                <div className="absolute bottom-6 left-6 bg-accent/90 backdrop-blur-md px-5 py-2.5 rounded-2xl border border-white/20 shadow-lg animate-slideUp">
-                  <span className="text-white font-semibold text-sm">{selectedAchievement.date}</span>
+                <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 md:bottom-6 md:left-6 bg-accent/90 backdrop-blur-md px-3 py-1.5 sm:px-4 sm:py-2 md:px-5 md:py-2.5 rounded-xl sm:rounded-2xl border border-white/20 shadow-lg animate-slideUp">
+                  <span className="text-white font-semibold text-xs sm:text-sm">{selectedAchievement.date}</span>
                 </div>
               </div>
               
               {/* Content side */}
-              <div className="w-full md:w-1/2 relative flex flex-col">
+              <div className="w-full md:w-1/2 relative flex flex-col min-h-0">
                 <div 
                   ref={contentRef}
-                  className="p-6 xs:p-8 sm:p-10 md:p-12 overflow-y-auto flex-1 custom-scrollbar"
+                  className="p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 overflow-y-auto flex-1 custom-scrollbar"
                 >
                   {/* Achievement title */}
-                  <h3 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-6 leading-tight animate-slideUp">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-black mb-4 sm:mb-5 md:mb-6 leading-tight animate-slideUp">
                     {selectedAchievement.title}
                   </h3>
                   
                   {/* Full description */}
-                  <div className="prose prose-lg max-w-none">
-                    <p className="text-gray-700 text-base sm:text-lg md:text-xl leading-relaxed whitespace-pre-line animate-slideUp" style={{ animationDelay: '0.1s' }}>
+                  <div className="prose prose-sm sm:prose-base md:prose-lg max-w-none">
+                    <p className="text-gray-700 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed whitespace-pre-line animate-slideUp" style={{ animationDelay: '0.1s' }}>
                       {selectedAchievement.longDescription}
                     </p>
                   </div>
@@ -425,19 +419,19 @@ const AchievementsSection = () => {
                 
                 {/* Scroll indicator - beautiful animated arrow */}
                 {showScrollIndicator && (
-                  <div className="absolute bottom-0 left-0 right-0 flex justify-center pb-4 pointer-events-none">
-                    <div className="h-20 bg-gradient-to-t from-white via-white to-transparent w-full absolute bottom-0"></div>
-                    <div className="animate-bounce bg-accent/20 p-3 rounded-2xl z-10 backdrop-blur-sm border border-accent/30">
-                      <svg className="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="absolute bottom-0 left-0 right-0 flex justify-center pb-2 sm:pb-3 md:pb-4 pointer-events-none">
+                    <div className="h-16 sm:h-20 bg-gradient-to-t from-white via-white to-transparent w-full absolute bottom-0"></div>
+                    <div className="animate-bounce bg-accent/20 p-2 sm:p-2.5 md:p-3 rounded-xl sm:rounded-2xl z-10 backdrop-blur-sm border border-accent/30">
+                      <svg className="w-4 h-4 sm:w-5 sm:h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                       </svg>
                     </div>
                   </div>
                 )}
 
-                {/* Decorative corner elements */}
-                <div className="absolute top-0 right-0 w-24 h-24 border-t-2 border-r-2 border-accent/20 rounded-tr-3xl opacity-50"></div>
-                <div className="absolute bottom-0 left-0 w-24 h-24 border-b-2 border-l-2 border-accent/20 rounded-bl-3xl opacity-50"></div>
+                {/* Decorative corner elements - hidden on mobile, visible on desktop */}
+                <div className="hidden md:block absolute top-0 right-0 w-16 h-16 lg:w-24 lg:h-24 border-t-2 border-r-2 border-accent/20 rounded-tr-3xl opacity-50"></div>
+                <div className="hidden md:block absolute bottom-0 left-0 w-16 h-16 lg:w-24 lg:h-24 border-b-2 border-l-2 border-accent/20 rounded-bl-3xl opacity-50"></div>
               </div>
             </div>
           </div>
