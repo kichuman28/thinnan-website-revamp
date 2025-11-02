@@ -76,11 +76,6 @@ const HowItWorksSection = () => {
 
   return (
     <section id="how-it-works" className="py-20 sm:py-28 md:py-36 relative overflow-hidden bg-white">
-      {/* Background Decorations */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
-      </div>
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 relative z-10">
         {/* Section Header */}
@@ -157,11 +152,6 @@ const HowItWorksSection = () => {
                   </div>
                 </div>
               </div>
-
-              {/* Connecting Line Between Steps (except last) */}
-              {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-px h-20 bg-gradient-to-b from-primary/30 to-transparent"></div>
-              )}
             </div>
           ))}
         </div>

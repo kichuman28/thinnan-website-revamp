@@ -127,11 +127,6 @@ const AchievementsSection = () => {
 
   return (
     <section id="achievements" className="py-20 sm:py-28 md:py-36 relative overflow-hidden bg-white">
-      {/* Background Decorations */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
-      </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
         {/* Section Header */}
@@ -276,7 +271,7 @@ const AchievementsSection = () => {
               onClick={() => openModal(achievements[selectedIndex])}
             >
               {/* Card Container */}
-              <div className="relative rounded-3xl overflow-hidden bg-white shadow-2xl border border-gray-100 hover:shadow-accent/20 transition-all duration-700 ease-out" style={{ transition: 'all 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94)' }}>
+              <div className="relative rounded-3xl overflow-hidden bg-white transition-all duration-700 ease-out" style={{ transition: 'all 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94)' }}>
                 
                 {/* Image Section */}
                 <div className="relative h-64 sm:h-80 md:h-96 overflow-hidden">
@@ -321,13 +316,7 @@ const AchievementsSection = () => {
                   </div>
                 </div>
 
-                {/* Decorative corner accents */}
-                <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-accent/20 rounded-tl-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ transition: 'opacity 500ms cubic-bezier(0.4, 0.0, 0.2, 1)' }}></div>
-                <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-accent/20 rounded-br-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ transition: 'opacity 500ms cubic-bezier(0.4, 0.0, 0.2, 1)' }}></div>
               </div>
-
-              {/* Card shadow effect */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-accent/10 to-transparent rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10" style={{ transition: 'opacity 700ms cubic-bezier(0.4, 0.0, 0.2, 1)' }}></div>
             </div>
 
             {/* Navigation Dots - for all achievements */}
