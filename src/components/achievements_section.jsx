@@ -12,7 +12,7 @@ const AchievementsSection = () => {
   const contentRef = useRef(null);
 
   // Number of items to display at once
-  const VISIBLE_ITEMS = 4;
+  const VISIBLE_ITEMS = 3;
 
   // Check if mobile
   useEffect(() => {
@@ -152,7 +152,7 @@ const AchievementsSection = () => {
         {/* Dial Design Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
-          {/* Left Side - Dial/Navigation - Shows 4 items at a time */}
+          {/* Left Side - Dial/Navigation - Shows 3 items at a time */}
           <div className="lg:col-span-5 relative overflow-hidden">
             <div className="space-y-3" style={{ minHeight: '640px', height: '640px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
               {visibleAchievements.map((achievement, displayIndex) => {
