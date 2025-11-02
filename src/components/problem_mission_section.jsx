@@ -44,6 +44,9 @@ const ProblemMissionSection = () => {
               <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent to-transparent"></div>
             </h2>
           </div>
+          <p className="text-lg sm:text-xl text-secondary-grey mt-6 max-w-2xl mx-auto">
+           your social life, back in real life.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">

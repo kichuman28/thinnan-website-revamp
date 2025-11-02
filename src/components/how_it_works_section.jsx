@@ -91,6 +91,9 @@ const HowItWorksSection = () => {
               <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent to-transparent"></div>
             </h2>
           </div>
+          <p className="text-lg sm:text-xl text-secondary-grey mt-6 max-w-2xl mx-auto">
+            From scroll to stove in three taps
+          </p>
         </div>
 
         {/* Steps */}
