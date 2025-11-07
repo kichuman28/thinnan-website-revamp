@@ -1,158 +1,229 @@
-import { useEffect, useRef, useState } from 'react';
-import addToCravings from '../assets/images/how_it_works/add_to_cravings.png';
-import getMatched from '../assets/images/how_it_works/get_matched.png';
-import addToChat from '../assets/images/how_it_works/add_to_chat.png';
-import planCookout from '../assets/images/how_it_works/plan_cookout.png';
-import shareStory from '../assets/images/how_it_works/share_story.png';
+import { useState, useEffect } from 'react';
+import feature5 from '../assets/images/features/feature_5.png';
+import feature4 from '../assets/images/features/feature_4.png';
 
 const HowItWorksSection = () => {
-  const [visibleSteps, setVisibleSteps] = useState([]);
-  const stepsRef = useRef([]);
+  const [currentStep, setCurrentStep] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [userInteracted, setUserInteracted] = useState(false);
 
   const steps = [
     {
-      id: 1,
-      image: addToCravings,
-      title: 'Find a dish that excites you',
+      id: 0,
+      image: feature5,
+      title: 'add your real friends',
       subtitle: 'From scroll to stove in three taps',
-      description: 'Browse through authentic recipes and cooking ideas shared by your friends and community. Get inspired by what others are making.',
-      align: 'left'
+    },
+    {
+      id: 1,
+      image: feature4,
+      title: 'Get matched with food lovers',
+      subtitle: 'No algorithms. No ads. Just real people and real food.',
     },
     {
       id: 2,
-      image: getMatched,
-      title: 'Get matched with food lovers',
-      subtitle: 'No algorithms. No ads. Just real people and real food.',
-      description: "When you and your friends crave the same dish, we'll match you together. It's that simple.",
-      align: 'right'
+      image: feature5,
+      title: 'Start planning together',
+      subtitle: 'Turn content into conversation',
     },
     {
       id: 3,
-      image: addToChat,
-      title: 'Start planning together',
-      subtitle: 'Turn content into conversation',
-      description: 'Chat with your matches, decide when and where to cook or eat. Bring more friends along for the experience.',
-      align: 'left'
+      image: feature4,
+      title: 'Create your cookout or eatout',
+      subtitle: 'Make it official',
     },
     {
       id: 4,
-      image: planCookout,
-      title: 'Create your cookout or eatout',
-      subtitle: 'Make it official',
-      description: 'Set the date, time, and location. Invite your group and get ready for a memorable food experience.',
-      align: 'right'
-    },
-    {
-      id: 5,
-      image: shareStory,
+      image: feature5,
       title: 'Share your story',
       subtitle: 'Capture the memories',
-      description: 'Document your culinary adventure with photos and stories. Inspire others in your community to create their own experiences.',
-      align: 'left'
     }
   ];
 
+  // Auto-rotate through steps (only if user hasn't interacted)
   useEffect(() => {
-    const observers = stepsRef.current.map((ref, index) => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setVisibleSteps((prev) => [...new Set([...prev, index])]);
-            }
-          });
-        },
-        { threshold: 0.2 }
-      );
+    if (userInteracted) return;
+    
+    const timer = setInterval(() => {
+      setCurrentStep((prev) => (prev + 1) % steps.length);
+    }, 5000);
 
-      if (ref) observer.observe(ref);
-      return observer;
-    });
+    return () => clearInterval(timer);
+  }, [steps.length, userInteracted]);
 
-    return () => {
-      observers.forEach((observer) => observer.disconnect());
-    };
-  }, []);
+  const goToStep = (index) => {
+    if (index !== currentStep && !isAnimating && index >= 0 && index < steps.length) {
+      setUserInteracted(true);
+      setIsAnimating(true);
+      setCurrentStep(index);
+      setTimeout(() => setIsAnimating(false), 700);
+    }
+  };
+
+  const goToNext = () => {
+    if (currentStep < steps.length - 1 && !isAnimating) {
+      goToStep(currentStep + 1);
+    }
+  };
+
+  const goToPrevious = () => {
+    if (currentStep > 0 && !isAnimating) {
+      goToStep(currentStep - 1);
+    }
+  };
+
+  // Get visible cards (previous, current, next)
+  const getVisibleCards = () => {
+    const visible = [];
+    
+    // Previous card (left preview) - only if not first slide
+    if (currentStep > 0) {
+      visible.push({ ...steps[currentStep - 1], position: 'left' });
+    }
+    
+    // Current card (active)
+    visible.push({ ...steps[currentStep], position: 'center' });
+    
+    // Next card (right preview) - only if not last slide
+    if (currentStep < steps.length - 1) {
+      visible.push({ ...steps[currentStep + 1], position: 'right' });
+    }
+    
+    return visible;
+  };
 
   return (
-    <section id="how-it-works" className="py-20 sm:py-28 md:py-36 relative overflow-hidden bg-background">
-
+    <section id="how-it-works" className="py-20 sm:py-28 md:py-36 relative overflow-hidden" style={{ backgroundColor: '#FFF6EE' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16 sm:mb-20 md:mb-28">
-          <div className="inline-block">
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-primary-text mb-3 relative">
-              how thinnan works
-              <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent to-transparent"></div>
+        {/* Main Content - Horizontal Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left Side - Text Content */}
+          <div className="flex flex-col justify-center space-y-6 sm:space-y-8">
+            {/* Title */}
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight" style={{ color: '#1E1E1E' }}>
+              how it works?
             </h2>
+
+            {/* Step Indicator */}
+            <div 
+              className="transition-all duration-700 flex items-center"
+              style={{
+                opacity: isAnimating ? 0.7 : 1,
+                transform: isAnimating ? 'translateX(-10px)' : 'translateX(0)',
+              }}
+            >
+              <p className="text-lg sm:text-xl md:text-2xl font-medium" style={{ color: '#6C6C6C' }}>
+                step {currentStep + 1}
+              </p>
+            </div>
+
+            {/* Instruction/Title */}
+            <div 
+              className="transition-all duration-700 flex items-start"
+              style={{
+                opacity: isAnimating ? 0.7 : 1,
+                transform: isAnimating ? 'translateX(-10px)' : 'translateX(0)',
+                transitionDelay: '100ms',
+              }}
+            >
+              <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight" style={{ color: '#1E1E1E' }}>
+                {steps[currentStep].title}
+              </h3>
+            </div>
+
+            {/* Subtitle */}
+            <div 
+              className="transition-all duration-700 flex items-start"
+              style={{
+                opacity: isAnimating ? 0.7 : 1,
+                transform: isAnimating ? 'translateX(-10px)' : 'translateX(0)',
+                transitionDelay: '200ms',
+              }}
+            >
+              <p className="text-base sm:text-lg md:text-xl" style={{ color: '#6C6C6C' }}>
+                {steps[currentStep].subtitle}
+              </p>
+            </div>
           </div>
-          <p className="text-lg sm:text-xl text-secondary-grey mt-6 max-w-2xl mx-auto">
-            From scroll to stove in three taps
-          </p>
+
+          {/* Right Side - Horizontal Carousel with Blurred Previews */}
+          <div className="relative flex items-center justify-center lg:justify-end py-12 lg:py-16">
+            {/* Carousel Container - Fixed height with proper overflow handling */}
+            <div className="relative w-full max-w-[420px] h-[700px] sm:h-[800px] md:h-[850px] lg:h-[900px]">
+              {getVisibleCards().map((card) => {
+                const isActive = card.position === 'center';
+                const isLeftPreview = card.position === 'left';
+                const isRightPreview = card.position === 'right';
+
+                const handleClick = () => {
+                  if (isLeftPreview) {
+                    goToPrevious();
+                  } else if (isRightPreview) {
+                    goToNext();
+                  }
+                };
+
+                return (
+                  <div
+                    key={`${card.id}-${currentStep}-${card.position}`}
+                    className={`absolute top-1/2 left-1/2 w-[300px] h-[620px] sm:w-[330px] sm:h-[683px] md:w-[360px] md:h-[745px] lg:w-[380px] lg:h-[786px] transition-all duration-700 ease-out group ${
+                      !isActive ? 'cursor-pointer hover:scale-[0.87]' : ''
+                    }`}
+                    onClick={!isActive ? handleClick : undefined}
+                    style={{
+                      transform: isActive
+                        ? 'translate(-50%, -50%) scale(1)'
+                        : isLeftPreview
+                        ? 'translate(calc(-50% - 160px), -50%) scale(0.85)'
+                        : 'translate(calc(-50% + 160px), -50%) scale(0.85)',
+                      opacity: isActive ? 1 : 0.6,
+                      zIndex: isActive ? 30 : isLeftPreview ? 10 : 20,
+                      filter: isActive ? 'blur(0px)' : 'blur(2px)',
+                      transition: 'all 700ms cubic-bezier(0.4, 0.0, 0.2, 1)',
+                    }}
+                  >
+                    <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl">
+                      <img
+                        src={card.image}
+                        alt={card.title}
+                        className="w-full h-full object-cover block"
+                        style={{
+                          transform: isActive ? 'scale(1)' : 'scale(1.05)',
+                          transition: 'transform 700ms cubic-bezier(0.4, 0.0, 0.2, 1)',
+                        }}
+                      />
+                      {/* Subtle overlay for preview cards with hover effect */}
+                      {!isActive && (
+                        <div
+                          className="absolute inset-0 bg-white/10 hover:bg-white/5 transition-all duration-300 group-hover:opacity-0 pointer-events-none"
+                        />
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
-        {/* Steps */}
-        <div className="space-y-24 sm:space-y-32 md:space-y-40">
-          {steps.map((step, index) => (
-            <div
-              key={step.id}
-              ref={(el) => (stepsRef.current[index] = el)}
-              className={`relative transition-all duration-1000 ${
-                visibleSteps.includes(index)
-                  ? 'opacity-100 translate-y-0'
-                  : 'opacity-0 translate-y-20'
-              }`}
-            >
-              <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center ${
-                step.align === 'right' ? 'lg:grid-flow-dense' : ''
-              }`}>
-                {/* Image Side */}
-                <div
-                  className={`relative ${step.align === 'right' ? 'lg:col-start-2' : ''}`}
-                  style={{
-                    transitionDelay: visibleSteps.includes(index) ? '200ms' : '0ms',
-                  }}
-                >
-                  {/* Phone Mockup Container */}
-                  <div className="relative transform transition-transform duration-700 hover:scale-105">
-                    {/* Image */}
-                    <img
-                      src={step.image}
-                      alt={step.title}
-                      className="w-full h-auto"
-                    />
-                  </div>
-                </div>
-
-                {/* Content Side */}
-                <div
-                  className={`space-y-6 ${step.align === 'right' ? 'lg:col-start-1' : ''}`}
-                  style={{
-                    transitionDelay: visibleSteps.includes(index) ? '400ms' : '0ms',
-                  }}
-                >
-                  {/* Title */}
-                  <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary-text leading-tight">
-                    {step.title}
-                  </h3>
-
-                  {/* Subtitle */}
-                  <p className="text-xl sm:text-2xl text-primary font-medium">
-                    {step.subtitle}
-                  </p>
-
-                  {/* Description */}
-                  <p className="text-lg text-secondary-grey leading-relaxed">
-                    {step.description}
-                  </p>
-
-                  {/* Decorative Line */}
-                  <div className="pt-4">
-                    <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent rounded-full"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        {/* Navigation Dots - Centered Below Carousel */}
+        <div className="flex justify-center gap-2 sm:gap-3 mt-12 sm:mt-16">
+          {steps.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => {
+                setUserInteracted(true);
+                goToStep(index);
+              }}
+              className="transition-all duration-500 rounded-full hover:scale-110"
+              style={{
+                width: index === currentStep ? '40px' : '10px',
+                height: '10px',
+                backgroundColor: index === currentStep ? '#7C310A' : '#D1D5DB',
+                transition: 'all 500ms cubic-bezier(0.4, 0.0, 0.2, 1)',
+              }}
+              aria-label={`Go to step ${index + 1}`}
+            />
           ))}
         </div>
       </div>
@@ -160,4 +231,4 @@ const HowItWorksSection = () => {
   );
 };
 
-export default HowItWorksSection; 
+export default HowItWorksSection;
