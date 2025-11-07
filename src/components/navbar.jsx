@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import appIcon from '../assets/icons/app_icon.png';
 
 const Navbar = () => {
@@ -7,6 +7,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeHash, setActiveHash] = useState("");
   const [isPastHero, setIsPastHero] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,13 +51,29 @@ const Navbar = () => {
   };
 
   const isHomePage = window.location.pathname === "/";
+  const isContactPage = window.location.pathname === "/contact";
+
+  // Handle navigation to how-it-works section from other pages
+  const handleProductClick = (e) => {
+    if (!isHomePage) {
+      e.preventDefault();
+      navigate('/');
+      // Wait for navigation to complete, then scroll to how-it-works section
+      setTimeout(() => {
+        const howItWorksSection = document.getElementById('how-it-works');
+        if (howItWorksSection) {
+          howItWorksSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 200);
+    }
+  };
 
   // Reusable nav link component with hover effect
   const NavLink = ({ href, to, children, onClick }) => {
-    const textClass = isPastHero 
+    const textClass = isContactPage || isPastHero 
       ? "text-gray-700 hover:text-black" 
       : "text-white hover:text-white/80";
-    const underlineClass = isPastHero
+    const underlineClass = isContactPage || isPastHero
       ? "bg-accent"
       : "bg-white/60";
     
@@ -89,10 +106,10 @@ const Navbar = () => {
 
   // Mobile nav link component
   const MobileNavLink = ({ href, to, children }) => {
-    const textClass = isPastHero 
+    const textClass = isContactPage || isPastHero 
       ? "text-gray-700 hover:text-black" 
       : "text-white hover:text-white/80";
-    const underlineClass = isPastHero
+    const underlineClass = isContactPage || isPastHero
       ? "bg-accent"
       : "bg-white/60";
     
@@ -131,7 +148,7 @@ const Navbar = () => {
     <div className="fixed w-full top-0 z-50 px-2 sm:px-4 pt-2 sm:pt-4">
       <nav
         className={`max-w-md mx-auto rounded-xl sm:rounded-2xl transition-all duration-300 relative overflow-hidden ${
-          isPastHero
+          isContactPage || isPastHero
             ? scrolled 
               ? "bg-white/95 backdrop-blur-sm shadow-lg border border-gray-200" 
               : "bg-white/90 backdrop-blur-sm shadow-md border border-gray-100"
@@ -140,7 +157,7 @@ const Navbar = () => {
               : "border border-white/15 shadow-xl"
         }`}
         style={
-          isPastHero
+          isContactPage || isPastHero
             ? {}
             : {
                 background: scrolled
@@ -154,8 +171,8 @@ const Navbar = () => {
               }
         }
       >
-        {/* Apple liquid glass - multiple layered effects (only when not past hero) */}
-        {!isPastHero && (
+        {/* Apple liquid glass - multiple layered effects (only when not past hero and not on contact page) */}
+        {!isContactPage && !isPastHero && (
           <>
             {/* Top shine/reflection */}
             <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-br from-white/40 via-white/10 to-transparent pointer-events-none opacity-60"></div>
@@ -197,7 +214,7 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <NavLink to="/#how-it-works">product</NavLink>
+                <NavLink href="#how-it-works" onClick={handleProductClick}>product</NavLink>
                 {window.location.pathname === "/contact" ? (
                   <NavLink to="/contact">
                     contact
@@ -223,7 +240,7 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
-              className={isPastHero ? "text-gray-700 focus:outline-none transition-transform duration-100" : "text-white focus:outline-none transition-transform duration-100"}
+              className={isContactPage || isPastHero ? "text-gray-700 focus:outline-none transition-transform duration-100" : "text-white focus:outline-none transition-transform duration-100"}
               aria-label="Toggle menu"
             >
               <div className="relative w-6 h-6">
@@ -256,11 +273,11 @@ const Navbar = () => {
           }`}
         >
           <div 
-            className={isPastHero 
+            className={isContactPage || isPastHero 
               ? "bg-white/95 backdrop-blur-sm border border-gray-200 mx-2 sm:mx-4 mb-4 p-4 rounded-xl shadow-lg relative overflow-hidden"
               : "border border-white/20 mx-2 sm:mx-4 mb-4 p-4 rounded-xl relative overflow-hidden"
             }
-            style={isPastHero 
+            style={isContactPage || isPastHero 
               ? {}
               : {
                   background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(200, 220, 255, 0.12) 100%)',
@@ -270,8 +287,8 @@ const Navbar = () => {
                 }
             }
           >
-            {/* Apple liquid glass - multiple layered effects (only when not past hero) */}
-            {!isPastHero && (
+            {/* Apple liquid glass - multiple layered effects (only when not past hero and not on contact page) */}
+            {!isContactPage && !isPastHero && (
               <>
                 {/* Top shine/reflection */}
                 <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/40 via-white/10 to-transparent pointer-events-none opacity-60"></div>
@@ -296,9 +313,19 @@ const Navbar = () => {
                 </>
               ) : (
                 <>
-                  <MobileNavLink to="/#how-it-works">
-                    product
-                  </MobileNavLink>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      closeMenu();
+                      handleProductClick(e);
+                    }}
+                    className={`relative ${isContactPage || isPastHero ? "text-gray-700 hover:text-black" : "text-white hover:text-white/80"} transition-colors duration-300 font-medium text-center text-lg py-1 group w-full text-left`}
+                  >
+                    <span className="relative">
+                      product
+                      <span className={`absolute -bottom-1 left-0 w-0 h-0.5 ${isContactPage || isPastHero ? "bg-accent" : "bg-white/60"} transition-all duration-300 group-hover:w-full`}></span>
+                    </span>
+                  </button>
                   {window.location.pathname === "/contact" ? (
                     <MobileNavLink to="/contact">
                       contact

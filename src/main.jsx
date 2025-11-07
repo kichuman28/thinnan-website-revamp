@@ -9,11 +9,15 @@ import Contact from './pages/Contact.jsx'
 
 // ScrollToTop component to handle scroll restoration on route change
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    // If there's a hash, let the navbar handle scrolling to that section
+    // Otherwise, scroll to top on route change
+    if (!hash) {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, hash]);
   
   return null;
 }

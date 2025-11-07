@@ -35,25 +35,25 @@ const DownloadSection = () => {
             <div className="mt-16 md:mt-20 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
               <a 
                 href="https://play.google.com/store/apps/details?id=com.jathikka.thinaan&hl=en" 
-                className="flex items-center justify-center bg-black/40 backdrop-blur-sm text-white px-6 py-3 rounded-xl hover:bg-black/60 transition-all duration-300 shadow-lg hover:shadow-accent/10 hover:-translate-y-1 group relative overflow-hidden border border-white/10"
+                className="flex items-center justify-center bg-black/40 backdrop-blur-sm text-white px-8 py-4 sm:px-10 sm:py-5 rounded-xl hover:bg-black/60 transition-all duration-300 shadow-lg hover:shadow-accent/10 hover:-translate-y-1 group relative overflow-hidden border border-white/10"
               >
                 <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-accent/30 to-accent/10 bg-size-200 bg-pos-0 group-hover:bg-pos-100 transition-all duration-500 opacity-0 group-hover:opacity-100"></span>
                 <GoogleIcon />
-                <div className="ml-2 relative">
-                  <div className="text-xs">GET IT ON</div>
-                  <div className="text-sm font-medium">Google Play</div>
+                <div className="ml-3 sm:ml-4 relative">
+                  <div className="text-sm sm:text-base">GET IT ON</div>
+                  <div className="text-base sm:text-lg font-medium">Google Play</div>
                 </div>
               </a>
               
               <a 
                 href="https://apps.apple.com/fi/app/thinnan/id6502411893" 
-                className="flex items-center justify-center bg-black/40 backdrop-blur-sm text-white px-6 py-3 rounded-xl hover:bg-black/60 transition-all duration-300 shadow-lg hover:shadow-accent/10 hover:-translate-y-1 group relative overflow-hidden border border-white/10"
+                className="flex items-center justify-center bg-black/40 backdrop-blur-sm text-white px-8 py-4 sm:px-10 sm:py-5 rounded-xl hover:bg-black/60 transition-all duration-300 shadow-lg hover:shadow-accent/10 hover:-translate-y-1 group relative overflow-hidden border border-white/10"
               >
                 <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-accent/30 to-accent/10 bg-size-200 bg-pos-0 group-hover:bg-pos-100 transition-all duration-500 opacity-0 group-hover:opacity-100"></span>
                 <AppleIcon />
-                <div className="ml-2 relative">
-                  <div className="text-xs">Download on the</div>
-                  <div className="text-sm font-medium">App Store</div>
+                <div className="ml-3 sm:ml-4 relative">
+                  <div className="text-sm sm:text-base">Download on the</div>
+                  <div className="text-base sm:text-lg font-medium">App Store</div>
                 </div>
               </a>
             </div>
