@@ -213,7 +213,7 @@ const Navbar = () => {
           <div className="hidden md:block flex-1 md:flex-none text-right">
             <a
               href="https://thinnan.page.link/download"
-              className="bg-white text-black px-6 py-2 rounded-xl font-medium border border-gray-300 hover:bg-gray-50 transition-all duration-300"
+              className="bg-black text-white px-6 py-2 rounded-xl font-medium hover:bg-gray-800 transition-all duration-300"
             >
               join thinnan
             </a>
@@ -311,7 +311,7 @@ const Navbar = () => {
               <div className="pt-2">
                 <a
                   href="https://thinnan.page.link/download"
-                  className="block bg-white text-black px-6 py-3 rounded-xl font-medium border border-gray-300 hover:bg-gray-50 transition-all duration-300 text-center text-lg"
+                  className="block bg-black text-white px-6 py-3 rounded-xl font-medium hover:bg-gray-800 transition-all duration-300 text-center text-lg"
                   onClick={closeMenu}
                 >
                   join thinnan

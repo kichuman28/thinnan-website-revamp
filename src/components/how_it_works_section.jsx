@@ -93,7 +93,7 @@ const HowItWorksSection = () => {
   };
 
   return (
-    <section id="how-it-works" className="py-20 sm:py-28 md:py-36 relative overflow-hidden" style={{ backgroundColor: '#FFF6EE' }}>
+    <section id="how-it-works" className="pt-8 sm:pt-10 md:pt-12 pb-20 sm:pb-28 md:pb-36 relative overflow-hidden" style={{ backgroundColor: '#FFF6EE' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 relative z-10">
         {/* Main Content - Horizontal Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">

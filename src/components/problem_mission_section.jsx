@@ -30,7 +30,7 @@ const ProblemMissionSection = () => {
   };
 
   return (
-    <section className="relative pt-12 sm:pt-16 md:pt-20 pb-20 sm:pb-28 md:pb-36 bg-background overflow-hidden">
+    <section className="relative pt-12 sm:pt-16 md:pt-20 pb-8 sm:pb-10 md:pb-12 bg-background overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left - Static Title Content */}
