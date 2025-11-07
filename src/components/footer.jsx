@@ -71,45 +71,43 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="col-span-1 sm:col-span-2">
-            <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-800">Quick Links</h3>
-            <ul className="space-y-2 sm:space-y-3 text-sm sm:text-base">
-              <li>
-                <a href="#" className="text-gray-600 hover:text-accent transition-colors duration-300">Home</a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-accent transition-colors duration-300">About Us</a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-accent transition-colors duration-300">Features</a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-accent transition-colors duration-300">Community</a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-accent transition-colors duration-300">Download</a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact Section */}
-          <div className="col-span-1 sm:col-span-2 flex justify-end">
+          {/* Right Side Links - Pushed to the right for symmetry */}
+          <div className="col-span-2 sm:col-span-4 flex flex-col sm:flex-row justify-end gap-8 sm:gap-12 md:gap-16 lg:gap-20">
+            {/* First Column - Navigation Links */}
             <div>
-              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-800">Contact</h3>
-              <ul className="space-y-2 sm:space-y-3 text-sm sm:text-base">
+              <ul className="space-y-4 sm:space-y-5 md:space-y-6 text-base sm:text-lg md:text-xl">
                 <li>
-                  <a href="#" className="text-gray-600 hover:text-accent transition-colors duration-300">Feedback</a>
+                  <a href="#how-it-works" className="text-gray-600 hover:text-accent transition-colors duration-300">product</a>
                 </li>
                 <li>
-                  <a 
-                    href="mailto:info@thinnan.com" 
-                    className="text-gray-600 hover:text-accent transition-colors duration-300 group"
-                  >
-                    <span className="group-hover:bg-gradient-to-r group-hover:from-accent group-hover:to-accent/70 group-hover:bg-clip-text group-hover:text-transparent">
-                      info@thinnan.com
-                    </span>
-                  </a>
+                  <a href="#team" className="text-gray-600 hover:text-accent transition-colors duration-300">team</a>
+                </li>
+                <li>
+                  <a href="/contact" className="text-gray-600 hover:text-accent transition-colors duration-300">contact</a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Second Column - Legal Links */}
+            <div>
+              <ul className="space-y-4 sm:space-y-5 md:space-y-6 text-base sm:text-lg md:text-xl">
+                <li>
+                  <a href="#" className="text-gray-600 hover:text-accent transition-colors duration-300">terms & conditions</a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-600 hover:text-accent transition-colors duration-300">privacy policy</a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Third Column - Support Links */}
+            <div>
+              <ul className="space-y-4 sm:space-y-5 md:space-y-6 text-base sm:text-lg md:text-xl">
+                <li>
+                  <a href="#" className="text-gray-600 hover:text-accent transition-colors duration-300">request a feature</a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-600 hover:text-accent transition-colors duration-300">report a bug</a>
                 </li>
               </ul>
             </div>
