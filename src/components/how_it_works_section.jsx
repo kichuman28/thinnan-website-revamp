@@ -182,22 +182,16 @@ const HowItWorksSection = () => {
                       transition: 'all 700ms cubic-bezier(0.4, 0.0, 0.2, 1)',
                     }}
                   >
-                    <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl">
+                    <div className="relative w-full h-full rounded-3xl overflow-hidden">
                       <img
                         src={card.image}
                         alt={card.title}
-                        className="w-full h-full object-cover block"
+                        className="w-full h-full object-cover block rounded-3xl"
                         style={{
                           transform: isActive ? 'scale(1)' : 'scale(1.05)',
                           transition: 'transform 700ms cubic-bezier(0.4, 0.0, 0.2, 1)',
                         }}
                       />
-                      {/* Subtle overlay for preview cards with hover effect */}
-                      {!isActive && (
-                        <div
-                          className="absolute inset-0 bg-white/10 hover:bg-white/5 transition-all duration-300 group-hover:opacity-0 pointer-events-none"
-                        />
-                      )}
                     </div>
                   </div>
                 );
