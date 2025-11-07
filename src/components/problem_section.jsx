@@ -1,45 +1,196 @@
-const ProblemSection = () => (
-  <section className="relative py-24 sm:py-32 md:py-40 bg-background overflow-hidden">
-    {/* Animated Background Elements */}
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse-light"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-pulse-light" style={{ animationDelay: '1s' }}></div>
+import { useState, useEffect, useRef } from 'react';
 
-      {/* Floating Dots */}
-      <div className="absolute top-20 left-20 w-2 h-2 bg-primary/20 rounded-full animate-bounce" style={{ animationDelay: '0.5s', animationDuration: '3s' }}></div>
-      <div className="absolute top-40 right-32 w-2 h-2 bg-accent/20 rounded-full animate-bounce" style={{ animationDelay: '1.5s', animationDuration: '4s' }}></div>
-      <div className="absolute bottom-32 left-40 w-2 h-2 bg-primary/20 rounded-full animate-bounce" style={{ animationDelay: '2s', animationDuration: '3.5s' }}></div>
-    </div>
+const ProblemSection = () => {
+  const [count, setCount] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const sectionRef = useRef(null);
 
-    <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 relative z-10">
+  const targetValue = 1600000000; // 1.6 billion
+  const duration = 3000; // 3 seconds
+  const startTimeRef = useRef(null);
+  const animationFrameRef = useRef(null);
 
+  // Easing function for smooth animation
+  const easeOutCubic = (t) => {
+    return 1 - Math.pow(1 - t, 3);
+  };
 
-      {/* Main Heading */}
-      <div className="text-center mb-20 space-y-4">
-        <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-primary-text leading-tight">
-          Social media moved online.
-          <br />
-          <span className="relative inline-block mt-2">
-            Life didn’t.
-            <span
-              className="block mx-auto h-1 w-full max-w-xs sm:max-w-sm mt-2 bg-gradient-to-r from-primary via-accent to-primary rounded-full"
-              style={{ height: '4px' }}
-            />
-          </span>
-        </h2>
+  // Animate counter
+  useEffect(() => {
+    if (!hasAnimated) return;
+
+    const animate = (currentTime) => {
+      if (!startTimeRef.current) {
+        startTimeRef.current = currentTime;
+      }
+
+      const elapsed = currentTime - startTimeRef.current;
+      const progress = Math.min(elapsed / duration, 1);
+      const easedProgress = easeOutCubic(progress);
+      const currentValue = Math.floor(easedProgress * targetValue);
+
+      setCount(currentValue);
+
+      if (progress < 1) {
+        animationFrameRef.current = requestAnimationFrame(animate);
+      } else {
+        setCount(targetValue); // Ensure final value is exact
+      }
+    };
+
+    animationFrameRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, [hasAnimated, targetValue, duration]);
+
+  // Intersection Observer to trigger animation when section is visible
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated) {
+            setHasAnimated(true);
+            startTimeRef.current = null;
+          }
+        });
+      },
+      {
+        threshold: 0.3, // Trigger when 30% of section is visible
+        rootMargin: '0px',
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, [hasAnimated]);
+
+  // Format number without commas (no decimals, show all digits) - matches reference
+  const formatNumber = (num) => {
+    return Math.floor(num).toString();
+  };
+
+  // Source links data
+  const sources = [
+    { id: 1, url: '#', label: '1' },
+    { id: 2, url: '#', label: '2' },
+    { id: 3, url: '#', label: '3' },
+  ];
+
+  return (
+    <section 
+      ref={sectionRef}
+      className="relative py-24 sm:py-32 md:py-40 lg:py-48 bg-background overflow-hidden min-h-screen flex items-center font-manrope"
+    >
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16 w-full relative z-10 overflow-x-hidden">
+        {/* Main Content Container - Left Aligned */}
+        <div className="flex flex-col justify-center min-h-[70vh] w-full">
+          
+          {/* Tagline Above Number */}
+          <div 
+            className="mb-8 sm:mb-10 md:mb-12"
+            style={{
+              opacity: hasAnimated ? 1 : 0,
+              transform: hasAnimated ? 'translateY(0)' : 'translateY(20px)',
+              transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
+            }}
+          >
+            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium text-primary-text leading-tight">
+              digital fatigue is real.
+            </p>
+          </div>
+
+          {/* Large Filled Number */}
+          <div 
+            className="mb-6 sm:mb-8 md:mb-10 w-full"
+            style={{
+              opacity: hasAnimated ? 1 : 0,
+              transform: hasAnimated ? 'translateY(0)' : 'translateY(30px)',
+              transition: 'opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s',
+            }}
+          >
+            <h1 
+              className="font-bold leading-none text-primary"
+              style={{
+                fontFamily: 'Manrope, sans-serif',
+                letterSpacing: '-0.02em',
+                fontWeight: 700,
+                fontSize: 'clamp(1.5rem, 5vw, 8rem)',
+                display: 'block',
+                maxWidth: '100%',
+                wordBreak: 'break-all',
+                overflowWrap: 'break-word',
+                lineHeight: '1',
+              }}
+            >
+              {formatNumber(count)}
+            </h1>
+          </div>
+
+          {/* Text Below Number - Left Aligned */}
+          <div 
+            className="space-y-2 sm:space-y-3"
+            style={{
+              opacity: hasAnimated ? 1 : 0,
+              transform: hasAnimated ? 'translateY(0)' : 'translateY(20px)',
+              transition: 'opacity 1s ease-out 0.4s, transform 1s ease-out 0.4s',
+            }}
+          >
+            <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-primary-text leading-tight">
+              billion people
+            </p>
+            <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-primary-text leading-tight">
+              long for in person experiences!
+            </p>
+          </div>
+        </div>
+
+        {/* Source Links - Bottom Right */}
+        <div 
+          className="absolute bottom-6 sm:bottom-8 md:bottom-12 right-6 sm:right-8 md:right-12 lg:right-16"
+          style={{
+            opacity: hasAnimated ? 1 : 0,
+            transition: 'opacity 1s ease-out 0.8s',
+          }}
+        >
+          <div className="flex items-center gap-2 text-sm sm:text-base md:text-lg text-secondary-grey">
+            <span className="font-normal">source:</span>
+            <div className="flex items-center gap-1">
+              {sources.map((source, index) => (
+                <span key={source.id} className="flex items-center">
+                  <a
+                    href={source.url}
+                    className="hover:text-primary-text transition-colors duration-200 underline decoration-1 underline-offset-2"
+                    style={{
+                      textDecorationColor: 'rgba(108, 108, 108, 0.4)',
+                    }}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      // Add your source link handling here
+                      console.log(`Source ${source.id} clicked`);
+                    }}
+                  >
+                    {source.label}
+                  </a>
+                  {index < sources.length - 1 && <span className="mx-0.5">.</span>}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
-
-
-
-      {/* Bottom Tagline */}
-      <div className="text-center max-w-3xl mx-auto">
-        <p className="text-xl sm:text-2xl md:text-3xl text-secondary-grey font-light leading-relaxed">
-          We believe food is meant to bring people together—
-          <span className="text-primary font-medium">not just fill feeds.</span>
-        </p>
-      </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default ProblemSection;

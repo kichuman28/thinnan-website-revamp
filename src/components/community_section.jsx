@@ -37,7 +37,7 @@ const CommunitySection = () => {
   };
 
   return (
-    <section id="community" className="py-20 sm:py-28 md:py-36 relative overflow-hidden bg-white">
+    <section id="community" className="py-20 sm:py-28 md:py-36 relative overflow-hidden bg-background">
       
       
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 relative z-10">

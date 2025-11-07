@@ -159,7 +159,7 @@ const FoundersSection = () => {
   );
 
   return (
-    <section id="team" className="py-16 sm:py-20 md:py-28 lg:py-36 relative overflow-hidden bg-white">
+    <section id="team" className="py-16 sm:py-20 md:py-28 lg:py-36 relative overflow-hidden bg-background">
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 relative z-10">
         {/* Section Header */}
