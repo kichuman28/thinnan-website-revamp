@@ -4,7 +4,7 @@ import feature4 from '../assets/images/features/feature_4.png';
 
 const HowItWorksSection = () => {
   const [currentStep, setCurrentStep] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const [userInteracted, setUserInteracted] = useState(false);
 
   const steps = [
@@ -45,29 +45,45 @@ const HowItWorksSection = () => {
     if (userInteracted) return;
     
     const timer = setInterval(() => {
-      setCurrentStep((prev) => (prev + 1) % steps.length);
-    }, 5000);
+      handleStepChange((prev) => (prev + 1) % steps.length);
+    }, 6000);
 
     return () => clearInterval(timer);
   }, [steps.length, userInteracted]);
 
+  const handleStepChange = (newStepOrFunction) => {
+    setIsTransitioning(true);
+    
+    // Small delay for fade out effect
+    setTimeout(() => {
+      if (typeof newStepOrFunction === 'function') {
+        setCurrentStep(newStepOrFunction);
+      } else {
+        setCurrentStep(newStepOrFunction);
+      }
+      
+      // Fade back in
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 50);
+    }, 300);
+  };
+
   const goToStep = (index) => {
-    if (index !== currentStep && !isAnimating && index >= 0 && index < steps.length) {
+    if (index !== currentStep && index >= 0 && index < steps.length) {
       setUserInteracted(true);
-      setIsAnimating(true);
-      setCurrentStep(index);
-      setTimeout(() => setIsAnimating(false), 700);
+      handleStepChange(index);
     }
   };
 
   const goToNext = () => {
-    if (currentStep < steps.length - 1 && !isAnimating) {
+    if (currentStep < steps.length - 1) {
       goToStep(currentStep + 1);
     }
   };
 
   const goToPrevious = () => {
-    if (currentStep > 0 && !isAnimating) {
+    if (currentStep > 0) {
       goToStep(currentStep - 1);
     }
   };
@@ -78,78 +94,103 @@ const HowItWorksSection = () => {
     
     // Previous card (left preview) - only if not first slide
     if (currentStep > 0) {
-      visible.push({ ...steps[currentStep - 1], position: 'left' });
+      visible.push({ ...steps[currentStep - 1], position: 'left', index: currentStep - 1 });
     }
     
     // Current card (active)
-    visible.push({ ...steps[currentStep], position: 'center' });
+    visible.push({ ...steps[currentStep], position: 'center', index: currentStep });
     
     // Next card (right preview) - only if not last slide
     if (currentStep < steps.length - 1) {
-      visible.push({ ...steps[currentStep + 1], position: 'right' });
+      visible.push({ ...steps[currentStep + 1], position: 'right', index: currentStep + 1 });
     }
     
     return visible;
   };
 
   return (
-    <section id="how-it-works" className="pt-8 sm:pt-10 md:pt-12 pb-20 sm:pb-28 md:pb-36 relative overflow-hidden" style={{ backgroundColor: '#FFF6EE' }}>
+    <section id="how-it-works" className="py-20 sm:py-24 md:py-32 lg:py-40 relative overflow-hidden bg-background">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 relative z-10">
         {/* Main Content - Horizontal Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+          
           {/* Left Side - Text Content */}
-          <div className="flex flex-col justify-center space-y-6 sm:space-y-8">
+          <div className="flex flex-col justify-center space-y-8 sm:space-y-10">
+            
             {/* Title */}
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight" style={{ color: '#1E1E1E' }}>
-              how does it work?
-            </h2>
+            <div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-primary-text">
+                how does it work?
+              </h2>
+            </div>
 
-            {/* Step Indicator */}
+            {/* Step Indicator with smooth transition */}
             <div 
-              className="transition-all duration-700 flex items-center"
+              className="transition-all duration-500 ease-out"
               style={{
-                opacity: isAnimating ? 0.7 : 1,
-                transform: isAnimating ? 'translateX(-10px)' : 'translateX(0)',
+                opacity: isTransitioning ? 0 : 1,
+                transform: isTransitioning ? 'translateY(-10px)' : 'translateY(0)',
               }}
             >
-              <p className="text-lg sm:text-xl md:text-2xl font-medium" style={{ color: '#6C6C6C' }}>
+              <p className="text-lg sm:text-xl md:text-2xl font-semibold text-primary">
                 step {currentStep + 1}
               </p>
             </div>
 
-            {/* Instruction/Title */}
+            {/* Title with smooth transition */}
             <div 
-              className="transition-all duration-700 flex items-start"
+              className="transition-all duration-500 ease-out"
               style={{
-                opacity: isAnimating ? 0.7 : 1,
-                transform: isAnimating ? 'translateX(-10px)' : 'translateX(0)',
-                transitionDelay: '100ms',
+                opacity: isTransitioning ? 0 : 1,
+                transform: isTransitioning ? 'translateY(-10px)' : 'translateY(0)',
+                transitionDelay: isTransitioning ? '0ms' : '100ms',
               }}
             >
-              <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight" style={{ color: '#1E1E1E' }}>
+              <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-primary-text">
                 {steps[currentStep].title}
               </h3>
             </div>
 
-            {/* Subtitle */}
+            {/* Subtitle with smooth transition */}
             <div 
-              className="transition-all duration-700 flex items-start"
+              className="transition-all duration-500 ease-out"
               style={{
-                opacity: isAnimating ? 0.7 : 1,
-                transform: isAnimating ? 'translateX(-10px)' : 'translateX(0)',
-                transitionDelay: '200ms',
+                opacity: isTransitioning ? 0 : 1,
+                transform: isTransitioning ? 'translateY(-10px)' : 'translateY(0)',
+                transitionDelay: isTransitioning ? '0ms' : '200ms',
               }}
             >
-              <p className="text-base sm:text-lg md:text-xl" style={{ color: '#6C6C6C' }}>
+              <p className="text-base sm:text-lg md:text-xl text-secondary-grey leading-relaxed">
                 {steps[currentStep].subtitle}
               </p>
             </div>
+
+            {/* Navigation Dots - Below text on mobile, same position on desktop */}
+            <div className="flex gap-3 pt-4">
+              {steps.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => {
+                    setUserInteracted(true);
+                    goToStep(index);
+                  }}
+                  className="transition-all duration-500 ease-out rounded-full hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                  style={{
+                    width: index === currentStep ? '48px' : '12px',
+                    height: '12px',
+                    backgroundColor: index === currentStep ? '#7C310A' : '#D1D5DB',
+                    transition: 'all 500ms cubic-bezier(0.4, 0.0, 0.2, 1)',
+                  }}
+                  aria-label={`Go to step ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
 
-          {/* Right Side - Horizontal Carousel with Blurred Previews */}
-          <div className="relative flex items-center justify-center lg:justify-end py-12 lg:py-16">
-            {/* Carousel Container - Fixed height with proper overflow handling */}
-            <div className="relative w-full max-w-[420px] h-[700px] sm:h-[800px] md:h-[850px] lg:h-[900px]">
+          {/* Right Side - Carousel with Blurred Previews */}
+          <div className="flex items-center justify-center lg:justify-end py-12">
+            <div className="relative w-full max-w-[420px] h-[700px] sm:h-[750px] md:h-[800px]">
+              
               {getVisibleCards().map((card) => {
                 const isActive = card.position === 'center';
                 const isLeftPreview = card.position === 'left';
@@ -165,60 +206,60 @@ const HowItWorksSection = () => {
 
                 return (
                   <div
-                    key={`${card.id}-${currentStep}-${card.position}`}
-                    className={`absolute top-1/2 left-1/2 w-[300px] h-[620px] sm:w-[330px] sm:h-[683px] md:w-[360px] md:h-[745px] lg:w-[380px] lg:h-[786px] transition-all duration-700 ease-out group ${
-                      !isActive ? 'cursor-pointer hover:scale-[0.87]' : ''
+                    key={`${card.id}-${card.index}`}
+                    className={`absolute top-1/2 left-1/2 w-[280px] h-[580px] sm:w-[310px] sm:h-[640px] md:w-[340px] md:h-[703px] ${
+                      !isActive ? 'cursor-pointer' : ''
                     }`}
                     onClick={!isActive ? handleClick : undefined}
                     style={{
                       transform: isActive
                         ? 'translate(-50%, -50%) scale(1)'
                         : isLeftPreview
-                        ? 'translate(calc(-50% - 160px), -50%) scale(0.85)'
-                        : 'translate(calc(-50% + 160px), -50%) scale(0.85)',
-                      opacity: isActive ? 1 : 0.6,
+                        ? 'translate(calc(-50% - 140px), -50%) scale(0.88)'
+                        : 'translate(calc(-50% + 140px), -50%) scale(0.88)',
+                      opacity: isActive ? 1 : 0.5,
                       zIndex: isActive ? 30 : isLeftPreview ? 10 : 20,
-                      filter: isActive ? 'blur(0px)' : 'blur(2px)',
-                      transition: 'all 700ms cubic-bezier(0.4, 0.0, 0.2, 1)',
+                      filter: isActive ? 'blur(0px)' : 'blur(3px)',
+                      transition: 'all 600ms cubic-bezier(0.34, 1.56, 0.64, 1)',
+                      pointerEvents: 'auto',
                     }}
                   >
-                    <div className="relative w-full h-full rounded-3xl overflow-hidden">
+                    <div 
+                      className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl ring-1 ring-black/5 transition-all duration-600"
+                      style={{
+                        transform: !isActive ? 'scale(1)' : 'scale(1)',
+                        transition: 'transform 400ms ease-out',
+                      }}
+                    >
                       <img
                         src={card.image}
                         alt={card.title}
-                        className="w-full h-full object-cover block rounded-3xl"
-                        style={{
-                          transform: isActive ? 'scale(1)' : 'scale(1.05)',
-                          transition: 'transform 700ms cubic-bezier(0.4, 0.0, 0.2, 1)',
-                        }}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
                       />
+                      
+                      {/* Subtle gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/5 via-transparent to-transparent pointer-events-none"></div>
+                      
+                      {/* Darker overlay for non-active cards */}
+                      {!isActive && (
+                        <div className="absolute inset-0 bg-black/20 pointer-events-none transition-opacity duration-600"></div>
+                      )}
                     </div>
                   </div>
                 );
               })}
+
+              {/* Decorative glow effect for active card */}
+              <div 
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[620px] -z-10 blur-3xl opacity-15 transition-opacity duration-700"
+                style={{
+                  background: 'radial-gradient(circle, #7C310A 0%, transparent 70%)',
+                }}
+              ></div>
             </div>
           </div>
-        </div>
 
-        {/* Navigation Dots - Centered Below Carousel */}
-        <div className="flex justify-center gap-2 sm:gap-3 mt-12 sm:mt-16">
-          {steps.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => {
-                setUserInteracted(true);
-                goToStep(index);
-              }}
-              className="transition-all duration-500 rounded-full hover:scale-110"
-              style={{
-                width: index === currentStep ? '40px' : '10px',
-                height: '10px',
-                backgroundColor: index === currentStep ? '#7C310A' : '#D1D5DB',
-                transition: 'all 500ms cubic-bezier(0.4, 0.0, 0.2, 1)',
-              }}
-              aria-label={`Go to step ${index + 1}`}
-            />
-          ))}
         </div>
       </div>
     </section>
