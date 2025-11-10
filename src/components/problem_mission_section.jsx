@@ -69,28 +69,17 @@ const ProblemMissionSection = () => {
                       pointerEvents: index === currentCard ? 'auto' : 'none',
                     }}
                   >
-                    <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl ring-1 ring-black/5">
+                    <div className="relative w-full h-full">
                       <img
                         src={feature.image}
                         alt={feature.alt}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
+                        style={{ objectPosition: 'center' }}
                         loading="lazy"
                       />
-                      
-                      {/* Subtle gradient overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/5 via-transparent to-transparent pointer-events-none"></div>
                     </div>
                   </div>
                 ))}
-
-                {/* Decorative glow effect */}
-                <div 
-                  className="absolute inset-0 -z-10 blur-3xl opacity-20 transition-opacity duration-700"
-                  style={{
-                    background: 'radial-gradient(circle, #7C310A 0%, transparent 70%)',
-                    transform: 'scale(1.1)',
-                  }}
-                ></div>
               </div>
 
               {/* Progress Dots - Below phone */}
