@@ -208,7 +208,7 @@ const Contact = () => {
       </section>
 
       {/* Feature Request / Bug Report Section */}
-      <section className="py-8 sm:py-10 md:py-12 lg:py-16 relative overflow-hidden bg-background">
+      <section className="py-8 sm:py-10 md:py-12 lg:py-16 relative overflow-hidden bg-secondary">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
           <div 
             className={`transition-all duration-1000 ${

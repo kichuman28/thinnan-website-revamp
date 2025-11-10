@@ -43,7 +43,7 @@ const HowItStartedSection = () => {
   ];
 
   return (
-    <section id="how-it-started" className="pt-8 sm:pt-10 md:pt-12 pb-20 sm:pb-28 md:pb-36 relative overflow-hidden bg-background">
+    <section id="how-it-started" className="pt-8 sm:pt-10 md:pt-12 pb-20 sm:pb-28 md:pb-36 relative overflow-hidden bg-secondary">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 relative z-10">
         {/* Section Header */}
         <div 

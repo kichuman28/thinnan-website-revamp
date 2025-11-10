@@ -25,15 +25,13 @@ const ProblemMissionSection = () => {
 
   const handleCardChange = (newCardOrFunction) => {
     setIsTransitioning(true);
-    
-    // Small delay for smooth transition
+
     setTimeout(() => {
       if (typeof newCardOrFunction === 'function') {
         setCurrentCard(newCardOrFunction);
       } else {
         setCurrentCard(newCardOrFunction);
       }
-      
       setTimeout(() => {
         setIsTransitioning(false);
       }, 50);
@@ -43,16 +41,13 @@ const ProblemMissionSection = () => {
   return (
     <section className="relative py-20 sm:py-24 md:py-32 lg:py-40 bg-secondary overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 relative z-10">
-        
         {/* Main Content - Reversed Layout (Image Left, Text Right) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-          
           {/* Left Side - Phone Screenshots */}
           <div className="flex items-center justify-center lg:justify-start order-2 lg:order-1">
             <div className="relative w-full max-w-[260px] sm:max-w-[300px] md:max-w-[340px]">
               {/* Container with fixed aspect ratio matching how_it_works */}
               <div className="relative" style={{ aspectRatio: '9/19.5' }}>
-                
                 {/* All images stacked with cross-fade effect */}
                 {featureImages.map((feature, index) => (
                   <div
@@ -81,14 +76,13 @@ const ProblemMissionSection = () => {
                   </div>
                 ))}
               </div>
-
               {/* Progress Dots - Below phone */}
               <div className="flex justify-center gap-3 mt-8">
                 {featureImages.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => {
-                      setCurrentCard(index);
+                      if (index !== currentCard) handleCardChange(index);
                     }}
                     className="transition-all duration-500 ease-out rounded-full hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                     style={{
@@ -106,29 +100,14 @@ const ProblemMissionSection = () => {
 
           {/* Right Side - Text Content */}
           <div className="flex flex-col justify-center space-y-8 sm:space-y-10 order-1 lg:order-2">
-            
-            {/* Small heading with smooth transition */}
-            <div 
-              className="transition-all duration-500 ease-out"
-              style={{
-                opacity: isTransitioning ? 0.7 : 1,
-                transform: isTransitioning ? 'translateY(-10px)' : 'translateY(0)',
-              }}
-            >
+            {/* Small heading - STATIC, never moves */}
+            <div>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary-text">
                 meet thinnan.
               </h2>
             </div>
-
-            {/* Main Title with smooth transition */}
-            <div 
-              className="transition-all duration-500 ease-out"
-              style={{
-                opacity: isTransitioning ? 0.7 : 1,
-                transform: isTransitioning ? 'translateY(-10px)' : 'translateY(0)',
-                transitionDelay: isTransitioning ? '0ms' : '100ms',
-              }}
-            >
+            {/* Main Title - STATIC, never moves */}
+            <div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-primary-text">
                 We are bringing back the{' '}
                 <span className="relative inline-block">
@@ -138,32 +117,16 @@ const ProblemMissionSection = () => {
                 {' '}to social media!
               </h2>
             </div>
-
-            {/* Description with smooth transition */}
-            <div 
-              className="transition-all duration-500 ease-out"
-              style={{
-                opacity: isTransitioning ? 0.7 : 1,
-                transform: isTransitioning ? 'translateY(-10px)' : 'translateY(0)',
-                transitionDelay: isTransitioning ? '0ms' : '200ms',
-              }}
-            >
+            {/* Description - STATIC, never moves */}
+            <div>
               <p className="text-lg sm:text-xl md:text-2xl text-secondary-grey leading-relaxed max-w-xl">
                 Food social media designed for{' '}
                 <span className="text-primary font-semibold">real-life experiences</span>{' '}
                 around food.
               </p>
             </div>
-
-            {/* Download Button with smooth transition */}
-            <div 
-              className="pt-4 transition-all duration-500 ease-out"
-              style={{
-                opacity: isTransitioning ? 0.7 : 1,
-                transform: isTransitioning ? 'translateY(-10px)' : 'translateY(0)',
-                transitionDelay: isTransitioning ? '0ms' : '300ms',
-              }}
-            >
+            {/* Download Button - STATIC, never moves */}
+            <div className="pt-4">
               <a
                 href="https://thinnan.page.link/download"
                 className="inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 sm:py-5 bg-primary text-white rounded-2xl sm:rounded-3xl font-semibold text-base sm:text-lg hover:bg-primary/90 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-primary/30 transform hover:scale-105 group"
@@ -180,7 +143,6 @@ const ProblemMissionSection = () => {
               </a>
             </div>
           </div>
-
         </div>
       </div>
     </section>

@@ -225,11 +225,7 @@ const HowItWorksSection = () => {
                     }}
                   >
                     <div 
-                      className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl ring-1 ring-black/5 transition-all duration-600"
-                      style={{
-                        transform: !isActive ? 'scale(1)' : 'scale(1)',
-                        transition: 'transform 400ms ease-out',
-                      }}
+                      className="relative w-full h-full"
                     >
                       <img
                         src={card.image}
@@ -237,14 +233,6 @@ const HowItWorksSection = () => {
                         className="w-full h-full object-cover"
                         loading="lazy"
                       />
-                      
-                      {/* Subtle gradient overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/5 via-transparent to-transparent pointer-events-none"></div>
-                      
-                      {/* Darker overlay for non-active cards */}
-                      {!isActive && (
-                        <div className="absolute inset-0 bg-black/20 pointer-events-none transition-opacity duration-600"></div>
-                      )}
                     </div>
                   </div>
                 );

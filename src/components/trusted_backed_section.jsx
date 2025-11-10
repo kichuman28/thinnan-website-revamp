@@ -20,8 +20,6 @@ const TrustedBackedSection = () => {
 
   return (
     <section className="py-12 sm:py-16 md:py-20 relative overflow-hidden bg-background">
-     
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
         {/* Section Header */}
         <div 
@@ -37,8 +35,8 @@ const TrustedBackedSection = () => {
           </div>
         </div>
 
-        {/* Logos Grid - Horizontal Row - All in one line */}
-        <div className="flex flex-nowrap justify-center items-center gap-4 sm:gap-5 md:gap-6 lg:gap-8 overflow-x-auto">
+        {/* Logos Grid - Row, Non-scrollable, Wraps to new line */}
+        <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-5 md:gap-6 lg:gap-8">
           {logos.map((logo, index) => (
             <div
               key={logo.id}
