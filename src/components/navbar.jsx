@@ -68,6 +68,19 @@ const Navbar = () => {
     }
   };
 
+  const handleTeamClick = (e) => {
+    if (!isHomePage) {
+      e.preventDefault();
+      navigate('/');
+      setTimeout(() => {
+        const teamSection = document.getElementById('team');
+        if (teamSection) {
+          teamSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 200);
+    }
+  };
+
   // Reusable nav link component with hover effect
   const NavLink = ({ href, to, children, onClick }) => {
     const textClass = isContactPage || isPastHero 
@@ -147,7 +160,7 @@ const Navbar = () => {
   return (
     <div className="fixed w-full top-0 z-50 px-2 sm:px-4 pt-2 sm:pt-4">
       <nav
-        className={`max-w-md mx-auto rounded-xl sm:rounded-2xl transition-all duration-300 relative overflow-hidden ${
+        className={`max-w-xl mx-auto rounded-xl sm:rounded-2xl transition-all duration-300 relative overflow-hidden ${
           isContactPage || isPastHero
             ? scrolled 
               ? "bg-white/95 backdrop-blur-sm shadow-lg border border-gray-200" 
@@ -206,15 +219,17 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Menu - Centered */}
-          <div className="hidden md:flex flex-1 justify-center items-center space-x-4 lg:space-x-6">
+          <div className="hidden md:flex flex-1 max-w-xl mx-auto justify-evenly items-center">
             {isHomePage ? (
               <>
                 <NavLink href="#how-it-works">product</NavLink>
+                <NavLink href="#team">team</NavLink>
                 <NavLink to="/contact">contact</NavLink>
               </>
             ) : (
               <>
                 <NavLink href="#how-it-works" onClick={handleProductClick}>product</NavLink>
+                <NavLink href="#team" onClick={handleTeamClick}>team</NavLink>
                 {window.location.pathname === "/contact" ? (
                   <NavLink to="/contact">
                     contact
@@ -309,6 +324,9 @@ const Navbar = () => {
                   <MobileNavLink href="#how-it-works">
                     product
                   </MobileNavLink>
+                  <MobileNavLink href="#team">
+                    team
+                  </MobileNavLink>
                   <MobileNavLink to="/contact">contact</MobileNavLink>
                 </>
               ) : (
@@ -323,6 +341,19 @@ const Navbar = () => {
                   >
                     <span className="relative">
                       product
+                      <span className={`absolute -bottom-1 left-0 w-0 h-0.5 ${isContactPage || isPastHero ? "bg-accent" : "bg-white/60"} transition-all duration-300 group-hover:w-full`}></span>
+                    </span>
+                  </button>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      closeMenu();
+                      handleTeamClick(e);
+                    }}
+                    className={`relative ${isContactPage || isPastHero ? "text-gray-700 hover:text-black" : "text-white hover:text-white/80"} transition-colors duration-300 font-medium text-center text-lg py-1 group w-full text-left`}
+                  >
+                    <span className="relative">
+                      team
                       <span className={`absolute -bottom-1 left-0 w-0 h-0.5 ${isContactPage || isPastHero ? "bg-accent" : "bg-white/60"} transition-all duration-300 group-hover:w-full`}></span>
                     </span>
                   </button>
