@@ -1,12 +1,4 @@
-import cookingEventImage from '../assets/images/cooking_event.jpg';
-import foodDiscoveryImage from '../assets/images/food-discovery.jpg';
-import story1Image from '../assets/images/story_1.jpg';
-import story2Image from '../assets/images/story_2.jpg';
-import story3Image from '../assets/images/story_3.jpg';
-import indiaFlag from '../assets/images/india_flag.png';
-import italyFlag from '../assets/images/italy_flag.png';
-import japanFlag from '../assets/images/japan_flag.png';
-import mexicoFlag from '../assets/images/mexico_flag.png';
+
 
 const FeaturesSection = () => {
   const friendImages = [

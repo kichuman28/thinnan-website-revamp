@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import worldMap from '../assets/images/world_map.png';
 
 const LocationSection = () => {
   const [animatedItems, setAnimatedItems] = useState([]);

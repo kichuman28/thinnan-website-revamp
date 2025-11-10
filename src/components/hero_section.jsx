@@ -1,4 +1,5 @@
 import foodVideo from '../assets/videos/food_video.mp4';
+import thinnanLogo from '../assets/images/thinnan_logo.png';
 
 const HeroSection = () => {
 
@@ -32,12 +33,18 @@ const HeroSection = () => {
             <div className="max-w-7xl mx-auto w-full">
               <div className="max-w-4xl">
                 {/* Main Heading */}
-                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.1] animate-fadeInUp">
-                  <span className="text-white block mb-2">thinnan.</span>
-                  <span className="text-white">for </span>
-                  <span className="text-primary bg-clip-text text-transparent bg-gradient-to-r from-[#FFA726] to-[#FF8A50]">real life</span>
-                  <span className="text-white block mt-2">food experiences.</span>
-                </h1>
+                <div className="animate-fadeInUp flex flex-col items-start">
+                  <img 
+                    src={thinnanLogo} 
+                    alt="thinnan" 
+                    className="mb-4 sm:mb-6 ml-0 sm:-ml-2 w-32 xs:w-36 sm:w-40 md:w-48 lg:w-56 max-w-[200px]"
+                  />
+                  <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1]">
+                    <span className="text-white">for </span>
+                    <span className="text-primary bg-clip-text text-transparent bg-gradient-to-r from-[#FFA726] to-[#FF8A50]">real life</span>
+                    <span className="text-white block mt-2">food experiences.</span>
+                  </h1>
+                </div>
               </div>
             </div>
           </div>
