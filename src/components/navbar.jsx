@@ -7,20 +7,49 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeHash, setActiveHash] = useState("");
   const [isPastHero, setIsPastHero] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 20;
-      // Hero section is min-h-screen, so we check if we're past viewport height
-      const heroHeight = window.innerHeight;
-      const isPastHeroSection = window.scrollY > heroHeight - 100; // 100px offset for smoother transition
-      
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
-      }
-      if (isPastHeroSection !== isPastHero) {
-        setIsPastHero(isPastHeroSection);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          const isScrolled = currentScrollY > 20;
+          
+          // Hero section is min-h-screen, so we check if we're past viewport height
+          const heroHeight = window.innerHeight;
+          const isPastHeroSection = currentScrollY > heroHeight - 100; // 100px offset for smoother transition
+          
+          // Show/hide navbar based on scroll direction
+          // Only hide when scrolling down past 100px with minimum delta
+          const scrollDelta = Math.abs(currentScrollY - lastScrollY);
+          
+          if (currentScrollY > lastScrollY && currentScrollY > 100 && scrollDelta > 5) {
+            // Scrolling down & past 100px with significant movement
+            if (isVisible) setIsVisible(false);
+          } else if (currentScrollY < lastScrollY && scrollDelta > 5) {
+            // Scrolling up with significant movement
+            if (!isVisible) setIsVisible(true);
+          } else if (currentScrollY <= 100) {
+            // At top of page
+            if (!isVisible) setIsVisible(true);
+          }
+          
+          if (isScrolled !== scrolled) {
+            setScrolled(isScrolled);
+          }
+          if (isPastHeroSection !== isPastHero) {
+            setIsPastHero(isPastHeroSection);
+          }
+          
+          setLastScrollY(currentScrollY);
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
@@ -29,7 +58,7 @@ const Navbar = () => {
       setActiveHash(window.location.hash);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("hashchange", updateActiveHash);
     updateActiveHash(); // Initialize on mount
 
@@ -40,7 +69,7 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("hashchange", updateActiveHash);
     };
-  }, [scrolled, isPastHero]);
+  }, [scrolled, isPastHero, lastScrollY, isVisible]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -146,7 +175,11 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed w-full top-0 z-50 px-2 sm:px-4 pt-2 sm:pt-4">
+    <div 
+      className={`fixed w-full top-0 z-50 px-2 sm:px-4 pt-2 sm:pt-4 transition-transform duration-300 ease-in-out ${
+        isVisible ? 'translate-y-0' : '-translate-y-full'
+      }`}
+    >
       <nav
         className={`max-w-xl mx-auto rounded-xl sm:rounded-2xl transition-all duration-300 relative overflow-hidden ${
           isContactPage || isTeamPage || isPastHero

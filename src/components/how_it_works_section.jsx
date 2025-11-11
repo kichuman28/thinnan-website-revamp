@@ -1,72 +1,147 @@
-import { useState, useEffect } from 'react';
-import feature5 from '../assets/images/features/feature_5.png';
-import feature4 from '../assets/images/features/feature_4.png';
+import { useState, useEffect, useRef } from 'react';
+import section1 from '../assets/videos/how_it_works/section_1.mp4';
+import section2 from '../assets/videos/how_it_works/section_2.mp4';
+import section3 from '../assets/videos/how_it_works/section_3.mp4';
+import section4 from '../assets/videos/how_it_works/section_4.mp4';
+import section5 from '../assets/videos/how_it_works/section_5.mp4';
+import section6 from '../assets/videos/how_it_works/section_6.mp4';
 
 const HowItWorksSection = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [userInteracted, setUserInteracted] = useState(false);
+  const videoRef = useRef(null);
+  const sectionRef = useRef(null);
+  const [isInView, setIsInView] = useState(false);
 
   const steps = [
     {
       id: 0,
-      image: feature5,
-      title: 'add your real friends',
-      subtitle: 'From scroll to stove in three taps',
+      video: section1,
+      title: 'choose your friends',
+      subtitle: 'Connect with the people who matter most',
     },
     {
       id: 1,
-      image: feature4,
-      title: 'Get matched with food lovers',
-      subtitle: 'No algorithms. No ads. Just real people and real food.',
+      video: section2,
+      title: 'crave',
+      subtitle: 'Share what you\'re craving right now',
     },
     {
       id: 2,
-      image: feature5,
-      title: 'Start planning together',
-      subtitle: 'Turn content into conversation',
+      video: section3,
+      title: 'cravings matched',
+      subtitle: 'Find friends who want the same thing',
     },
     {
       id: 3,
-      image: feature4,
-      title: 'Create your cookout or eatout',
-      subtitle: 'Make it official',
+      video: section4,
+      title: 'open up a chat',
+      subtitle: 'Start the conversation with matched people',
     },
     {
       id: 4,
-      image: feature5,
-      title: 'Share your story',
-      subtitle: 'Capture the memories',
+      video: section5,
+      title: 'plan eatout/cookout',
+      subtitle: 'Make it happen together',
+    },
+    {
+      id: 5,
+      video: section6,
+      title: 'share stories',
+      subtitle: 'Capture and share your food adventures',
     }
   ];
 
-  // Auto-rotate through steps (only if user hasn't interacted)
+  // Intersection Observer to detect when section is in view
   useEffect(() => {
-    if (userInteracted) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsInView(true);
+          } else {
+            setIsInView(false);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  // Handle video playback and auto-advance
+  useEffect(() => {
+    if (!isInView) return;
+
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleVideoEnd = () => {
+      // Move to next step after video ends (10 seconds)
+      if (!userInteracted) {
+        const nextStep = (currentStep + 1) % steps.length;
+        handleStepChange(nextStep);
+      }
+    };
+
+    // Fallback timer in case video doesn't fire 'ended' event (11 seconds to be safe)
+    const fallbackTimer = setTimeout(() => {
+      if (!userInteracted) {
+        const nextStep = (currentStep + 1) % steps.length;
+        handleStepChange(nextStep);
+      }
+    }, 11000);
+
+    video.addEventListener('ended', handleVideoEnd);
     
-    const timer = setInterval(() => {
-      handleStepChange((prev) => (prev + 1) % steps.length);
-    }, 6000);
+    return () => {
+      video.removeEventListener('ended', handleVideoEnd);
+      clearTimeout(fallbackTimer);
+    };
+  }, [currentStep, isInView, userInteracted, steps.length]);
 
-    return () => clearInterval(timer);
-  }, [steps.length, userInteracted]);
+  // Reset and play video when step changes
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !isInView) return;
 
-  const handleStepChange = (newStepOrFunction) => {
+    // Small delay to ensure smooth transition
+    setTimeout(() => {
+      video.load();
+      const playPromise = video.play();
+      
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.log("Video play prevented:", error);
+        });
+      }
+    }, 100);
+  }, [currentStep, isInView]);
+
+  const handleStepChange = (newStep) => {
+    if (newStep === currentStep) return;
+    
     setIsTransitioning(true);
     
-    // Small delay for fade out effect
+    // Fade out
     setTimeout(() => {
-      if (typeof newStepOrFunction === 'function') {
-        setCurrentStep(newStepOrFunction);
-      } else {
-        setCurrentStep(newStepOrFunction);
-      }
+      setCurrentStep(newStep);
       
-      // Fade back in
+      // Fade in
       setTimeout(() => {
         setIsTransitioning(false);
       }, 50);
-    }, 300);
+    }, 400);
   };
 
   const goToStep = (index) => {
@@ -76,46 +151,18 @@ const HowItWorksSection = () => {
     }
   };
 
-  const goToNext = () => {
-    if (currentStep < steps.length - 1) {
-      goToStep(currentStep + 1);
-    }
-  };
-
-  const goToPrevious = () => {
-    if (currentStep > 0) {
-      goToStep(currentStep - 1);
-    }
-  };
-
-  // Get visible cards (previous, current, next)
-  const getVisibleCards = () => {
-    const visible = [];
-    
-    // Previous card (left preview) - only if not first slide
-    if (currentStep > 0) {
-      visible.push({ ...steps[currentStep - 1], position: 'left', index: currentStep - 1 });
-    }
-    
-    // Current card (active)
-    visible.push({ ...steps[currentStep], position: 'center', index: currentStep });
-    
-    // Next card (right preview) - only if not last slide
-    if (currentStep < steps.length - 1) {
-      visible.push({ ...steps[currentStep + 1], position: 'right', index: currentStep + 1 });
-    }
-    
-    return visible;
-  };
-
   return (
-    <section id="how-it-works" className="py-20 sm:py-24 md:py-32 lg:py-40 relative overflow-hidden bg-background">
+    <section 
+      ref={sectionRef}
+      id="how-it-works" 
+      className="py-20 sm:py-24 md:py-32 lg:py-40 relative overflow-hidden bg-background"
+    >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 relative z-10">
         {/* Main Content - Horizontal Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           
           {/* Left Side - Text Content */}
-          <div className="flex flex-col justify-center space-y-8 sm:space-y-10">
+          <div className="flex flex-col justify-center space-y-8 sm:space-y-10 order-1 lg:order-1">
             
             {/* Title */}
             <div>
@@ -165,15 +212,12 @@ const HowItWorksSection = () => {
               </p>
             </div>
 
-            {/* Navigation Dots - Below text on mobile, same position on desktop */}
+            {/* Navigation Dots */}
             <div className="flex gap-3 pt-4">
               {steps.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => {
-                    setUserInteracted(true);
-                    goToStep(index);
-                  }}
+                  onClick={() => goToStep(index)}
                   className="transition-all duration-500 ease-out rounded-full hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                   style={{
                     width: index === currentStep ? '48px' : '12px',
@@ -187,60 +231,48 @@ const HowItWorksSection = () => {
             </div>
           </div>
 
-          {/* Right Side - Carousel with Blurred Previews */}
-          <div className="flex items-center justify-center lg:justify-end py-12">
-            <div className="relative w-full max-w-[420px] h-[700px] sm:h-[750px] md:h-[800px]">
-              
-              {getVisibleCards().map((card) => {
-                const isActive = card.position === 'center';
-                const isLeftPreview = card.position === 'left';
-                const isRightPreview = card.position === 'right';
-
-                const handleClick = () => {
-                  if (isLeftPreview) {
-                    goToPrevious();
-                  } else if (isRightPreview) {
-                    goToNext();
-                  }
-                };
-
-                return (
+          {/* Right Side - Video */}
+          <div className="relative flex items-center justify-center lg:justify-end order-2 lg:order-2">
+            <div className="relative w-full max-w-[400px] sm:max-w-[460px] md:max-w-[520px] lg:max-w-[580px]">
+              {/* Video Container with exact aspect ratio (720:898) */}
+              <div 
+                className="relative rounded-[2.5rem] sm:rounded-[3rem] overflow-hidden shadow-2xl"
+                style={{ aspectRatio: '720/898' }}
+              >
+                {/* Video Stack with Cross-fade */}
+                {steps.map((step, index) => (
                   <div
-                    key={`${card.id}-${card.index}`}
-                    className={`absolute top-1/2 left-1/2 w-[280px] h-[580px] sm:w-[310px] sm:h-[640px] md:w-[340px] md:h-[703px] ${
-                      !isActive ? 'cursor-pointer' : ''
-                    }`}
-                    onClick={!isActive ? handleClick : undefined}
+                    key={step.id}
+                    className="absolute inset-0 transition-all duration-500 ease-in-out"
                     style={{
-                      transform: isActive
-                        ? 'translate(-50%, -50%) scale(1)'
-                        : isLeftPreview
-                        ? 'translate(calc(-50% - 140px), -50%) scale(0.88)'
-                        : 'translate(calc(-50% + 140px), -50%) scale(0.88)',
-                      opacity: isActive ? 1 : 0.5,
-                      zIndex: isActive ? 30 : isLeftPreview ? 10 : 20,
-                      filter: isActive ? 'blur(0px)' : 'blur(3px)',
-                      transition: 'all 600ms cubic-bezier(0.34, 1.56, 0.64, 1)',
-                      pointerEvents: 'auto',
+                      opacity: index === currentStep ? 1 : 0,
+                      transform: index === currentStep 
+                        ? 'scale(1)' 
+                        : index < currentStep 
+                          ? 'scale(0.95)'
+                          : 'scale(1.05)',
+                      zIndex: index === currentStep ? 10 : 5,
+                      pointerEvents: index === currentStep ? 'auto' : 'none',
                     }}
                   >
-                    <div 
-                      className="relative w-full h-full"
-                    >
-                      <img
-                        src={card.image}
-                        alt={card.title}
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                      />
-                    </div>
+                    <video
+                      ref={index === currentStep ? videoRef : null}
+                      src={step.video}
+                      className="w-full h-full object-cover"
+                      playsInline
+                      muted
+                      preload="auto"
+                    />
                   </div>
-                );
-              })}
+                ))}
 
-              {/* Decorative glow effect for active card */}
+                {/* Subtle gradient overlay for depth */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent pointer-events-none"></div>
+              </div>
+
+              {/* Decorative glow effect */}
               <div 
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[620px] -z-10 blur-3xl opacity-15 transition-opacity duration-700"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full -z-10 blur-3xl opacity-20 transition-opacity duration-700"
                 style={{
                   background: 'radial-gradient(circle, #7C310A 0%, transparent 70%)',
                 }}

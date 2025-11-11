@@ -39,31 +39,37 @@ const Contact = () => {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    // TODO: Replace with your form submission service
-    // Option 1: Formspree (https://formspree.io) - Free tier available
-    // Option 2: EmailJS (https://www.emailjs.com) - Free tier available
-    // Option 3: Your own API endpoint
+    // IMPORTANT: Replace this URL with your Google Apps Script Web App URL
+    // See GOOGLE_SHEETS_SETUP_GUIDE.md for detailed setup instructions
+    const GOOGLE_SHEETS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw1_6MBoW2US9C6u5UWuOq3i8Wfas_YC4F9XvOW7n2zwUqbjbUXXvvCVYWV6WD_1xy-8g/exec';
     
     try {
-      // Example using Formspree (replace YOUR_FORM_ID with your actual form ID)
-      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      // Prepare the data to send
+      const submissionData = {
+        type: formType === 'bug' ? 'Bug Report' : 'Feature Request',
+        name: formData.name,
+        email: formData.email,
+        title: formData.title,
+        details: formData.details,
+        timestamp: new Date().toISOString()
+      };
+
+      // Submit to Google Sheets
+      const response = await fetch(GOOGLE_SHEETS_SCRIPT_URL, {
         method: 'POST',
+        mode: 'no-cors', // Required for Google Apps Script
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          type: formType === 'bug' ? 'Bug Report' : 'Feature Request',
-          ...formData
-        }),
+        body: JSON.stringify(submissionData),
       });
 
-      if (response.ok) {
-        setSubmitStatus('success');
-        setFormData({ name: '', email: '', title: '', details: '' });
-        setTimeout(() => setSubmitStatus(null), 5000);
-      } else {
-        setSubmitStatus('error');
-      }
+      // Note: With 'no-cors' mode, we can't read the response
+      // So we assume success if no error is thrown
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', title: '', details: '' });
+      setTimeout(() => setSubmitStatus(null), 5000);
+
     } catch (error) {
       console.error('Form submission error:', error);
       setSubmitStatus('error');
@@ -208,136 +214,224 @@ const Contact = () => {
       </section>
 
       {/* Feature Request / Bug Report Section */}
-      <section className="py-8 sm:py-10 md:py-12 lg:py-16 relative overflow-hidden bg-secondary">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 relative overflow-hidden bg-secondary">
+        {/* Decorative background elements */}
+        <div className="absolute inset-0 opacity-30 pointer-events-none">
+          <div className="absolute top-20 left-10 w-64 h-64 bg-accent/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
+          {/* Section Header */}
           <div 
-            className={`transition-all duration-1000 ${
+            className={`text-center mb-10 sm:mb-12 md:mb-16 transition-all duration-1000 ${
               isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            {/* Section Header */}
-            <div className="mb-6 sm:mb-8 text-center">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary-text mb-3 sm:mb-4 relative inline-block whitespace-nowrap">
-                help us to improve thinnan!
-                <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent to-transparent"></div>
-              </h2>
-            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary-text mb-4 sm:mb-6 relative inline-block">
+              help us to improve thinnan!
+              <div className="absolute -bottom-3 left-0 w-full h-1.5 bg-gradient-to-r from-transparent via-accent to-transparent rounded-full"></div>
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl text-secondary-grey mt-6 sm:mt-8 max-w-2xl mx-auto">
+              Your feedback shapes our journey. Share bugs or request features to make Thinnan better for everyone.
+            </p>
+          </div>
 
+          {/* Form Card */}
+          <div 
+            className={`bg-white rounded-3xl sm:rounded-[2rem] shadow-2xl border border-gray-100 p-6 sm:p-8 md:p-10 lg:p-12 transition-all duration-1000 ${
+              isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+            }`}
+            style={{ transitionDelay: '200ms' }}
+          >
             {/* Form Type Toggle */}
-            <div className="flex gap-3 mb-6 sm:mb-8">
+            <div className="flex justify-center gap-3 sm:gap-4 mb-8 sm:mb-10">
               <button
                 type="button"
                 onClick={() => setFormType('bug')}
-                className={`px-4 py-2 rounded-lg font-semibold text-sm sm:text-base transition-all duration-300 ${
+                className={`group relative px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-bold text-sm sm:text-base md:text-lg transition-all duration-500 ${
                   formType === 'bug'
-                    ? 'bg-accent text-white shadow-lg shadow-accent/30'
-                    : 'bg-white text-gray-600 hover:bg-gray-100'
+                    ? 'bg-accent text-white shadow-lg shadow-accent/20 scale-105'
+                    : 'bg-gray-50 text-gray-600 hover:bg-gray-100 hover:scale-105'
                 }`}
               >
-                Report a Bug
+                <span className="relative z-10 flex items-center gap-2">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  report a bug
+                </span>
+                {formType === 'bug' && (
+                  <div className="absolute inset-0 bg-accent/20 rounded-2xl blur-xl animate-pulse"></div>
+                )}
               </button>
               <button
                 type="button"
                 onClick={() => setFormType('feature')}
-                className={`px-4 py-2 rounded-lg font-semibold text-sm sm:text-base transition-all duration-300 ${
+                className={`group relative px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-bold text-sm sm:text-base md:text-lg transition-all duration-500 ${
                   formType === 'feature'
-                    ? 'bg-accent text-white shadow-lg shadow-accent/30'
-                    : 'bg-white text-gray-600 hover:bg-gray-100'
+                    ? 'bg-accent text-white shadow-lg shadow-accent/20 scale-105'
+                    : 'bg-gray-50 text-gray-600 hover:bg-gray-100 hover:scale-105'
                 }`}
               >
-                Request a Feature
+                <span className="relative z-10 flex items-center gap-2">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                  </svg>
+                  request a feature
+                </span>
+                {formType === 'feature' && (
+                  <div className="absolute inset-0 bg-accent/20 rounded-2xl blur-xl animate-pulse"></div>
+                )}
               </button>
             </div>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
               {/* Name Input */}
               <div className="relative group">
+                <label className="block text-xs sm:text-sm font-semibold text-gray-500 mb-2 ml-1 uppercase tracking-wider">
+                  your name
+                </label>
                 <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  placeholder="your name"
+                  placeholder="Enter your name"
                   required
-                  className="w-full bg-transparent border-0 border-b-2 border-gray-300 focus:border-accent outline-none text-sm sm:text-base md:text-lg text-primary-text placeholder-gray-400 pb-2 transition-all duration-300 group-hover:border-gray-400"
+                  maxLength={50}
+                  className="w-full bg-gray-50 border-2 border-gray-200 focus:border-accent focus:bg-white rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 outline-none text-sm sm:text-base md:text-lg text-primary-text placeholder-gray-400 transition-all duration-300 group-hover:border-gray-300 group-hover:shadow-md"
                 />
-                <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-focus-within:w-full"></div>
+                <div className="text-xs text-gray-400 mt-1 ml-1">{formData.name.length}/50</div>
               </div>
 
               {/* Email Input */}
               <div className="relative group">
+                <label className="block text-xs sm:text-sm font-semibold text-gray-500 mb-2 ml-1 uppercase tracking-wider">
+                  your email
+                </label>
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  placeholder="your email"
+                  placeholder="Enter your email"
                   required
-                  className="w-full bg-transparent border-0 border-b-2 border-gray-300 focus:border-accent outline-none text-sm sm:text-base md:text-lg text-primary-text placeholder-gray-400 pb-2 transition-all duration-300 group-hover:border-gray-400"
+                  maxLength={100}
+                  className="w-full bg-gray-50 border-2 border-gray-200 focus:border-accent focus:bg-white rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 outline-none text-sm sm:text-base md:text-lg text-primary-text placeholder-gray-400 transition-all duration-300 group-hover:border-gray-300 group-hover:shadow-md"
                 />
-                <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-focus-within:w-full"></div>
+                <div className="text-xs text-gray-400 mt-1 ml-1">{formData.email.length}/100</div>
               </div>
 
               {/* Title Input */}
               <div className="relative group">
+                <label className="block text-xs sm:text-sm font-semibold text-gray-500 mb-2 ml-1 uppercase tracking-wider">
+                  title
+                </label>
                 <input
                   type="text"
                   name="title"
                   value={formData.title}
                   onChange={handleInputChange}
-                  placeholder="title"
+                  placeholder={formType === 'bug' ? 'Brief description of the bug' : 'Brief description of the feature'}
                   required
-                  className="w-full bg-transparent border-0 border-b-2 border-gray-300 focus:border-accent outline-none text-sm sm:text-base md:text-lg text-primary-text placeholder-gray-400 pb-2 transition-all duration-300 group-hover:border-gray-400"
+                  maxLength={100}
+                  className="w-full bg-gray-50 border-2 border-gray-200 focus:border-accent focus:bg-white rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 outline-none text-sm sm:text-base md:text-lg text-primary-text placeholder-gray-400 transition-all duration-300 group-hover:border-gray-300 group-hover:shadow-md"
                 />
-                <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-focus-within:w-full"></div>
+                <div className="text-xs text-gray-400 mt-1 ml-1">{formData.title.length}/100</div>
               </div>
 
               {/* Details Textarea */}
               <div className="relative group">
+                <label className="block text-xs sm:text-sm font-semibold text-gray-500 mb-2 ml-1 uppercase tracking-wider">
+                  details
+                </label>
                 <textarea
                   name="details"
                   value={formData.details}
                   onChange={handleInputChange}
-                  placeholder="details"
+                  placeholder={formType === 'bug' ? 'Tell us what happened, steps to reproduce, etc.' : 'Describe your feature idea and how it would help'}
                   required
-                  rows={4}
-                  className="w-full bg-transparent border-0 border-b-2 border-gray-300 focus:border-transparent outline-none text-sm sm:text-base md:text-lg text-primary-text placeholder-gray-400 pb-2 pt-1 resize-none transition-all duration-300"
+                  rows={5}
+                  maxLength={1000}
+                  className="w-full bg-gray-50 border-2 border-gray-200 focus:border-accent focus:bg-white rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 outline-none text-sm sm:text-base md:text-lg text-primary-text placeholder-gray-400 resize-none transition-all duration-300 group-hover:border-gray-300 group-hover:shadow-md"
                 />
-                <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-focus-within:w-full"></div>
+                <div className="text-xs text-gray-400 mt-1 ml-1">{formData.details.length}/1000</div>
               </div>
 
               {/* Submit Status Message */}
               {submitStatus && (
                 <div 
-                  className={`p-4 rounded-xl transition-all duration-500 ${
+                  className={`p-4 sm:p-5 rounded-2xl transition-all duration-700 transform ${
                     submitStatus === 'success'
-                      ? 'bg-green-50 text-green-700 border border-green-200'
-                      : 'bg-red-50 text-red-700 border border-red-200'
+                      ? 'bg-green-50 text-green-700 border-2 border-green-200 scale-100 opacity-100'
+                      : 'bg-red-50 text-red-700 border-2 border-red-200 scale-100 opacity-100'
                   }`}
+                  style={{ animation: 'slideIn 0.5s ease-out' }}
                 >
-                  {submitStatus === 'success' 
-                    ? '✓ Thank you! Your submission has been received.'
-                    : '✗ Something went wrong. Please try again later.'}
+                  <div className="flex items-center gap-3">
+                    {submitStatus === 'success' ? (
+                      <>
+                        <svg className="w-6 h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                        <div>
+                          <p className="font-bold text-base sm:text-lg">Thank you!</p>
+                          <p className="text-sm sm:text-base">Your submission has been received.</p>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <svg className="w-6 h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                        </svg>
+                        <div>
+                          <p className="font-bold text-base sm:text-lg">Oops!</p>
+                          <p className="text-sm sm:text-base">Something went wrong. Please try again later.</p>
+                        </div>
+                      </>
+                    )}
+                  </div>
                 </div>
               )}
 
               {/* Action Buttons */}
-              <div className="flex justify-end gap-3 sm:gap-4 pt-3">
+              <div className="flex flex-col sm:flex-row justify-end gap-3 sm:gap-4 pt-4">
                 <button
                   type="button"
                   onClick={handleCancel}
                   disabled={isSubmitting}
-                  className="px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base font-bold text-primary-text hover:text-accent transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base md:text-lg font-bold text-primary-text hover:text-accent hover:bg-gray-50 rounded-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed order-2 sm:order-1"
                 >
                   cancel
                 </button>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-4 sm:px-6 py-2 sm:py-3 bg-accent text-white rounded-lg font-bold text-sm sm:text-base hover:bg-accent/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-accent/30 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105"
+                  className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-accent text-white rounded-2xl font-bold text-sm sm:text-base md:text-lg hover:bg-accent/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-accent/30 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 overflow-hidden order-1 sm:order-2"
                 >
-                  {isSubmitting ? 'submitting...' : 'submit'}
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    {isSubmitting ? (
+                      <>
+                        <svg className="animate-spin h-5 w-5" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        submitting...
+                      </>
+                    ) : (
+                      <>
+                        submit
+                        <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                      </>
+                    )}
+                  </span>
+                  {!isSubmitting && (
+                    <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  )}
                 </button>
               </div>
             </form>
