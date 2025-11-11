@@ -1,147 +1,171 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const CommunitySection = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const sectionRef = useRef(null);
   
-  const testimonials = [
+  const reviews = [
     {
-      name: "Kalyani Anjana",
-      role: "Pastry Chef",
-      quote: "I moved to Helsinki from Paris and wanted to connect with locals through food. thinnan helped me share my pastry skills and make friends who appreciate French cuisine.",
-      image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+      text: "Not sure how I can cycle back home after eating too much 😅 Appam was delicious and unique experience!",
+      author: "Anonymous"
     },
     {
-      name: "Vishnu George",
-      role: "Home Cook",
-      quote: "I host weekly Kerala cookouts through thinnan. It's amazing to share my culture's food with people who are curious and excited to learn about new flavors.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+      text: "Loved learning cooking stuffed bell peppers Bulgarian way. The sauce made out of Yogurt, milk and eggs served with bell peppers was totally new and it tasted very delicious..",
+      author: "Food Explorer"
     },
     {
-      name: "Julia Korhonen",
-      role: "Food Enthusiast",
-      quote: "I've tried dishes from around the world without leaving my neighborhood. The connections I've made through sharing meals have become some of my closest friendships.",
-      image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+      text: "I must say Chimichurri opened up a new part of my brain.",
+      author: "Culinary Adventurer"
+    },
+    {
+      text: "I was craving shawarma recently after seeing some reels, and this hit the spot! The chicken shawarma was so flavorful and the rice was just what I needed after a long, stressful day. Perfect combo. Definitely coming back for more! 🔥",
+      author: "Shawarma Lover"
+    },
+    {
+      text: "Kekri over the years have started to become the festival and look forward in Autumn. But there soup is so simple and delicious. I'll be taking this to my kitchen :)",
+      author: "Festival Foodie"
+    },
+    {
+      text: "cozy, tasty, homely, safe space. bring conversations to make things more interesting, the range of personalities and interests allow for diversity. The hosts are lovely and the food yummy. I hope to be back for more.",
+      author: "Community Member"
+    },
+    {
+      text: "First time I had Pho was at Pho viet restaurant at Helsinki. I didn't like and ever since I had stayed away from Pho at all viet restaurants. But today, I realised if done correctly, Pho tastes amazing!! Thanks Basanta and Sisam :)",
+      author: "Pho Convert"
+    },
+    {
+      text: "I had great time. Very delicious food! The aroma, flavor and taste are incomparable to what we get in restaurants around Helsinki!",
+      author: "Happy Diner"
+    },
+    {
+      text: "thankyouuuu for coming from Paris and cooking really nice pastries for us. Visit us more please 😋😋",
+      author: "Pastry Fan"
+    },
+    {
+      text: "Buonissimo!!😋",
+      author: "Italian Food Lover"
+    },
+    {
+      text: "kidukkachi!!",
+      author: "Satisfied Guest"
+    },
+    {
+      text: "De (wait-for-it) licious😋",
+      author: "Taste Enthusiast"
     }
   ];
 
-  const nextTestimonial = () => {
-    setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-  };
+  // Intersection Observer for scroll animations
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated) {
+            setHasAnimated(true);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
 
-  const prevTestimonial = () => {
-    setActiveIndex((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length);
-  };
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
 
-  const goToTestimonial = (index) => {
-    setActiveIndex(index);
-  };
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, [hasAnimated]);
 
   return (
-    <section id="community" className="py-20 sm:py-28 md:py-36 relative overflow-hidden bg-secondary">
-      
-      
+    <section 
+      ref={sectionRef}
+      id="community" 
+      className="py-20 sm:py-24 md:py-32 lg:py-40 relative overflow-hidden bg-background"
+    >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 relative z-10">
+        
         {/* Section Header */}
-        <div className="text-center mb-16 sm:mb-20">
-          <div className="inline-block">
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-primary-text mb-3 relative">
-              our food community
-              <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent to-transparent"></div>
-            </h2>
-          </div>
-          <p className="text-lg sm:text-xl text-secondary-grey max-w-2xl mx-auto mt-6">
-            Join thousands of food enthusiasts sharing meals and creating connections.
+        <div 
+          className="text-center mb-16 sm:mb-20 md:mb-24 transition-all duration-1000"
+          style={{
+            opacity: hasAnimated ? 1 : 0,
+            transform: hasAnimated ? 'translateY(0)' : 'translateY(20px)',
+          }}
+        >
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary-text mb-4 sm:mb-6 relative inline-block">
+            what our community says
+            <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+          </h2>
+          <p className="text-base sm:text-lg md:text-xl text-secondary-grey mt-6 sm:mt-8 max-w-2xl mx-auto">
+            Real stories from real food lovers sharing authentic experiences
           </p>
         </div>
 
-        {/* Featured Testimonial - Large and Centered */}
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-primary/5 via-white to-accent/5 p-8 sm:p-10 md:p-12 rounded-3xl shadow-2xl border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 relative overflow-hidden">
-            {/* Large Quote Icon */}
-            <div className="mb-4">
-              <svg className="w-12 h-12 sm:w-14 sm:h-14 text-primary/30" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-              </svg>
-            </div>
-            
-            {/* Testimonial Content */}
-            <div className="relative min-h-[200px] sm:min-h-[240px] md:min-h-[260px] overflow-hidden">
-              {testimonials.map((testimonial, index) => (
-                <div
-                  key={index}
-                  className="absolute w-full transition-opacity duration-700"
-                  style={{
-                    opacity: index === activeIndex ? 1 : 0,
-                    transition: 'opacity 700ms cubic-bezier(0.4, 0.0, 0.2, 1)',
-                  }}
-                >
-                  {/* Quote */}
-                  <p className="text-xl sm:text-2xl md:text-3xl text-primary-text italic mb-6 leading-relaxed font-light">
-                    <span className="text-primary font-medium">"{testimonial.quote}"</span>
-                  </p>
-                  
-                  {/* Author Info */}
-                  <div className="flex items-center pt-4 border-t-2 border-primary/20">
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-primary/10 rounded-full overflow-hidden mr-4 ring-2 ring-primary/20 shadow-md">
-                      <img 
-                        src={testimonial.image} 
-                        alt={testimonial.name}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-lg sm:text-xl text-primary-text mb-0.5">{testimonial.name}</h4>
-                      <p className="text-sm sm:text-base text-primary font-semibold">
-                        {testimonial.role}
-                      </p>
-                    </div>
-                  </div>
+        {/* Reviews Grid - Masonry Style */}
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 sm:gap-8 space-y-6 sm:space-y-8">
+          {reviews.map((review, index) => (
+            <div
+              key={index}
+              className="break-inside-avoid mb-6 sm:mb-8 transition-all duration-700"
+              style={{
+                opacity: hasAnimated ? 1 : 0,
+                transform: hasAnimated ? 'translateY(0)' : 'translateY(30px)',
+                transitionDelay: `${index * 100}ms`,
+              }}
+            >
+              <div className="bg-white p-6 sm:p-8 rounded-2xl sm:rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-primary/20 group relative overflow-hidden">
+                {/* Decorative element */}
+                <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-primary via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                {/* Quote icon */}
+                <div className="mb-4">
+                  <svg className="w-8 h-8 sm:w-10 sm:h-10 text-primary/20 group-hover:text-primary/40 transition-colors duration-500" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                  </svg>
                 </div>
-              ))}
-            </div>
-            
-            {/* Navigation Controls */}
-            <div className="flex justify-between items-center mt-6 pt-6 border-t-2 border-primary/20">
-              <button 
-                onClick={prevTestimonial} 
-                className="p-3 rounded-full border-2 border-primary/30 hover:border-primary hover:bg-primary/10 transition-all duration-300 text-primary hover:scale-110"
-                aria-label="Previous testimonial"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-              
-              <div className="flex space-x-3">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => goToTestimonial(index)}
-                    className={`transition-all duration-300 rounded-full ${
-                      index === activeIndex 
-                        ? 'bg-primary w-12 h-3 scale-110 shadow-lg shadow-primary/30' 
-                        : 'bg-primary/20 hover:bg-primary/40 w-3 h-3'
-                    }`}
-                    aria-label={`Testimonial ${index + 1}`}
-                  />
-                ))}
+
+                {/* Review Text */}
+                <p className="text-base sm:text-lg text-primary-text leading-relaxed font-normal">
+                  {review.text}
+                </p>
+
+                {/* Hover effect overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-transparent transition-all duration-500 rounded-2xl sm:rounded-3xl pointer-events-none"></div>
               </div>
-              
-              <button 
-                onClick={nextTestimonial} 
-                className="p-3 rounded-full border-2 border-primary/30 hover:border-primary hover:bg-primary/10 transition-all duration-300 text-primary hover:scale-110"
-                aria-label="Next testimonial"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
             </div>
-          </div>
+          ))}
+        </div>
+
+        {/* Call to Action */}
+        <div 
+          className="text-center mt-16 sm:mt-20 transition-all duration-1000"
+          style={{
+            opacity: hasAnimated ? 1 : 0,
+            transform: hasAnimated ? 'translateY(0)' : 'translateY(20px)',
+            transitionDelay: '800ms',
+          }}
+        >
+          <a
+            href="https://thinnan.page.link/download"
+            className="inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 sm:py-5 bg-primary text-white rounded-2xl sm:rounded-3xl font-semibold text-base sm:text-lg hover:bg-primary/90 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-primary/30 transform hover:scale-105 group"
+          >
+            <span>Join Our Community</span>
+            <svg 
+              className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
         </div>
       </div>
     </section>
   );
 };
 
-export default CommunitySection; 
+export default CommunitySection;
