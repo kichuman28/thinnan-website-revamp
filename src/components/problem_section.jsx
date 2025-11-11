@@ -90,7 +90,7 @@ const ProblemSection = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative pt-24 sm:pt-32 md:pt-40 lg:pt-48 pb-12 sm:pb-16 md:pb-20 lg:pb-24 bg-background overflow-hidden min-h-screen flex items-center font-manrope"
+      className="relative py-20 sm:py-28 md:py-36 lg:py-44 bg-background overflow-hidden min-h-screen flex items-center font-manrope"
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16 w-full relative z-10 overflow-x-hidden">
         {/* Main Content Container - Left Aligned */}
@@ -98,21 +98,21 @@ const ProblemSection = () => {
           
           {/* Tagline Above Number */}
           <div 
-            className="mb-8 sm:mb-10 md:mb-12"
+            className="mb-8 sm:mb-12 md:mb-16"
             style={{
               opacity: hasAnimated ? 1 : 0,
               transform: hasAnimated ? 'translateY(0)' : 'translateY(20px)',
               transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
             }}
           >
-            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium text-primary-text leading-tight">
+            <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-primary-text leading-tight">
               digital fatigue is real.
             </p>
           </div>
 
           {/* Large Filled Number */}
           <div 
-            className="mb-6 sm:mb-12 md:mb-18 w-full"
+            className="mb-8 sm:mb-12 md:mb-16 w-full"
             style={{
               opacity: hasAnimated ? 1 : 0,
               transform: hasAnimated ? 'translateY(0)' : 'translateY(30px)',
@@ -125,8 +125,7 @@ const ProblemSection = () => {
                 fontFamily: 'Manrope, sans-serif',
                 letterSpacing: '-0.018em',
                 fontWeight: 900,
-                // Reduced both min and max size slightly
-                fontSize: 'clamp(3.2rem, 12vw, 11rem)',
+                fontSize: 'clamp(4rem, 14vw, 13rem)',
                 display: 'block',
                 maxWidth: '100%',
                 wordBreak: 'break-all',
@@ -140,7 +139,7 @@ const ProblemSection = () => {
 
           {/* Text Below Number - Left Aligned */}
           <div 
-            className="space-y-2 sm:space-y-3"
+            className="space-y-3 sm:space-y-4"
             style={{
               opacity: hasAnimated ? 1 : 0,
               transform: hasAnimated ? 'translateY(0)' : 'translateY(20px)',
@@ -158,7 +157,7 @@ const ProblemSection = () => {
 
         {/* Source Links - Bottom Right */}
         <div 
-          className="absolute bottom-6 sm:bottom-8 md:bottom-12 right-6 sm:right-8 md:right-12 lg:right-16"
+          className="absolute bottom-8 sm:bottom-12 md:bottom-16 right-6 sm:right-8 md:right-12 lg:right-16"
           style={{
             opacity: hasAnimated ? 1 : 0,
             transition: 'opacity 1s ease-out 0.8s',

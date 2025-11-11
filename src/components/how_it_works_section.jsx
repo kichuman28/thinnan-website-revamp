@@ -155,7 +155,7 @@ const HowItWorksSection = () => {
     <section 
       ref={sectionRef}
       id="how-it-works" 
-      className="py-20 sm:py-24 md:py-32 lg:py-40 relative overflow-hidden bg-background"
+      className="py-20 sm:py-28 md:py-36 lg:py-44 relative overflow-hidden bg-background"
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 relative z-10">
         {/* Main Content - Horizontal Layout */}
@@ -166,7 +166,7 @@ const HowItWorksSection = () => {
             
             {/* Title */}
             <div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-primary-text">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-primary-text">
                 how does it work?
               </h2>
             </div>
@@ -207,7 +207,7 @@ const HowItWorksSection = () => {
                 transitionDelay: isTransitioning ? '0ms' : '200ms',
               }}
             >
-              <p className="text-base sm:text-lg md:text-xl text-secondary-grey leading-relaxed">
+              <p className="text-lg sm:text-xl md:text-2xl text-secondary-grey leading-relaxed">
                 {steps[currentStep].subtitle}
               </p>
             </div>

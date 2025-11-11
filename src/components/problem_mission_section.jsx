@@ -39,13 +39,13 @@ const ProblemMissionSection = () => {
   };
 
   return (
-    <section className="relative py-20 sm:py-24 md:py-32 lg:py-40 bg-secondary overflow-hidden">
+    <section className="relative py-20 sm:py-28 md:py-36 lg:py-44 bg-secondary overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 relative z-10">
         {/* Main Content - Reversed Layout (Image Left, Text Right) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left Side - Phone Screenshots */}
           <div className="flex items-center justify-center lg:justify-start order-2 lg:order-1">
-            <div className="relative w-full max-w-[260px] sm:max-w-[300px] md:max-w-[340px]">
+            <div className="relative w-full max-w-[280px] sm:max-w-[320px] md:max-w-[360px]">
               {/* Container with fixed aspect ratio matching how_it_works */}
               <div className="relative" style={{ aspectRatio: '9/19.5' }}>
                 {/* All images stacked with cross-fade effect */}
@@ -100,15 +100,15 @@ const ProblemMissionSection = () => {
 
           {/* Right Side - Text Content */}
           <div className="flex flex-col justify-center space-y-8 sm:space-y-10 order-1 lg:order-2">
-            {/* Small heading - STATIC, never moves */}
+            {/* Small heading */}
             <div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary-text">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary-text">
                 meet thinnan.
               </h2>
             </div>
-            {/* Main Title - STATIC, never moves */}
+            {/* Main Title */}
             <div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-primary-text">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-primary-text">
                 We are bringing back the{' '}
                 <span className="relative inline-block">
                   <span className="text-primary relative z-10">social</span>
@@ -117,7 +117,7 @@ const ProblemMissionSection = () => {
                 {' '}to social media!
               </h2>
             </div>
-            {/* Description - STATIC, never moves */}
+            {/* Description */}
             <div>
               <p className="text-lg sm:text-xl md:text-2xl text-secondary-grey leading-relaxed max-w-xl">
                 Food social media designed for{' '}
@@ -125,7 +125,7 @@ const ProblemMissionSection = () => {
                 around food.
               </p>
             </div>
-            {/* Download Button - STATIC, never moves */}
+            {/* Download Button */}
             <div className="pt-4">
               <a
                 href="https://thinnan.page.link/download"

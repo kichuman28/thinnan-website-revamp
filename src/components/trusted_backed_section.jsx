@@ -19,16 +19,16 @@ const TrustedBackedSection = () => {
   ];
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 relative overflow-hidden bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
+    <section className="pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-20 sm:pb-28 md:pb-36 lg:pb-44 relative overflow-hidden bg-background">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 relative z-10">
         {/* Section Header */}
         <div 
-          className={`text-center mb-10 sm:mb-12 md:mb-16 lg:mb-20 transition-all duration-1000 ${
+          className={`text-center mb-16 sm:mb-20 md:mb-24 transition-all duration-1000 ${
             isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
         >
           <div className="inline-block">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary-text mb-3 relative lowercase">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-primary-text mb-3 relative lowercase">
               trusted & backed by
               <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent to-transparent"></div>
             </h2>

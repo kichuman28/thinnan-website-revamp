@@ -83,7 +83,7 @@ const CommunitySection = () => {
     <section 
       ref={sectionRef}
       id="community" 
-      className="py-20 sm:py-24 md:py-32 lg:py-40 relative overflow-hidden bg-background"
+      className="pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-20 sm:pb-28 md:pb-36 lg:pb-44 relative overflow-hidden bg-secondary"
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 relative z-10">
         
@@ -95,11 +95,11 @@ const CommunitySection = () => {
             transform: hasAnimated ? 'translateY(0)' : 'translateY(20px)',
           }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary-text mb-4 sm:mb-6 relative inline-block">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-primary-text mb-4 sm:mb-6 relative inline-block">
             what our community says
             <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-secondary-grey mt-6 sm:mt-8 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl md:text-2xl text-secondary-grey mt-6 sm:mt-8 max-w-2xl mx-auto">
             Real stories from real food lovers sharing authentic experiences
           </p>
         </div>
