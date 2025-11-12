@@ -41,9 +41,8 @@ const TrustedBackedSection = () => {
           }`}
         >
           <div className="inline-block">
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-primary-text mb-3 relative lowercase">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary-text mb-3 sm:mb-5 relative inline-block">
               trusted & backed by
-              <div className="absolute -bottom-2 left-0 w-full h-1.5 bg-gradient-to-r from-transparent via-accent to-transparent rounded-full"></div>
             </h2>
           </div>
           <p className="text-base sm:text-lg md:text-xl text-secondary-grey mt-8 max-w-2xl mx-auto">
@@ -68,18 +67,6 @@ const TrustedBackedSection = () => {
               }}
             />
           ))}
-        </div>
-
-        {/* Optional: Trust statement */}
-        <div 
-          className={`mt-16 sm:mt-20 md:mt-24 text-center transition-all duration-1000 ${
-            isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-          style={{ transitionDelay: '800ms' }}
-        >
-          <p className="text-sm sm:text-base text-secondary-grey italic">
-            building the future of social dining together
-          </p>
         </div>
       </div>
     </section>

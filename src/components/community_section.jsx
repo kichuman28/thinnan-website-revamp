@@ -86,18 +86,17 @@ const CommunitySection = () => {
       className="pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-20 sm:pb-28 md:pb-36 lg:pb-44 relative overflow-hidden bg-secondary"
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 relative z-10">
-        
+
         {/* Section Header */}
-        <div 
+        <div
           className="text-center mb-16 sm:mb-20 md:mb-24 transition-all duration-1000"
           style={{
             opacity: hasAnimated ? 1 : 0,
             transform: hasAnimated ? 'translateY(0)' : 'translateY(20px)',
           }}
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-primary-text mb-4 sm:mb-6 relative inline-block">
-            what our community says
-            <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary-text mb-3 sm:mb-5 relative inline-block">
+          what people have been whispering about us...
           </h2>
           <p className="text-lg sm:text-xl md:text-2xl text-secondary-grey mt-6 sm:mt-8 max-w-2xl mx-auto">
             Real stories from real food lovers sharing authentic experiences

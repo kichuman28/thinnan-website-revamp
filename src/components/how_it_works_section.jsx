@@ -175,7 +175,7 @@ const HowItWorksSection = () => {
     <section 
       ref={sectionRef}
       id="how-it-works" 
-      className="py-20 sm:py-28 md:py-36 lg:py-44 relative overflow-hidden bg-background"
+      className="pt-10 sm:pt-14 md:pt-16 lg:pt-20 pb-20 sm:pb-28 md:pb-36 lg:pb-44 relative overflow-hidden bg-background"
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 relative z-10">
         {/* Main Content - Horizontal Layout */}
