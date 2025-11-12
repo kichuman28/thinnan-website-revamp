@@ -56,7 +56,7 @@ function App() {
       "featureList": "Host or Join Cookouts, Discover Cookouts, Shared Stories, Build Your Network, Earn Badges",
       "author": {
         "@type": "Organization",
-        "name": "Thinnan",
+        "name": "thinnan",
         "url": "https://thinnan.com"
       }
     },
@@ -83,7 +83,7 @@ function App() {
     {
       "@context": "https://schema.org",
       "@type": "Organization",
-      "name": "Thinnan",
+      "name": "thinnan",
       "url": "https://thinnan.com",
       "logo": "https://thinnan.com/logo.png",
       "sameAs": [
