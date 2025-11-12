@@ -26,38 +26,38 @@ const TrustedBackedSection = () => {
   ];
 
   return (
-    <section className="pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-20 sm:pb-28 md:pb-36 lg:pb-44 relative overflow-hidden bg-background">
+    <section className="pt-10 sm:pt-12 md:pt-16 lg:pt-20 xl:pt-24 pb-16 sm:pb-20 md:pb-28 lg:pb-36 xl:pb-44 relative overflow-hidden bg-background">
       {/* Decorative background elements */}
       <div className="absolute inset-0 opacity-20 pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-accent/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
         {/* Section Header */}
         <div 
-          className={`text-center mb-16 sm:mb-20 md:mb-24 transition-all duration-1000 ${
+          className={`text-center mb-12 sm:mb-14 md:mb-16 lg:mb-20 xl:mb-24 transition-all duration-1000 ${
             isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
         >
           <div className="inline-block">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary-text mb-3 sm:mb-5 relative inline-block">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-primary-text mb-2 sm:mb-3 md:mb-5 relative inline-block">
               trusted & backed by
             </h2>
           </div>
-          <p className="text-base sm:text-lg md:text-xl text-secondary-grey mt-8 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-secondary-grey mt-4 sm:mt-6 md:mt-8 max-w-2xl mx-auto px-4">
             supported by world-class partners and advisors who believe in our vision
           </p>
         </div>
 
         {/* Logos in a single static row, plain images only, larger size */}
-        <div className="flex justify-center items-center gap-4 sm:gap-5 md:gap-6 lg:gap-8">
+        <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6 xl:gap-8">
           {logos.map((logo, index) => (
             <img
               key={logo.id}
               src={logo.image}
               alt={logo.name}
-              className={`w-auto h-16 sm:h-20 md:h-24 lg:h-28 object-contain transition-all duration-1000 ${
+              className={`w-auto h-12 sm:h-16 md:h-20 lg:h-24 xl:h-28 object-contain transition-all duration-1000 ${
                 isLoaded 
                   ? 'opacity-100 translate-y-0 scale-100' 
                   : 'opacity-0 translate-y-8 scale-95'

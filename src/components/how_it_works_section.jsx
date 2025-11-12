@@ -175,62 +175,62 @@ const HowItWorksSection = () => {
     <section 
       ref={sectionRef}
       id="how-it-works" 
-      className="pt-48 sm:pt-36 md:pt-40 lg:pt-48 pb-20 sm:pb-28 md:pb-36 lg:pb-44 relative overflow-hidden bg-background"
+      className="pt-32 sm:pt-36 md:pt-40 lg:pt-44 xl:pt-48 pb-16 sm:pb-20 md:pb-28 lg:pb-36 xl:pb-44 relative overflow-hidden bg-background"
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
         {/* Main Content - Horizontal Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 xl:gap-20 items-center">
           
           {/* Left Side - Text Content */}
-          <div className="flex flex-col justify-center order-1 lg:order-1">
+          <div className="flex flex-col justify-center items-center lg:items-start order-1 lg:order-1">
             
             {/* Small heading - Fixed */}
-            <div className="mb-8 sm:mb-10">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary-text">
+            <div className="mb-6 sm:mb-8 md:mb-10 text-center lg:text-left">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-primary-text">
                 how does it work?
               </h2>
             </div>
 
-            {/* Content area with fixed height to prevent shifting */}
-            <div className="min-h-[350px] sm:min-h-[380px] md:min-h-[420px] flex flex-col justify-start">
+            {/* Content area with reduced height to prevent shifting */}
+            <div className="mb-6 sm:mb-8 flex flex-col justify-start text-center lg:text-left">
               {/* Main Title with smooth transition */}
               <div 
-                className="transition-all duration-500 ease-out mb-6 sm:mb-8"
+                className="transition-all duration-500 ease-out mb-4 sm:mb-6"
                 style={{
                   opacity: isTransitioning ? 0 : 1,
                   transform: isTransitioning ? 'translateY(-10px)' : 'translateY(0)',
                 }}
               >
-                <h3 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-primary-text">
+                <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-primary-text">
                   {steps[currentStep].title}
                 </h3>
               </div>
 
               {/* Subtitle with smooth transition */}
               <div 
-                className="transition-all duration-500 ease-out mb-6 sm:mb-8"
+                className="transition-all duration-500 ease-out mb-4 sm:mb-6"
                 style={{
                   opacity: isTransitioning ? 0 : 1,
                   transform: isTransitioning ? 'translateY(-10px)' : 'translateY(0)',
                   transitionDelay: isTransitioning ? '0ms' : '100ms',
                 }}
               >
-                <p className="text-lg sm:text-xl md:text-2xl text-secondary-grey leading-relaxed max-w-xl">
+                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-secondary-grey leading-relaxed max-w-xl mx-auto lg:mx-0">
                   {steps[currentStep].subtitle}
                 </p>
               </div>
             </div>
 
             {/* Navigation Arrows - Fixed at bottom */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center justify-center lg:justify-start gap-3 sm:gap-4 w-full">
               {/* Previous Arrow */}
               <button
                 onClick={goToPrevious}
-                className="group flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 hover:bg-primary transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                className="group flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary/10 hover:bg-primary transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                 aria-label="Previous step"
               >
                 <svg 
-                  className="w-6 h-6 text-primary group-hover:text-white transition-colors duration-300 transform group-hover:-translate-x-0.5" 
+                  className="w-5 h-5 sm:w-6 sm:h-6 text-primary group-hover:text-white transition-colors duration-300 transform group-hover:-translate-x-0.5" 
                   fill="none" 
                   stroke="currentColor" 
                   viewBox="0 0 24 24"
@@ -240,8 +240,8 @@ const HowItWorksSection = () => {
               </button>
 
               {/* Step Counter */}
-              <div className="flex items-center gap-2 px-4 py-2 bg-primary/5 rounded-full">
-                <span className="text-base font-semibold text-primary">
+              <div className="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-primary/5 rounded-full">
+                <span className="text-sm sm:text-base font-semibold text-primary">
                   {currentStep + 1} / {steps.length}
                 </span>
               </div>
@@ -249,11 +249,11 @@ const HowItWorksSection = () => {
               {/* Next Arrow */}
               <button
                 onClick={goToNext}
-                className="group flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 hover:bg-primary transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                className="group flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary/10 hover:bg-primary transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                 aria-label="Next step"
               >
                 <svg 
-                  className="w-6 h-6 text-primary group-hover:text-white transition-colors duration-300 transform group-hover:translate-x-0.5" 
+                  className="w-5 h-5 sm:w-6 sm:h-6 text-primary group-hover:text-white transition-colors duration-300 transform group-hover:translate-x-0.5" 
                   fill="none" 
                   stroke="currentColor" 
                   viewBox="0 0 24 24"
@@ -266,11 +266,17 @@ const HowItWorksSection = () => {
 
           {/* Right Side - Video */}
           <div className="relative flex items-center justify-center lg:justify-end order-2 lg:order-2">
-            <div className="relative w-full max-w-[400px] sm:max-w-[460px] md:max-w-[520px] lg:max-w-[580px]">
+            <div className="relative w-full max-w-[300px] sm:max-w-[360px] md:max-w-[420px] lg:max-w-[480px] xl:max-w-[580px]">
               {/* Video Container with exact aspect ratio (720:898) */}
               <div 
-                className="relative rounded-[2.5rem] sm:rounded-[3rem] overflow-hidden shadow-2xl"
-                style={{ aspectRatio: '720/898' }}
+                className="relative rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[3rem] overflow-hidden shadow-xl sm:shadow-2xl"
+                style={{ 
+                  aspectRatio: '720/898',
+                  transform: 'translateZ(0)',
+                  isolation: 'isolate',
+                  backfaceVisibility: 'hidden',
+                  WebkitBackfaceVisibility: 'hidden'
+                }}
               >
                 {/* Video Stack with Cross-fade */}
                 {steps.map((step, index) => {
@@ -307,6 +313,11 @@ const HowItWorksSection = () => {
                           muted
                           preload={isActive ? "auto" : "metadata"}
                           loading="lazy"
+                          style={{
+                            transform: 'translate3d(0, 0, 0)',
+                            backfaceVisibility: 'hidden',
+                            WebkitBackfaceVisibility: 'hidden'
+                          }}
                         />
                       )}
                     </div>

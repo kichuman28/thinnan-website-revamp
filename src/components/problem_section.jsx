@@ -113,12 +113,12 @@ const ProblemSection = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative py-20 sm:py-28 md:py-36 lg:py-44 bg-background overflow-hidden min-h-screen flex items-center font-manrope"
+      className="relative py-16 sm:py-20 md:py-28 lg:py-36 xl:py-44 bg-background overflow-hidden min-h-screen flex items-center font-manrope"
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16 w-full relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 w-full relative z-10">
         
         {/* Main Content */}
-        <div className="flex flex-col justify-center space-y-8 sm:space-y-12 md:space-y-16">
+        <div className="flex flex-col justify-center space-y-6 sm:space-y-8 md:space-y-12 lg:space-y-16">
           
           {/* Tagline */}
           <div 
@@ -128,7 +128,7 @@ const ProblemSection = () => {
               transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
             }}
           >
-            <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-primary-text leading-tight">
+            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-medium text-primary-text leading-tight text-center md:text-left">
               digital fatigue is real.
             </p>
           </div>
@@ -142,12 +142,12 @@ const ProblemSection = () => {
             }}
           >
             <h1 
-              className="font-bold leading-none text-primary"
+              className="font-bold leading-none text-primary text-center md:text-left"
               style={{
                 fontFamily: 'Manrope, sans-serif',
                 letterSpacing: '-0.018em',
                 fontWeight: 900,
-                fontSize: 'clamp(4rem, 14vw, 11rem)',
+                fontSize: 'clamp(3rem, 12vw, 11rem)',
                 lineHeight: '1',
                 transform: isComplete ? 'scale(1)' : 'scale(1)',
                 animation: isComplete ? 'numberPulse 0.6s ease-out' : 'none',
@@ -168,17 +168,17 @@ const ProblemSection = () => {
 
           {/* Text Below Number */}
           <div 
-            className="space-y-3 sm:space-y-4"
+            className="space-y-2 sm:space-y-3 md:space-y-4 text-center md:text-left"
             style={{
               opacity: hasAnimated ? 1 : 0,
               transform: hasAnimated ? 'translateY(0)' : 'translateY(20px)',
               transition: 'opacity 1s ease-out 0.4s, transform 1s ease-out 0.4s',
             }}
           >
-            <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-primary-text leading-tight">
+            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-normal text-primary-text leading-tight">
               people crave
             </p>
-            <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-primary-text leading-tight">
+            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-normal text-primary-text leading-tight">
               in-person experiences!
             </p>
           </div>
@@ -186,31 +186,31 @@ const ProblemSection = () => {
 
         {/* Source Links - Enhanced Design */}
         <div 
-          className="mt-16 sm:mt-20"
+          className="mt-12 sm:mt-16 md:mt-20"
           style={{
             opacity: hasAnimated ? 1 : 0,
             transition: 'opacity 1s ease-out 0.8s',
           }}
         >
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
-            <span className="text-sm sm:text-base font-medium text-secondary-grey uppercase tracking-wider">
+          <div className="flex flex-col sm:flex-row items-center md:items-start md:items-center gap-3 sm:gap-4 md:gap-6">
+            <span className="text-xs sm:text-sm md:text-base font-medium text-secondary-grey uppercase tracking-wider">
               Sources:
             </span>
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 sm:gap-3">
               {sources.map((source, index) => (
                 <div key={source.id} className="group relative">
                   <a
                     href={source.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-secondary-grey/10 hover:bg-accent text-secondary-grey hover:text-white transition-all duration-300 transform hover:scale-110 shadow-sm hover:shadow-lg"
+                    className="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-secondary-grey/10 hover:bg-accent text-secondary-grey hover:text-white transition-all duration-300 transform hover:scale-110 shadow-sm hover:shadow-lg"
                   >
-                    <span className="text-sm sm:text-base font-bold">{source.label}</span>
+                    <span className="text-xs sm:text-sm md:text-base font-bold">{source.label}</span>
                   </a>
                   
                   {/* Tooltip */}
                   <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                    <div className="bg-primary-text text-white text-xs sm:text-sm px-3 py-2 rounded-lg whitespace-nowrap shadow-xl max-w-[200px] sm:max-w-xs text-center">
+                    <div className="bg-primary-text text-white text-xs sm:text-sm px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg whitespace-nowrap shadow-xl max-w-[180px] sm:max-w-[200px] md:max-w-xs text-center">
                       {source.title}
                       {/* Arrow */}
                       <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1">

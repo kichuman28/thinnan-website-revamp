@@ -3,13 +3,13 @@ import feature4 from '../assets/images/features/feature_4.png';
 
 const ProblemMissionSection = () => {
   return (
-    <section id="product" className="relative py-14 sm:py-20 md:py-28 lg:py-32 bg-secondary overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 relative z-10">
+    <section id="product" className="relative py-12 sm:py-16 md:py-20 lg:py-28 xl:py-32 bg-secondary overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
         {/* Main Content - Reversed Layout (Image Left, Text Right) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 xl:gap-20 items-center">
           {/* Left Side - Phone Screenshot */}
           <div className="flex items-center justify-center lg:justify-start order-2 lg:order-1">
-            <div className="relative w-full max-w-[280px] sm:max-w-[320px] md:max-w-[360px]">
+            <div className="relative w-full max-w-[240px] sm:max-w-[280px] md:max-w-[320px] lg:max-w-[360px]">
               <img
                 src={feature4}
                 alt="Thinnan Feature 4"
@@ -26,16 +26,16 @@ const ProblemMissionSection = () => {
           </div>
 
           {/* Right Side - Text Content */}
-          <div className="flex flex-col justify-center space-y-8 sm:space-y-10 order-1 lg:order-2">
+          <div className="flex flex-col justify-center items-center lg:items-start space-y-6 sm:space-y-8 md:space-y-10 order-1 lg:order-2">
             {/* Small heading */}
-            <div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary-text">
+            <div className="text-center lg:text-left">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-primary-text">
                 meet thinnan.
               </h2>
             </div>
             {/* Main Title */}
-            <div>
-              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-primary-text">
+            <div className="text-center lg:text-left">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-primary-text">
                 We are bringing back the{' '}
                 <span className="relative inline-block">
                   <span className="text-primary relative z-10">social</span>
@@ -45,22 +45,22 @@ const ProblemMissionSection = () => {
               </h2>
             </div>
             {/* Description */}
-            <div>
-              <p className="text-lg sm:text-xl md:text-2xl text-secondary-grey leading-relaxed max-w-xl">
+            <div className="text-center lg:text-left">
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-secondary-grey leading-relaxed max-w-xl">
                 Food social media designed for{' '}
                 <span className="text-primary font-semibold">real-life experiences</span>{' '}
                 around food.
               </p>
             </div>
             {/* Download Button */}
-            <div className="pt-4">
+            <div className="pt-2 sm:pt-4">
               <button
                 onClick={handleAppDownload}
-                className="inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 sm:py-5 bg-primary text-white rounded-2xl sm:rounded-3xl font-semibold text-base sm:text-lg hover:bg-primary/90 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-primary/30 transform hover:scale-105 group cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 bg-primary text-white rounded-xl sm:rounded-2xl md:rounded-3xl font-semibold text-sm sm:text-base md:text-lg hover:bg-primary/90 transition-all duration-300 shadow-lg sm:shadow-xl hover:shadow-xl sm:hover:shadow-2xl hover:shadow-primary/30 transform hover:scale-105 group cursor-pointer"
               >
                 <span>Download Now</span>
                 <svg 
-                  className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" 
+                  className="w-4 h-4 sm:w-5 sm:h-5 transform group-hover:translate-x-1 transition-transform duration-300" 
                   fill="none" 
                   stroke="currentColor" 
                   viewBox="0 0 24 24"

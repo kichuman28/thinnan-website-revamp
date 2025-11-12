@@ -83,56 +83,56 @@ const CommunitySection = () => {
     <section 
       ref={sectionRef}
       id="community" 
-      className="pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-20 sm:pb-28 md:pb-36 lg:pb-44 relative overflow-hidden bg-secondary"
+      className="pt-10 sm:pt-12 md:pt-16 lg:pt-20 xl:pt-24 pb-16 sm:pb-20 md:pb-28 lg:pb-36 xl:py-44 relative overflow-hidden bg-secondary"
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
 
         {/* Section Header */}
         <div
-          className="text-center mb-16 sm:mb-20 md:mb-24 transition-all duration-1000"
+          className="text-center mb-12 sm:mb-14 md:mb-16 lg:mb-20 xl:mb-24 transition-all duration-1000"
           style={{
             opacity: hasAnimated ? 1 : 0,
             transform: hasAnimated ? 'translateY(0)' : 'translateY(20px)',
           }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary-text mb-3 sm:mb-5 relative inline-block">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-primary-text mb-3 sm:mb-4 md:mb-5 relative inline-block px-4">
           what people have been whispering about us...
           </h2>
-          <p className="text-lg sm:text-xl md:text-2xl text-secondary-grey mt-6 sm:mt-8 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-secondary-grey mt-4 sm:mt-6 md:mt-8 max-w-2xl mx-auto px-4">
             Real stories from real food lovers sharing authentic experiences
           </p>
         </div>
 
         {/* Reviews Grid - Masonry Style */}
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 sm:gap-8 space-y-6 sm:space-y-8">
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 sm:gap-6 md:gap-8 space-y-4 sm:space-y-6 md:space-y-8">
           {reviews.map((review, index) => (
             <div
               key={index}
-              className="break-inside-avoid mb-6 sm:mb-8 transition-all duration-700"
+              className="break-inside-avoid mb-4 sm:mb-6 md:mb-8 transition-all duration-700"
               style={{
                 opacity: hasAnimated ? 1 : 0,
                 transform: hasAnimated ? 'translateY(0)' : 'translateY(30px)',
                 transitionDelay: `${index * 100}ms`,
               }}
             >
-              <div className="bg-white p-6 sm:p-8 rounded-2xl sm:rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-primary/20 group relative overflow-hidden">
+              <div className="bg-white p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl md:rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-primary/20 group relative overflow-hidden">
                 {/* Decorative element */}
                 <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-primary via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
                 {/* Quote icon */}
-                <div className="mb-4">
-                  <svg className="w-8 h-8 sm:w-10 sm:h-10 text-primary/20 group-hover:text-primary/40 transition-colors duration-500" fill="currentColor" viewBox="0 0 24 24">
+                <div className="mb-3 sm:mb-4">
+                  <svg className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-primary/20 group-hover:text-primary/40 transition-colors duration-500" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                   </svg>
                 </div>
 
                 {/* Review Text */}
-                <p className="text-base sm:text-lg text-primary-text leading-relaxed font-normal">
+                <p className="text-sm sm:text-base md:text-lg text-primary-text leading-relaxed font-normal">
                   {review.text}
                 </p>
 
                 {/* Hover effect overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-transparent transition-all duration-500 rounded-2xl sm:rounded-3xl pointer-events-none"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-transparent transition-all duration-500 rounded-xl sm:rounded-2xl md:rounded-3xl pointer-events-none"></div>
               </div>
             </div>
           ))}
