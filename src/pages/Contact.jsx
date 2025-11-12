@@ -86,22 +86,22 @@ const Contact = () => {
   // Founders data with contact information
   const founders = [
     {
-      name: "Kevin Jacob",
-      role: "Founder & CEO",
+      name: "kevin jacob",
+      role: "founder & ceo",
       image: kevinImg,
       linkedin: "https://www.linkedin.com/in/jacobkevin/",
       calLink: "https://cal.com/kevinjacob/30min"
     },
     {
-      name: "Annu Mathew",
-      role: "Co-Founder, CDO",
+      name: "annu mathew",
+      role: "co-founder, cdo",
       image: annuImg,
       linkedin: "https://www.linkedin.com/in/annu-mathew-service-designer/",
       calLink: "https://cal.com/annu-mathew-hn741e/30min"
     },
     {
-      name: "Vishnu Aravind",
-      role: "Co-Founder, COO",
+      name: "vishnu aravind",
+      role: "co-founder, coo",
       image: vishnuImg,
       linkedin: "https://www.linkedin.com/in/vishnuaravind01/",
       calLink: "https://cal.com/vishnu-aravind-gyo5kp/30min"
@@ -114,7 +114,7 @@ const Contact = () => {
       <section className="pt-20 sm:pt-24 md:pt-28 pb-8 sm:pb-10 md:pb-12 relative overflow-hidden">
         
         <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
-          {/* Section Header */}
+          {/* section header */}
           <div 
             className={`text-center mb-8 sm:mb-10 md:mb-12 transition-all duration-1000 ${
               isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -126,7 +126,7 @@ const Contact = () => {
             </h1>
           </div>
 
-          {/* Founders List - Horizontal Layout */}
+          {/* founders list - horizontal layout */}
           <div className="space-y-6 sm:space-y-8 md:space-y-10">
             {founders.map((founder, index) => (
               <div
@@ -140,9 +140,9 @@ const Contact = () => {
                   transitionDelay: `${index * 150}ms` 
                 }}
               >
-                {/* Founder Card - Horizontal Layout */}
+                {/* founder card - horizontal layout */}
                 <div className="flex flex-col sm:flex-row items-center sm:items-start sm:items-center gap-4 sm:gap-6 md:gap-8 p-4 sm:p-6 rounded-xl sm:rounded-2xl hover:bg-white/50 transition-all duration-500">
-                  {/* Profile Image Container */}
+                  {/* profile image container */}
                   <div className="relative w-full sm:w-auto flex-shrink-0">
                     <div className="relative w-full max-w-[280px] sm:max-w-[240px] md:max-w-[280px] mx-auto sm:mx-0 rounded-2xl sm:rounded-xl overflow-hidden shadow-xl sm:shadow-lg group-hover:shadow-2xl sm:group-hover:shadow-xl transition-all duration-500" style={{ aspectRatio: '4 / 5' }}>
                       <img 
@@ -153,17 +153,17 @@ const Contact = () => {
                           width: '100%', 
                           height: '100%', 
                           objectFit: 'cover', 
-                          objectPosition: founder.name === 'Annu Mathew' ? 'center 35%' : 
-                                         founder.name === 'Kevin Jacob' ? 'center 20%' : 
+                          objectPosition: founder.name === 'annu mathew' ? 'center 35%' : 
+                                         founder.name === 'kevin jacob' ? 'center 20%' : 
                                          'center top',
                           display: 'block'
                         }}
                       />
                       
-                      {/* Gradient overlay on hover */}
+                      {/* gradient overlay on hover */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                       
-                      {/* LinkedIn Icon - Top Right on Mobile, Hidden on Desktop */}
+                      {/* linkedin icon - top right on mobile, hidden on desktop */}
                       <a 
                         href={founder.linkedin}
                         target="_blank"
@@ -178,7 +178,7 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  {/* Text Content - Middle Section */}
+                  {/* text content - middle section */}
                   <div className="flex-1 flex flex-col space-y-2 sm:space-y-3 md:space-y-4 min-w-0 text-center sm:text-left">
                     <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black group-hover:text-accent transition-colors duration-300">
                       {founder.name}
@@ -188,7 +188,7 @@ const Contact = () => {
                       {founder.role}
                     </p>
 
-                    {/* Cal Link Button */}
+                    {/* cal link button */}
                     <a
                       href={founder.calLink}
                       target="_blank"
@@ -215,7 +215,7 @@ const Contact = () => {
                     </a>
                   </div>
 
-                  {/* LinkedIn Icon - Far Right (Desktop Only) */}
+                  {/* linkedin icon - far right (desktop only) */}
                   <div className="flex-shrink-0 hidden sm:block">
                     <a 
                       href={founder.linkedin}
@@ -236,16 +236,16 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Feature Request / Bug Report Section */}
+      {/* feature request / bug report section */}
       <section className="py-12 sm:py-16 md:py-20 lg:py-24 relative overflow-hidden bg-secondary">
-        {/* Decorative background elements */}
+        {/* decorative background elements */}
         <div className="absolute inset-0 opacity-30 pointer-events-none">
           <div className="absolute top-20 left-10 w-64 h-64 bg-accent/10 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
         </div>
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
-          {/* Section Header */}
+          {/* section header */}
           <div 
             className={`text-center mb-10 sm:mb-12 md:mb-16 transition-all duration-1000 ${
               isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -256,18 +256,18 @@ const Contact = () => {
               <div className="absolute -bottom-3 left-0 w-full h-1.5 bg-gradient-to-r from-transparent via-accent to-transparent rounded-full"></div>
             </h2>
             <p className="text-lg sm:text-xl md:text-2xl text-secondary-grey mt-6 sm:mt-8 max-w-2xl mx-auto">
-              Your feedback shapes our journey. Share bugs or request features to make Thinnan better for everyone.
+              your feedback shapes our journey. share bugs or request features to make thinnan better for everyone.
             </p>
           </div>
 
-          {/* Form Card */}
+          {/* form card */}
           <div 
             className={`bg-white rounded-3xl sm:rounded-[2rem] shadow-2xl border border-gray-100 p-6 sm:p-8 md:p-10 lg:p-12 transition-all duration-1000 ${
               isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
             }`}
             style={{ transitionDelay: '200ms' }}
           >
-            {/* Form Type Toggle */}
+            {/* form type toggle */}
             <div className="flex justify-center gap-3 sm:gap-4 mb-8 sm:mb-10">
               <button
                 type="button"
@@ -309,9 +309,9 @@ const Contact = () => {
               </button>
             </div>
 
-            {/* Form */}
+            {/* form */}
             <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
-              {/* Name Input */}
+              {/* name input */}
               <div className="relative group">
                 <label className="block text-xs sm:text-sm font-semibold text-gray-500 mb-2 ml-1 uppercase tracking-wider">
                   your name
@@ -321,7 +321,7 @@ const Contact = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  placeholder="Enter your name"
+                  placeholder="enter your name"
                   required
                   maxLength={50}
                   className="w-full bg-gray-50 border-2 border-gray-200 focus:border-accent focus:bg-white rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 outline-none text-sm sm:text-base md:text-lg text-primary-text placeholder-gray-400 transition-all duration-300 group-hover:border-gray-300 group-hover:shadow-md"
@@ -329,7 +329,7 @@ const Contact = () => {
                 <div className="text-xs text-gray-400 mt-1 ml-1">{formData.name.length}/50</div>
               </div>
 
-              {/* Email Input */}
+              {/* email input */}
               <div className="relative group">
                 <label className="block text-xs sm:text-sm font-semibold text-gray-500 mb-2 ml-1 uppercase tracking-wider">
                   your email
@@ -339,7 +339,7 @@ const Contact = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  placeholder="Enter your email"
+                  placeholder="enter your email"
                   required
                   maxLength={100}
                   className="w-full bg-gray-50 border-2 border-gray-200 focus:border-accent focus:bg-white rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 outline-none text-sm sm:text-base md:text-lg text-primary-text placeholder-gray-400 transition-all duration-300 group-hover:border-gray-300 group-hover:shadow-md"
@@ -347,7 +347,7 @@ const Contact = () => {
                 <div className="text-xs text-gray-400 mt-1 ml-1">{formData.email.length}/100</div>
               </div>
 
-              {/* Title Input */}
+              {/* title input */}
               <div className="relative group">
                 <label className="block text-xs sm:text-sm font-semibold text-gray-500 mb-2 ml-1 uppercase tracking-wider">
                   title
@@ -357,7 +357,7 @@ const Contact = () => {
                   name="title"
                   value={formData.title}
                   onChange={handleInputChange}
-                  placeholder={formType === 'bug' ? 'Brief description of the bug' : 'Brief description of the feature'}
+                  placeholder={formType === 'bug' ? 'brief description of the bug' : 'brief description of the feature'}
                   required
                   maxLength={100}
                   className="w-full bg-gray-50 border-2 border-gray-200 focus:border-accent focus:bg-white rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 outline-none text-sm sm:text-base md:text-lg text-primary-text placeholder-gray-400 transition-all duration-300 group-hover:border-gray-300 group-hover:shadow-md"
@@ -365,7 +365,7 @@ const Contact = () => {
                 <div className="text-xs text-gray-400 mt-1 ml-1">{formData.title.length}/100</div>
               </div>
 
-              {/* Details Textarea */}
+              {/* details textarea */}
               <div className="relative group">
                 <label className="block text-xs sm:text-sm font-semibold text-gray-500 mb-2 ml-1 uppercase tracking-wider">
                   details
@@ -374,7 +374,7 @@ const Contact = () => {
                   name="details"
                   value={formData.details}
                   onChange={handleInputChange}
-                  placeholder={formType === 'bug' ? 'Tell us what happened, steps to reproduce, etc.' : 'Describe your feature idea and how it would help'}
+                  placeholder={formType === 'bug' ? 'tell us what happened, steps to reproduce, etc.' : 'describe your feature idea and how it would help'}
                   required
                   rows={5}
                   maxLength={1000}
@@ -383,7 +383,7 @@ const Contact = () => {
                 <div className="text-xs text-gray-400 mt-1 ml-1">{formData.details.length}/1000</div>
               </div>
 
-              {/* Submit Status Message */}
+              {/* submit status message */}
               {submitStatus && (
                 <div 
                   className={`p-4 sm:p-5 rounded-2xl transition-all duration-700 transform ${
@@ -400,8 +400,8 @@ const Contact = () => {
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                         </svg>
                         <div>
-                          <p className="font-bold text-base sm:text-lg">Thank you!</p>
-                          <p className="text-sm sm:text-base">Your submission has been received.</p>
+                          <p className="font-bold text-base sm:text-lg">thank you!</p>
+                          <p className="text-sm sm:text-base">your submission has been received.</p>
                         </div>
                       </>
                     ) : (
@@ -410,8 +410,8 @@ const Contact = () => {
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
                         </svg>
                         <div>
-                          <p className="font-bold text-base sm:text-lg">Oops!</p>
-                          <p className="text-sm sm:text-base">Something went wrong. Please try again later.</p>
+                          <p className="font-bold text-base sm:text-lg">oops!</p>
+                          <p className="text-sm sm:text-base">something went wrong. please try again later.</p>
                         </div>
                       </>
                     )}
@@ -419,7 +419,7 @@ const Contact = () => {
                 </div>
               )}
 
-              {/* Action Buttons */}
+              {/* action buttons */}
               <div className="flex flex-col sm:flex-row justify-end gap-3 sm:gap-4 pt-4">
                 <button
                   type="button"
@@ -462,7 +462,7 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Location Section */}
+      {/* location section */}
       <section className="py-8 sm:py-10 md:py-12 lg:py-16 relative overflow-hidden bg-background">
         
         <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
@@ -471,7 +471,7 @@ const Contact = () => {
               isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            {/* Top Section - Join Us */}
+            {/* top section - join us */}
             <div className="mb-12 sm:mb-16 md:mb-20 text-center sm:text-left">
               <h2 
                 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary-text mb-4 sm:mb-6 leading-tight transition-all duration-1000 ${
@@ -487,7 +487,7 @@ const Contact = () => {
                 }`}
                 style={{ transitionDelay: '200ms' }}
               >
-                We're always looking for passionate people to join our mission.
+                we're always looking for passionate people to join our mission.
               </p>
               <div 
                 className={`transition-all duration-1000 flex justify-center sm:justify-start ${
@@ -510,7 +510,7 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Bottom Section - Location */}
+            {/* bottom section - location */}
             <div 
               className={`pt-8 sm:pt-12 md:pt-16 border-t border-gray-300 transition-all duration-1000 text-center sm:text-left ${
                 isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -526,7 +526,7 @@ const Contact = () => {
                 we're cooking at
               </h3>
               <div className="space-y-1 sm:space-y-2">
-                {['maria 01', 'Lapinlahdenkatu 16, 00180', 'Helsinki'].map((line, index) => (
+                {['maria 01', 'lapinlahdenkatu 16, 00180', 'helsinki'].map((line, index) => (
                   <p 
                     key={index}
                     className={`text-lg sm:text-xl md:text-2xl text-secondary-grey transition-all duration-1000 ${

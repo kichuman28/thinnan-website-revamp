@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 
-// Import all founder images
+// import all founder images
 import kevinImg from '../assets/images/founders/kevin.png';
 import vishnuImg from '../assets/images/founders/vishnu.jpg';
 import annuImg from '../assets/images/founders/annu.png';
@@ -15,7 +15,7 @@ const FoundersSection = () => {
   const [hasAnimated, setHasAnimated] = useState(false);
   const sectionRef = useRef(null);
 
-  // All team members in one array
+  // all team members in one array
   const allTeamMembers = [
     {
       name: "kevin",
@@ -41,14 +41,14 @@ const FoundersSection = () => {
     {
       name: "cal",
       role: "advisor",
-      areas: ["co-founder, Slack", "former head of eng, Flickr"],
+      areas: ["co-founder, slack", "former head of eng, flickr"],
       image: calImg,
       linkedin: "https://www.linkedin.com/in/iamcal/"
     },    
     {
       name: "dana",
       role: "advisor",
-      areas: ["co-founder, Sulapac Ltd", "co-founder, Kuurai Oy"],
+      areas: ["co-founder, sulapac ltd", "co-founder, kuurai oy"],
       image: danaImg,
       linkedin: "https://www.linkedin.com/in/loredanamoimas/"
     },   
@@ -82,9 +82,9 @@ const FoundersSection = () => {
     },    
   ];
 
-  // Intersection Observer for scroll animations
+  // intersection observer for scroll animations
   useEffect(() => {
-    const observer = new IntersectionObserver(
+    const observer = new window.IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && !hasAnimated) {
@@ -110,11 +110,11 @@ const FoundersSection = () => {
     <section 
       ref={sectionRef}
       id="team" 
-      className="py-20 sm:py-24 md:py-32 lg:py-40 relative overflow-hidden bg-background"
+      className="pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-8 sm:pb-12 md:pb-16 lg:pb-20 relative overflow-hidden bg-background"
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 relative z-10">
         
-        {/* Section Header */}
+        {/* section header */}
         <div 
           className="text-center mb-16 sm:mb-20 md:mb-24 transition-all duration-1000"
           style={{
@@ -127,11 +127,11 @@ const FoundersSection = () => {
             <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
           </h2>
           <p className="text-lg sm:text-xl md:text-2xl text-secondary-grey mt-6 sm:mt-8 max-w-2xl mx-auto">
-            The passionate people behind thinnan bringing joy through shared meals
+            the passionate people behind thinnan bringing joy through shared meals
           </p>
         </div>
 
-        {/* Team Grid */}
+        {/* team grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 md:gap-12 lg:gap-16">
           {allTeamMembers.map((member, index) => (
             <div 
@@ -143,7 +143,7 @@ const FoundersSection = () => {
                 transitionDelay: `${index * 100}ms`,
               }}
             >
-              {/* Image Container */}
+              {/* image container */}
               <div className="relative w-full max-w-[280px] sm:max-w-[300px] mx-auto rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" style={{ aspectRatio: '4 / 5' }}>
                 <img 
                   src={member.image}
@@ -156,10 +156,10 @@ const FoundersSection = () => {
                   }}
                 />
                 
-                {/* Gradient overlay on hover */}
+                {/* gradient overlay on hover */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
-                {/* LinkedIn Icon */}
+                {/* linkedin icon */}
                 <a 
                   href={member.linkedin}
                   target="_blank"
@@ -173,19 +173,19 @@ const FoundersSection = () => {
                 </a>
               </div>
 
-              {/* Text Content */}
+              {/* text content */}
               <div className="mt-5 sm:mt-6 space-y-2 sm:space-y-3 max-w-[280px] sm:max-w-[300px] mx-auto text-center transform transition-transform duration-300 group-hover:translate-y-[-4px]">
-                <h3 className="text-xl sm:text-2xl font-bold text-primary-text capitalize relative inline-block">
-                  {member.name}
+                <h3 className="text-xl sm:text-2xl font-bold text-primary-text lowercase relative inline-block">
+                  {typeof member.name === "string" ? member.name.toLowerCase() : member.name}
                   <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></div>
                 </h3>
-                <p className="text-primary font-semibold capitalize text-sm sm:text-base">
-                  {member.role}
+                <p className="text-primary font-semibold lowercase text-sm sm:text-base">
+                  {typeof member.role === "string" ? member.role.toLowerCase() : member.role}
                 </p>
                 <div className="space-y-1">
                   {member.areas.map((area, idx) => (
-                    <p key={idx} className="text-secondary-grey text-xs sm:text-sm leading-relaxed">
-                      {area}
+                    <p key={idx} className="text-secondary-grey text-xs sm:text-sm leading-relaxed lowercase">
+                      {typeof area === "string" ? area.toLowerCase() : area}
                     </p>
                   ))}
                 </div>

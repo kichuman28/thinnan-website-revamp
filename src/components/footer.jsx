@@ -208,7 +208,7 @@ const Footer = () => {
         <div className="mt-6 sm:mt-8 md:mt-10 lg:mt-12 pt-4 sm:pt-6 md:pt-8 border-t border-gray-200">
           <div className="flex justify-center items-center">
             <p className="text-gray-500 text-xs sm:text-sm text-center">
-              © {new Date().getFullYear()} thinnan. All rights reserved.
+              © {new Date().getFullYear()} thinnan. all rights reserved.
             </p>
           </div>
         </div>

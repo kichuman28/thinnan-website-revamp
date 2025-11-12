@@ -20,37 +20,37 @@ const HowItWorksSection = () => {
       id: 0,
       video: section1,
       title: 'choose your friends',
-      subtitle: 'Connect with the people who matter most',
+      subtitle: 'connect with the people who matter most',
     },
     {
       id: 1,
       video: section2,
       title: 'share your craving',
-      subtitle: 'Share what you\'re craving right now',
+      subtitle: "share what you're craving right now",
     },
     {
       id: 2,
       video: section3,
       title: 'match your cravings',
-      subtitle: 'Find friends who want the same thing',
+      subtitle: 'find friends who want the same thing',
     },
     {
       id: 3,
       video: section4,
       title: 'open up a group chat',
-      subtitle: 'Start the conversation with matched people',
+      subtitle: 'start the conversation with matched people',
     },
     {
       id: 4,
       video: section5,
       title: 'make plans together',
-      subtitle: 'Make it happen together',
+      subtitle: 'make it happen together',
     },
     {
       id: 5,
       video: section6,
       title: 'share your stories',
-      subtitle: 'Capture and share your food adventures',
+      subtitle: 'capture and share your food adventures',
     }
   ];
 

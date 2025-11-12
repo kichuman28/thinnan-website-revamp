@@ -113,7 +113,7 @@ const ProblemSection = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative py-16 sm:py-20 md:py-28 lg:py-36 xl:py-44 bg-background overflow-hidden min-h-screen flex items-center font-manrope"
+      className="relative py-4 sm:py-20 md:py-28 lg:py-36 xl:py-44 bg-background overflow-hidden min-h-screen flex items-center font-manrope"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 w-full relative z-10">
         
@@ -194,7 +194,7 @@ const ProblemSection = () => {
         >
           <div className="flex flex-col sm:flex-row items-center md:items-start md:items-center gap-3 sm:gap-4 md:gap-6">
             <span className="text-xs sm:text-sm md:text-base font-medium text-secondary-grey uppercase tracking-wider">
-              Sources:
+              sources:
             </span>
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 sm:gap-3">
               {sources.map((source, index) => (

@@ -99,7 +99,7 @@ const CommunitySection = () => {
           what people have been whispering about us...
           </h2>
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-secondary-grey mt-4 sm:mt-6 md:mt-8 max-w-2xl mx-auto px-4">
-            Real stories from real food lovers sharing authentic experiences
+            real stories from real food lovers sharing authentic experiences
           </p>
         </div>
 

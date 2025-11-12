@@ -126,7 +126,7 @@ const AchievementsSection = () => {
   };
 
   return (
-    <section id="achievements" className="py-20 sm:py-28 md:py-36 relative overflow-hidden bg-background">
+    <section id="achievements" className="pt-8 sm:pt-12 md:pt-16 pb-20 sm:pb-28 md:pb-36 relative overflow-hidden bg-background">
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
         {/* Section Header */}

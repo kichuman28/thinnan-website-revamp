@@ -49,62 +49,62 @@ const HowItStartedSection = () => {
   };
 
   const storyCards = [
-    // First Row
+    // first row
     {
       id: 1,
       image: worldMap,
       title: 'scratch map for cooking',
-      description: 'It all started with a scratch map for cooking around the world (2022). 30 countries in 1.5 yrs – soon became a movement, but an organisational nightmare!'
+      description: 'it all started with a scratch map for cooking around the world (2022). 30 countries in 1.5 yrs – soon became a movement, but an organisational nightmare!'
     },
     {
       id: 2,
       image: stickyNotes,
       title: 'early ideation',
-      description: 'Sticky notes from an early ideation stage, March 2024. Launched thinnan beta-prototype as an event tech platform for home cookouts. Continued development, releasing updates every week.'
+      description: 'sticky notes from an early ideation stage, march 2024. launched thinnan beta-prototype as an event tech platform for home cookouts. continued development, releasing updates every week.'
     },
     {
       id: 3,
       image: calAndKevin,
       title: 'slush 2018',
-      description: 'Kevin meets Cal at Slush 2018, when he was his Slush buddy. Little did we know this connection would shape our future.'
+      description: 'kevin meets cal at slush 2018, when he was his slush buddy. little did we know this connection would shape our future.'
     },
-    // Second Row
+    // second row
     {
       id: 4,
       image: calKevinDana,
       title: 'cal joins advisory',
-      description: 'Cal Henderson, co-founder of Slack, joins thinnan\'s advisory board at Slush 2024. A milestone moment for the team!'
+      description: 'cal henderson, co-founder of slack, joins thinnan\'s advisory board at slush 2024. a milestone moment for the team!'
     },
     {
       id: 5,
       image: scratchGame,
       title: 'first cookout',
-      description: 'One of our first cookouts: "Bulgarian Cuisine". The beginning of something special – bringing people together over authentic food experiences.'
+      description: 'one of our first cookouts: "bulgarian cuisine". the beginning of something special – bringing people together over authentic food experiences.'
     },
     {
       id: 6,
       image: sisam,
       title: 'parisian baker',
-      description: 'Kalyani, a Paris-based baker, visited us and hosted many sessions on how to make macarons to the best madeleines the guests have tasted!'
+      description: 'kalyani, a paris-based baker, visited us and hosted many sessions on how to make macarons to the best madeleines the guests have tasted!'
     },
-    // Third Row
+    // third row
     {
       id: 7,
       image: founderOnStage,
       title: 'sharing our vision',
-      description: 'We love to pitch and talk about thinnan whenever we get a chance! Every opportunity to share our story brings us closer to our mission.'
+      description: 'we love to pitch and talk about thinnan whenever we get a chance! every opportunity to share our story brings us closer to our mission.'
     },
     {
       id: 8,
       image: cookout,
       title: 'delicious memories',
-      description: 'Another one of our early cookouts from 2024 – appam, stew and cutlets. It was a delicious meal that brought strangers together!'
+      description: 'another one of our early cookouts from 2024 – appam, stew and cutlets. it was a delicious meal that brought strangers together!'
     },
     {
       id: 9,
       image: candidTeam,
       title: 'building the dream',
-      description: 'March 2025: three of our co-founders preparing for a YC application! Late nights, early mornings, and unwavering dedication.'
+      description: 'march 2025: three of our co-founders preparing for a yc application! late nights, early mornings, and unwavering dedication.'
     }
   ];
 
@@ -112,7 +112,7 @@ const HowItStartedSection = () => {
     <section 
       ref={sectionRef}
       id="how-it-started" 
-      className="pt-20 sm:pt-24 md:pt-28 pb-16 sm:pb-20 md:pb-24 relative overflow-hidden bg-background"
+      className="pt-20 sm:pt-24 md:pt-28 pb-8 sm:pb-12 md:pb-16 relative overflow-hidden bg-background"
     >
       {/* Decorative background elements */}
       <div className="absolute inset-0 opacity-20 pointer-events-none">
