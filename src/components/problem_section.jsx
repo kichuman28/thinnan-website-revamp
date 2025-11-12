@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 const ProblemSection = () => {
   const [count, setCount] = useState(0);
   const [hasAnimated, setHasAnimated] = useState(false);
+  const [isComplete, setIsComplete] = useState(false);
   const sectionRef = useRef(null);
 
   const targetValue = 1600000000; // 1.6 billion
@@ -34,7 +35,8 @@ const ProblemSection = () => {
       if (progress < 1) {
         animationFrameRef.current = requestAnimationFrame(animate);
       } else {
-        setCount(targetValue); // Ensure final value is exact
+        setCount(targetValue);
+        setIsComplete(true); // Trigger completion animation
       }
     };
 
@@ -59,7 +61,7 @@ const ProblemSection = () => {
         });
       },
       {
-        threshold: 0.3, // Trigger when 30% of section is visible
+        threshold: 0.3,
         rootMargin: '0px',
       }
     );
@@ -75,16 +77,37 @@ const ProblemSection = () => {
     };
   }, [hasAnimated]);
 
-  // Format number without commas (no decimals, show all digits) - matches reference
+  // Format number
   const formatNumber = (num) => {
     return Math.floor(num).toString();
   };
 
   // Source links data
   const sources = [
-    { id: 1, url: '#', label: '1' },
-    { id: 2, url: '#', label: '2' },
-    { id: 3, url: '#', label: '3' },
+    { 
+      id: 1, 
+      url: 'https://news.gallup.com/poll/646718/people-worldwide-feel-lonely-lot.aspx', 
+      label: '1',
+      title: 'Gallup Poll - Global Loneliness Report'
+    },
+    { 
+      id: 2, 
+      url: 'https://theharrispoll.com/briefs/gen-z-social-media-smart-phones/', 
+      label: '2',
+      title: 'Harris Poll - Gen Z Social Media & Smartphones'
+    },
+    { 
+      id: 3, 
+      url: 'https://www.smartinsights.com/social-media-marketing/social-media-strategy/new-global-social-media-research/', 
+      label: '3',
+      title: 'Smart Insights - Global Social Media Research'
+    },
+    { 
+      id: 4, 
+      url: 'https://datareportal.com/reports/digital-2024-deep-dive-the-time-we-spend-on-social-media', 
+      label: '4',
+      title: 'DataReportal - Digital 2024: Time on Social Media'
+    }
   ];
 
   return (
@@ -92,13 +115,13 @@ const ProblemSection = () => {
       ref={sectionRef}
       className="relative py-20 sm:py-28 md:py-36 lg:py-44 bg-background overflow-hidden min-h-screen flex items-center font-manrope"
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16 w-full relative z-10 overflow-x-hidden">
-        {/* Main Content Container - Left Aligned */}
-        <div className="flex flex-col justify-center min-h-[70vh] w-full">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16 w-full relative z-10">
+        
+        {/* Main Content */}
+        <div className="flex flex-col justify-center space-y-8 sm:space-y-12 md:space-y-16">
           
-          {/* Tagline Above Number */}
+          {/* Tagline */}
           <div 
-            className="mb-8 sm:mb-12 md:mb-16"
             style={{
               opacity: hasAnimated ? 1 : 0,
               transform: hasAnimated ? 'translateY(0)' : 'translateY(20px)',
@@ -110,9 +133,8 @@ const ProblemSection = () => {
             </p>
           </div>
 
-          {/* Large Filled Number */}
+          {/* Large Number */}
           <div 
-            className="mb-8 sm:mb-12 md:mb-16 w-full"
             style={{
               opacity: hasAnimated ? 1 : 0,
               transform: hasAnimated ? 'translateY(0)' : 'translateY(30px)',
@@ -126,18 +148,25 @@ const ProblemSection = () => {
                 letterSpacing: '-0.018em',
                 fontWeight: 900,
                 fontSize: 'clamp(4rem, 14vw, 11rem)',
-                display: 'block',
-                maxWidth: '100%',
-                wordBreak: 'break-all',
-                overflowWrap: 'break-word',
                 lineHeight: '1',
+                transform: isComplete ? 'scale(1)' : 'scale(1)',
+                animation: isComplete ? 'numberPulse 0.6s ease-out' : 'none',
               }}
             >
               {formatNumber(count)}
             </h1>
           </div>
 
-          {/* Text Below Number - Left Aligned */}
+          {/* Animation keyframes */}
+          <style>{`
+            @keyframes numberPulse {
+              0% { transform: scale(1); }
+              50% { transform: scale(1.1); }
+              100% { transform: scale(1); }
+            }
+          `}</style>
+
+          {/* Text Below Number */}
           <div 
             className="space-y-3 sm:space-y-4"
             style={{
@@ -150,40 +179,46 @@ const ProblemSection = () => {
               billion people
             </p>
             <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-primary-text leading-tight">
-              long for in person experiences!
+              long for in-person experiences!
             </p>
           </div>
         </div>
 
-        {/* Source Links - Bottom Right */}
+        {/* Source Links - Enhanced Design */}
         <div 
-          className="absolute bottom-8 sm:bottom-12 md:bottom-16 right-6 sm:right-8 md:right-12 lg:right-16"
+          className="mt-16 sm:mt-20"
           style={{
             opacity: hasAnimated ? 1 : 0,
             transition: 'opacity 1s ease-out 0.8s',
           }}
         >
-          <div className="flex items-center gap-2 text-sm sm:text-base md:text-lg text-secondary-grey">
-            <span className="font-normal">source:</span>
-            <div className="flex items-center gap-1">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
+            <span className="text-sm sm:text-base font-medium text-secondary-grey uppercase tracking-wider">
+              Sources:
+            </span>
+            <div className="flex flex-wrap items-center gap-3">
               {sources.map((source, index) => (
-                <span key={source.id} className="flex items-center">
+                <div key={source.id} className="group relative">
                   <a
                     href={source.url}
-                    className="hover:text-primary-text transition-colors duration-200 underline decoration-1 underline-offset-2"
-                    style={{
-                      textDecorationColor: 'rgba(108, 108, 108, 0.4)',
-                    }}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      // Add your source link handling here
-                      console.log(`Source ${source.id} clicked`);
-                    }}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-secondary-grey/10 hover:bg-accent text-secondary-grey hover:text-white transition-all duration-300 transform hover:scale-110 shadow-sm hover:shadow-lg"
                   >
-                    {source.label}
+                    <span className="text-sm sm:text-base font-bold">{source.label}</span>
                   </a>
-                  {index < sources.length - 1 && <span className="mx-0.5">.</span>}
-                </span>
+                  
+                  {/* Tooltip */}
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                    <div className="bg-primary-text text-white text-xs sm:text-sm px-3 py-2 rounded-lg whitespace-nowrap shadow-xl max-w-[200px] sm:max-w-xs text-center">
+                      {source.title}
+                      {/* Arrow */}
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1">
+                        <div className="border-4 border-transparent border-t-primary-text"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               ))}
             </div>
           </div>

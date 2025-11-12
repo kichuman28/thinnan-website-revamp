@@ -5,6 +5,8 @@ import { resolve } from 'path'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  // Handle uppercase image extensions
+  assetsInclude: ['**/*.JPG', '**/*.JPEG', '**/*.PNG', '**/*.GIF', '**/*.SVG'],
   build: {
     // Generate source maps for better debugging
     sourcemap: true,

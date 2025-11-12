@@ -22,9 +22,9 @@ const Team = () => {
         image="/src/assets/images/thinnan-social-share.png"
       />
       <Navbar />
-      <main className="pt-20 sm:pt-24 md:pt-28">
-        <FoundersSection />
+      <main>
         <HowItStartedSection />
+        <FoundersSection />
         <AchievementsSection />
       </main>
       <Footer />

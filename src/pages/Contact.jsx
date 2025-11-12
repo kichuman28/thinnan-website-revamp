@@ -90,21 +90,21 @@ const Contact = () => {
       role: "Founder & CEO",
       image: kevinImg,
       linkedin: "https://www.linkedin.com/in/jacobkevin/",
-      calLink: "https://cal.com/kevin-jacob" // Placeholder - update with actual Cal link
+      calLink: "https://cal.com/kevinjacob/30min"
     },
     {
       name: "Annu Mathew",
       role: "Co-Founder, Design & Marketing",
       image: annuImg,
       linkedin: "https://www.linkedin.com/in/annu-mathew-service-designer/",
-      calLink: "https://cal.com/annu-mathew" // Placeholder - update with actual Cal link
+      calLink: "https://cal.com/annu-mathew-hn741e/30min"
     },
     {
       name: "Vishnu Aravind",
       role: "Co-Founder, Sales & Operations",
       image: vishnuImg,
       linkedin: "https://www.linkedin.com/in/vishnuaravind01/",
-      calLink: "https://cal.com/vishnu-aravind" // Placeholder - update with actual Cal link
+      calLink: "https://cal.com/vishnu-aravind-gyo5kp/30min"
     }
   ];
 
@@ -164,7 +164,7 @@ const Contact = () => {
                   </div>
 
                   {/* Text Content - Middle Section */}
-                  <div className="flex-1 flex flex-col space-y-1 sm:space-y-2 md:space-y-3 min-w-0">
+                  <div className="flex-1 flex flex-col space-y-2 sm:space-y-3 md:space-y-4 min-w-0">
                     <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-black group-hover:text-accent transition-colors duration-300">
                       {founder.name}
                     </h2>
@@ -173,21 +173,29 @@ const Contact = () => {
                       {founder.role}
                     </p>
 
-                    {/* Cal Link */}
+                    {/* Cal Link Button */}
                     <a
                       href={founder.calLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-black hover:text-accent transition-colors duration-300 font-medium text-xs sm:text-sm md:text-base group/link w-fit"
+                      className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-5 py-2 sm:py-2.5 bg-accent/10 hover:bg-accent text-black hover:text-white rounded-xl sm:rounded-2xl transition-all duration-300 font-semibold text-xs sm:text-sm md:text-base group/link w-fit shadow-sm hover:shadow-lg transform hover:scale-105"
                     >
-                      <span>Cal link</span>
+                      <svg 
+                        className="w-4 h-4 sm:w-5 sm:h-5" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      <span>schedule a call</span>
                       <svg 
                         className="w-4 h-4 transform group-hover/link:translate-x-1 transition-transform duration-300" 
                         fill="none" 
                         stroke="currentColor" 
                         viewBox="0 0 24 24"
                       >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                       </svg>
                     </a>
                   </div>
