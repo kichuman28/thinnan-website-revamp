@@ -110,7 +110,7 @@ const FoundersSection = () => {
     <section 
       ref={sectionRef}
       id="team" 
-      className="pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-8 sm:pb-12 md:pb-16 lg:pb-20 relative overflow-hidden bg-background"
+      className="pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-8 sm:pb-12 md:pb-16 lg:pb-20 relative overflow-hidden bg-secondary"
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 relative z-10">
         
