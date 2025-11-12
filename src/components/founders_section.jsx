@@ -144,11 +144,16 @@ const FoundersSection = () => {
               }}
             >
               {/* Image Container */}
-              <div className="relative w-full max-w-[280px] sm:max-w-[300px] mx-auto rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" style={{ aspectRatio: '1 / 1' }}>
+              <div className="relative w-full max-w-[280px] sm:max-w-[300px] mx-auto rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" style={{ aspectRatio: '4 / 5' }}>
                 <img 
                   src={member.image}
                   alt={member.name}
-                  className="w-full h-full object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-110"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-110"
+                  style={{
+                    objectPosition: member.name === 'annu' ? 'center 35%' : 
+                                   member.name === 'kevin' ? 'center 20%' : 
+                                   'center top'
+                  }}
                 />
                 
                 {/* Gradient overlay on hover */}

@@ -144,16 +144,18 @@ const Contact = () => {
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 md:gap-8 p-4 sm:p-6 rounded-xl sm:rounded-2xl hover:bg-white/50 transition-all duration-500">
                   {/* Profile Image Container */}
                   <div className="relative w-full sm:w-auto flex-shrink-0">
-                    <div className="relative w-full max-w-[200px] sm:max-w-[240px] md:max-w-[280px] mx-auto sm:mx-0 rounded-lg sm:rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all duration-500" style={{ aspectRatio: '1 / 1' }}>
+                    <div className="relative w-full max-w-[200px] sm:max-w-[240px] md:max-w-[280px] mx-auto sm:mx-0 rounded-lg sm:rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all duration-500" style={{ aspectRatio: '4 / 5' }}>
                       <img 
                         src={founder.image}
                         alt={founder.name}
-                        className="w-full h-full object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-110"
+                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-110"
                         style={{ 
                           width: '100%', 
                           height: '100%', 
                           objectFit: 'cover', 
-                          objectPosition: 'center',
+                          objectPosition: founder.name === 'Annu Mathew' ? 'center 35%' : 
+                                         founder.name === 'Kevin Jacob' ? 'center 20%' : 
+                                         'center top',
                           display: 'block'
                         }}
                       />
