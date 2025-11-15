@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer id="contact" className="bg-background text-gray-600 relative overflow-hidden">
       {/* Background elements */}
-      <div className="absolute inset-0 bg-background"></div>
+      <div className="absolute inset-0 bg-secondary"></div>
       
       {/* Decorative patterns */}
       <div className="absolute inset-0 opacity-5 hidden sm:block"
@@ -94,17 +94,14 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Right Column - Support & Legal Links */}
+            {/* Right Column - Support Links */}
             <div>
               <ul className="space-y-3 text-sm">
                 <li>
-                  <a href="#" className="text-gray-600 hover:text-accent transition-colors duration-300">request a feature</a>
+                  <a href="/contact#feedback-form" className="text-gray-600 hover:text-accent transition-colors duration-300">request a feature</a>
                 </li>
                 <li>
-                  <a href="#" className="text-gray-600 hover:text-accent transition-colors duration-300">report a bug</a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-600 hover:text-accent transition-colors duration-300">terms & conditions</a>
+                  <a href="/contact#feedback-form" className="text-gray-600 hover:text-accent transition-colors duration-300">report a bug</a>
                 </li>
               </ul>
             </div>
@@ -187,17 +184,14 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Second Column - Support & Legal Links */}
+            {/* Second Column - Support Links */}
             <div>
               <ul className="space-y-4 md:space-y-5 lg:space-y-6 text-base md:text-lg lg:text-xl">
                 <li>
-                  <a href="#" className="text-gray-600 hover:text-accent transition-colors duration-300">request a feature</a>
+                  <a href="/contact#feedback-form" className="text-gray-600 hover:text-accent transition-colors duration-300">request a feature</a>
                 </li>
                 <li>
-                  <a href="#" className="text-gray-600 hover:text-accent transition-colors duration-300">report a bug</a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-600 hover:text-accent transition-colors duration-300">terms & conditions</a>
+                  <a href="/contact#feedback-form" className="text-gray-600 hover:text-accent transition-colors duration-300">report a bug</a>
                 </li>
               </ul>
             </div>

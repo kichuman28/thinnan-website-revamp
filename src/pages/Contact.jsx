@@ -237,7 +237,7 @@ const Contact = () => {
       </section>
 
       {/* feature request / bug report section */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-24 relative overflow-hidden bg-secondary">
+      <section id="feedback-form" className="py-12 sm:py-16 md:py-20 lg:py-24 relative overflow-hidden bg-secondary">
         {/* decorative background elements */}
         <div className="absolute inset-0 opacity-30 pointer-events-none">
           <div className="absolute top-20 left-10 w-64 h-64 bg-accent/10 rounded-full blur-3xl"></div>

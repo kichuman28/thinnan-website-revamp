@@ -14,8 +14,16 @@ const CommunitySection = () => {
       author: "Food Explorer"
     },
     {
+      text: "Buonissimo!!😋",
+      author: "Italian Food Lover"
+    },
+    {
       text: "I must say Chimichurri opened up a new part of my brain.",
       author: "Culinary Adventurer"
+    },
+    {
+      text: "kidukkachi!!",
+      author: "Satisfied Guest"
     },
     {
       text: "I was craving shawarma recently after seeing some reels, and this hit the spot! The chicken shawarma was so flavorful and the rice was just what I needed after a long, stressful day. Perfect combo. Definitely coming back for more! 🔥",
@@ -34,24 +42,16 @@ const CommunitySection = () => {
       author: "Pho Convert"
     },
     {
+      text: "De (wait-for-it) licious😋",
+      author: "Taste Enthusiast"
+    },
+    {
       text: "I had great time. Very delicious food! The aroma, flavor and taste are incomparable to what we get in restaurants around Helsinki!",
       author: "Happy Diner"
     },
     {
       text: "thankyouuuu for coming from Paris and cooking really nice pastries for us. Visit us more please 😋😋",
       author: "Pastry Fan"
-    },
-    {
-      text: "Buonissimo!!😋",
-      author: "Italian Food Lover"
-    },
-    {
-      text: "kidukkachi!!",
-      author: "Satisfied Guest"
-    },
-    {
-      text: "De (wait-for-it) licious😋",
-      author: "Taste Enthusiast"
     }
   ];
 
@@ -99,7 +99,7 @@ const CommunitySection = () => {
           what people have been whispering about us...
           </h2>
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-secondary-grey mt-4 sm:mt-6 md:mt-8 max-w-2xl mx-auto px-4">
-            real stories from real food lovers sharing authentic experiences
+            real stories from real food lovers worldwide sharing authentic experiences together
           </p>
         </div>
 

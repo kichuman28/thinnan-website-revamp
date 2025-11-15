@@ -77,9 +77,9 @@ const ProblemSection = () => {
     };
   }, [hasAnimated]);
 
-  // Format number
+  // Format number with commas
   const formatNumber = (num) => {
-    return Math.floor(num).toString();
+    return Math.floor(num).toLocaleString('en-US');
   };
 
   // Source links data
@@ -128,8 +128,8 @@ const ProblemSection = () => {
               transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
             }}
           >
-            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-medium text-primary-text leading-tight text-center md:text-left">
-              digital fatigue is real.
+            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-medium text-primary-text leading-tight text-center">
+              digital fatigue it real!
             </p>
           </div>
 
@@ -142,13 +142,15 @@ const ProblemSection = () => {
             }}
           >
             <h1 
-              className="font-bold leading-none text-primary text-center md:text-left"
+              className="font-bold leading-none text-primary text-center"
               style={{
                 fontFamily: 'Manrope, sans-serif',
                 letterSpacing: '-0.018em',
                 fontWeight: 900,
-                fontSize: 'clamp(3rem, 12vw, 11rem)',
+                fontSize: 'clamp(5rem, 18vw, 14rem)',
                 lineHeight: '1',
+                opacity: 0.85,
+                wordBreak: 'break-all',
                 transform: isComplete ? 'scale(1)' : 'scale(1)',
                 animation: isComplete ? 'numberPulse 0.6s ease-out' : 'none',
               }}
@@ -175,52 +177,41 @@ const ProblemSection = () => {
               transition: 'opacity 1s ease-out 0.4s, transform 1s ease-out 0.4s',
             }}
           >
-            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-normal text-primary-text leading-tight">
-              people crave
-            </p>
-            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-normal text-primary-text leading-tight">
-              in-person experiences!
+            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-normal text-primary-text leading-tight text-center">
+              people crave in-person experiences
             </p>
           </div>
         </div>
 
-        {/* Source Links - Enhanced Design */}
+        {/* Source Links - Modernized pill-style, no icon, reduced spacing */}
         <div 
-          className="mt-12 sm:mt-16 md:mt-20"
+          className="mt-12 sm:mt-16 md:mt-20 flex justify-end"
           style={{
             opacity: hasAnimated ? 1 : 0,
             transition: 'opacity 1s ease-out 0.8s',
           }}
         >
-          <div className="flex flex-col sm:flex-row items-center md:items-start md:items-center gap-3 sm:gap-4 md:gap-6">
-            <span className="text-xs sm:text-sm md:text-base font-medium text-secondary-grey uppercase tracking-wider">
+          <div className="inline-flex flex-wrap gap-1 items-center">
+            <span className="text-xs sm:text-sm md:text-base text-secondary-grey/70 tracking-wide mr-1">
               sources:
             </span>
-            <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 sm:gap-3">
-              {sources.map((source, index) => (
-                <div key={source.id} className="group relative">
-                  <a
-                    href={source.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-secondary-grey/10 hover:bg-accent text-secondary-grey hover:text-white transition-all duration-300 transform hover:scale-110 shadow-sm hover:shadow-lg"
-                  >
-                    <span className="text-xs sm:text-sm md:text-base font-bold">{source.label}</span>
-                  </a>
-                  
-                  {/* Tooltip */}
-                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                    <div className="bg-primary-text text-white text-xs sm:text-sm px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg whitespace-nowrap shadow-xl max-w-[180px] sm:max-w-[200px] md:max-w-xs text-center">
-                      {source.title}
-                      {/* Arrow */}
-                      <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1">
-                        <div className="border-4 border-transparent border-t-primary-text"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            {sources.map((source, index) => (
+              <a
+                key={source.id}
+                href={source.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={source.title}
+                className="inline-flex items-center px-2 py-0.5 rounded-full bg-secondary/30 hover:bg-accent/10 transition-all duration-200 text-xs sm:text-sm md:text-base text-primary gap-1 font-medium shadow-sm border border-secondary/30 hover:border-accent/50"
+                style={{
+                  textDecoration: 'none',
+                  boxShadow: '0 1px 6px 0 rgba(80,80,80,0.03)',
+                  marginRight: index < sources.length - 1 ? '0.1rem' : 0
+                }}
+              >
+                {source.label}
+              </a>
+            ))}
           </div>
         </div>
       </div>

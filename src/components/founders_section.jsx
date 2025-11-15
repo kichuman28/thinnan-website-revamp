@@ -10,6 +10,7 @@ import manyuImg from '../assets/images/founders/manyu.png';
 import kishoreImg from '../assets/images/founders/kishore.png';
 import abelImg from '../assets/images/founders/abel.png';
 import shivangiImg from '../assets/images/founders/shivangi.png';
+import anandImg from '../assets/images/founders/anand.png';
 
 const FoundersSection = () => {
   const [hasAnimated, setHasAnimated] = useState(false);
@@ -20,7 +21,7 @@ const FoundersSection = () => {
     {
       name: "kevin",
       role: "founder",
-      areas: ["product", "finance", "business development"],
+      areas: ["product", "business development"],
       image: kevinImg,
       linkedin: "https://www.linkedin.com/in/jacobkevin/"
     },
@@ -53,13 +54,6 @@ const FoundersSection = () => {
       linkedin: "https://www.linkedin.com/in/loredanamoimas/"
     },   
     {
-      name: "manyu",
-      role: "ui/ux lead design",
-      areas: ["8+ years in digital product design"],
-      image: manyuImg,
-      linkedin: "https://www.linkedin.com/in/manyuvarma/"
-    },
-    {
       name: "kishore",
       role: "designer",
       areas: ["product design"],
@@ -74,9 +68,16 @@ const FoundersSection = () => {
       linkedin: "https://www.linkedin.com/in/abelboby/"
     },
     {
+      name: "anand",
+      role: "developer",
+      areas: ["app development"],
+      image: anandImg,
+      linkedin: "https://www.linkedin.com/in/anand-c-260817223/"
+    },    
+    {
       name: "shivangi",
-      role: "designer",
-      areas: ["product design"],
+      role: "ui/ux designer",
+      areas: ["ui/ux design"],
       image: shivangiImg,
       linkedin: "https://www.linkedin.com/in/shivangirawat24/"
     },    

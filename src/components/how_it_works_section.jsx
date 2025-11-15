@@ -187,7 +187,7 @@ const HowItWorksSection = () => {
             {/* Small heading - Fixed */}
             <div className="mb-6 sm:mb-8 md:mb-10 text-center lg:text-left">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-primary-text">
-                how does it work?
+                how it works
               </h2>
             </div>
 
