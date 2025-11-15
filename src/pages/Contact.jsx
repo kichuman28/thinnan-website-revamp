@@ -21,7 +21,22 @@ const Contact = () => {
   const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', or null
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // Check if there's a hash in the URL
+    const hash = window.location.hash;
+    
+    if (hash) {
+      // If there's a hash, scroll to it after a short delay to ensure the element is rendered
+      setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 300);
+    } else {
+      // Only scroll to top if there's no hash
+      window.scrollTo(0, 0);
+    }
+    
     // Trigger animation after component mounts
     setTimeout(() => setIsLoaded(true), 100);
   }, []);

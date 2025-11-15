@@ -6,7 +6,6 @@ import vishnuImg from '../assets/images/founders/vishnu.jpg';
 import annuImg from '../assets/images/founders/annu.png';
 import calImg from '../assets/images/founders/cal.png';
 import danaImg from '../assets/images/founders/dana.png';
-import manyuImg from '../assets/images/founders/manyu.png';
 import kishoreImg from '../assets/images/founders/kishore.png';
 import abelImg from '../assets/images/founders/abel.png';
 import shivangiImg from '../assets/images/founders/shivangi.png';
@@ -79,7 +78,7 @@ const FoundersSection = () => {
       role: "ui/ux designer",
       areas: ["ui/ux design"],
       image: shivangiImg,
-      linkedin: "https://www.linkedin.com/in/shivangirawat24/"
+      linkedin: "https://www.linkedin.com/in/shivangiagrawal4/"
     },    
   ];
 
