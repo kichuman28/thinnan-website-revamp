@@ -47,9 +47,8 @@ const ProblemMissionSection = () => {
             {/* description */}
             <div className="text-center lg:text-left">
               <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-secondary-grey leading-relaxed max-w-xl">
-                food social media designed for{' '}
-                <span className="text-primary font-semibold">real-life experiences</span>{' '}
-                around food.
+                food social media designed for<br />
+                <span className="text-primary font-semibold">real-life experiences</span> around food.
               </p>
             </div>
             {/* download button */}

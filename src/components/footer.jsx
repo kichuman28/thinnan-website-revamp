@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import appIcon from '../assets/icons/app_icon.png';
 import GoogleIcon from '../assets/icons/google_icon';
 import AppleIcon from '../assets/icons/apple_icon';
@@ -88,10 +89,10 @@ const Footer = () => {
                   <a href="#how-it-works" className="text-gray-600 hover:text-accent transition-colors duration-300">product</a>
                 </li>
                 <li>
-                  <a href="/team" className="text-gray-600 hover:text-accent transition-colors duration-300">team</a>
+                  <Link to="/team" className="text-gray-600 hover:text-accent transition-colors duration-300">team</Link>
                 </li>
                 <li>
-                  <a href="/contact" className="text-gray-600 hover:text-accent transition-colors duration-300">contact</a>
+                  <Link to="/contact" className="text-gray-600 hover:text-accent transition-colors duration-300">contact</Link>
                 </li>
               </ul>
             </div>
@@ -100,10 +101,10 @@ const Footer = () => {
             <div className="text-right">
               <ul className="space-y-3 text-sm">
                 <li>
-                  <a href="/contact#feedback-form" className="text-gray-600 hover:text-accent transition-colors duration-300">request a feature</a>
+                  <Link to="/contact#feedback-form" className="text-gray-600 hover:text-accent transition-colors duration-300">request a feature</Link>
                 </li>
                 <li>
-                  <a href="/contact#feedback-form" className="text-gray-600 hover:text-accent transition-colors duration-300">report a bug</a>
+                  <Link to="/contact#feedback-form" className="text-gray-600 hover:text-accent transition-colors duration-300">report a bug</Link>
                 </li>
               </ul>
             </div>
@@ -205,10 +206,10 @@ const Footer = () => {
                   <a href="#how-it-works" className="text-gray-600 hover:text-accent transition-colors duration-300">product</a>
                 </li>
                 <li>
-                  <a href="/team" className="text-gray-600 hover:text-accent transition-colors duration-300">team</a>
+                  <Link to="/team" className="text-gray-600 hover:text-accent transition-colors duration-300">team</Link>
                 </li>
                 <li>
-                  <a href="/contact" className="text-gray-600 hover:text-accent transition-colors duration-300">contact</a>
+                  <Link to="/contact" className="text-gray-600 hover:text-accent transition-colors duration-300">contact</Link>
                 </li>
               </ul>
             </div>
@@ -217,10 +218,10 @@ const Footer = () => {
             <div>
               <ul className="space-y-4 md:space-y-5 lg:space-y-6 text-base md:text-lg lg:text-xl">
                 <li>
-                  <a href="/contact#feedback-form" className="text-gray-600 hover:text-accent transition-colors duration-300">request a feature</a>
+                  <Link to="/contact#feedback-form" className="text-gray-600 hover:text-accent transition-colors duration-300">request a feature</Link>
                 </li>
                 <li>
-                  <a href="/contact#feedback-form" className="text-gray-600 hover:text-accent transition-colors duration-300">report a bug</a>
+                  <Link to="/contact#feedback-form" className="text-gray-600 hover:text-accent transition-colors duration-300">report a bug</Link>
                 </li>
               </ul>
             </div>
