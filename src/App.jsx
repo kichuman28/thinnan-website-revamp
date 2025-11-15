@@ -57,7 +57,7 @@ function App() {
           <CommunitySection />
           <TrustedBackedSection />
           {/* <LocationSection /> */}
-          {/*<DownloadSection /> */}
+          <DownloadSection /> 
         </main>
         <Footer />
         <ScrollToTopButton />

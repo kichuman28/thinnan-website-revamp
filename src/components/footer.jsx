@@ -110,7 +110,7 @@ const Footer = () => {
           </div>
 
           {/* Download Buttons - Mobile */}
-          <div className="mt-8 flex flex-col gap-3">
+          {/* <div className="mt-8 flex flex-col gap-3">
             <a 
               href="https://play.google.com/store/apps/details?id=com.jathikka.thinaan&hl=en" 
               className="w-48 max-w-full sm:w-auto flex items-center justify-center bg-black text-white px-4 py-2.5 rounded-xl hover:bg-black/80 transition-all duration-300 shadow-lg hover:shadow-accent/10 group relative overflow-hidden border border-white/10 mx-auto"
@@ -134,7 +134,7 @@ const Footer = () => {
                 <div className="text-sm font-medium">App Store</div>
               </div>
             </a>
-          </div>
+          </div> */}
         </div>
 
         {/* Desktop Layout - Original structure */}
@@ -227,7 +227,7 @@ const Footer = () => {
           </div>
 
           {/* Download Buttons - Desktop */}
-          <div className="col-span-6 mt-8 md:mt-10 lg:mt-12 flex flex-col sm:flex-row gap-4 justify-center">
+          {/* <div className="col-span-6 mt-8 md:mt-10 lg:mt-12 flex flex-col sm:flex-row gap-4 justify-center">
             <a 
               href="https://play.google.com/store/apps/details?id=com.jathikka.thinaan&hl=en" 
               className="flex items-center justify-center bg-black text-white px-8 py-4 rounded-xl hover:bg-black/80 transition-all duration-300 shadow-lg hover:shadow-accent/10 hover:-translate-y-1 group relative overflow-hidden border border-white/10"
@@ -251,7 +251,7 @@ const Footer = () => {
                 <div className="text-base sm:text-lg font-medium">App Store</div>
               </div>
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

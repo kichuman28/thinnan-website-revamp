@@ -77,9 +77,12 @@ const ProblemSection = () => {
     };
   }, [hasAnimated]);
 
-  // Format number with commas
+  // Format number with commas and line break
   const formatNumber = (num) => {
-    return Math.floor(num).toLocaleString('en-US');
+    const formatted = Math.floor(num).toLocaleString('en-US');
+    // Split "1,600,000,000" into "1,600" and "000,000"
+    // Insert a zero-width space or line break after the first comma group
+    return formatted.replace(/^(1,600),/, '$1\n');
   };
 
   // Source links data
@@ -128,8 +131,8 @@ const ProblemSection = () => {
               transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
             }}
           >
-            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-medium text-primary-text leading-tight text-center">
-              digital fatigue it real!
+            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-brown-700 leading-tight text-center">
+              digital fatigue is real!
             </p>
           </div>
 
@@ -150,7 +153,7 @@ const ProblemSection = () => {
                 fontSize: 'clamp(5rem, 18vw, 14rem)',
                 lineHeight: '1',
                 opacity: 0.85,
-                wordBreak: 'break-all',
+                whiteSpace: 'pre-line',
                 transform: isComplete ? 'scale(1)' : 'scale(1)',
                 animation: isComplete ? 'numberPulse 0.6s ease-out' : 'none',
               }}
