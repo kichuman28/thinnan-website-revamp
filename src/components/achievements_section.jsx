@@ -126,17 +126,17 @@ const AchievementsSection = () => {
   };
 
   return (
-    <section id="achievements" className="pt-4 sm:pt-8 md:pt-12 lg:pt-16 pb-16 sm:pb-24 md:pb-32 lg:pb-40 relative overflow-hidden bg-background" style={{ minHeight: '100vh' }}>
+    <section id="achievements" className="pt-4 sm:pt-8 md:pt-12 lg:pt-16 pb-16 sm:pb-20 md:pb-24 lg:pb-28 xl:pb-32 relative overflow-hidden bg-background" style={{ minHeight: '100vh' }}>
       
       <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 relative z-10 h-full">
         {/* Section Header */}
         <div className="text-center mb-8 sm:mb-12 md:mb-16 lg:mb-20 xl:mb-24">
-          <div className="inline-block">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-black mb-2 sm:mb-3 relative" style={{ fontSize: 'clamp(1.5rem, 8vw, 3.75rem)' }}>
-              our achievements
-              <div className="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-0.5 sm:h-1 bg-gradient-to-r from-transparent via-accent to-transparent"></div>
-            </h2>
-          </div>
+           <div className="inline-block">
+             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-black relative" style={{ fontSize: 'clamp(1.5rem, 8vw, 3.75rem)' }}>
+               our achievements
+               <div className="absolute top-full left-0 w-full mt-1 sm:mt-1.5 md:mt-3 lg:mt-2.5 bg-gradient-to-r from-transparent via-accent to-transparent" style={{ height: '2px' }}></div>
+             </h2>
+           </div>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-600 mt-4 sm:mt-5 md:mt-7 lg:mt-8 max-w-2xl mx-auto px-2" style={{ fontSize: 'clamp(0.875rem, 4vw, 1.5rem)' }}>
             milestones that mark our journey in connecting food lovers
           </p>
