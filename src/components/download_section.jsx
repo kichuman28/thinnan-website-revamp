@@ -23,7 +23,8 @@ const DownloadSection = () => {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 lg:px-20 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center">
-          <div className="text-white relative text-center md:text-left">
+          {/* Text content - order 2 on mobile, order 1 on desktop */}
+          <div className="text-white relative text-center md:text-left order-2 md:order-1">
             <div className="absolute -top-10 -left-10 w-32 h-32 bg-accent/20 rounded-full opacity-40 blur-2xl"></div>
             
             <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 md:mb-10 relative leading-tight sm:leading-snug">
@@ -32,34 +33,36 @@ const DownloadSection = () => {
               <span className="mt-3 sm:mt-6 block">download thinnan now!</span>
             </h2>
             
-            <div className="mt-8 sm:mt-12 md:mt-20 flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
+            {/* Buttons - hidden on mobile, shown on desktop */}
+            <div className="hidden md:flex md:mt-20 flex-row space-x-4 justify-start">
               <a 
                 href="https://play.google.com/store/apps/details?id=com.jathikka.thinaan&hl=en" 
-                className="flex items-center justify-center bg-black/40 backdrop-blur-sm text-white px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-5 rounded-xl hover:bg-black/60 transition-all duration-300 shadow-lg hover:shadow-accent/10 hover:-translate-y-1 group relative overflow-hidden border border-white/10 w-full sm:w-auto"
+                className="flex items-center justify-center bg-black/40 backdrop-blur-sm text-white px-10 py-5 rounded-xl hover:bg-black/60 transition-all duration-300 shadow-lg hover:shadow-accent/10 hover:-translate-y-1 group relative overflow-hidden border border-white/10"
               >
                 <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-accent/30 to-accent/10 bg-size-200 bg-pos-0 group-hover:bg-pos-100 transition-all duration-500 opacity-0 group-hover:opacity-100"></span>
                 <GoogleIcon />
-                <div className="ml-2 sm:ml-3 md:ml-4 relative">
-                  <div className="text-xs sm:text-sm md:text-base">GET IT ON</div>
-                  <div className="text-sm sm:text-base md:text-lg font-medium">Google Play</div>
+                <div className="ml-4 relative">
+                  <div className="text-base">GET IT ON</div>
+                  <div className="text-lg font-medium">Google Play</div>
                 </div>
               </a>
               
               <a 
                 href="https://apps.apple.com/fi/app/thinnan/id6502411893" 
-                className="flex items-center justify-center bg-black/40 backdrop-blur-sm text-white px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-5 rounded-xl hover:bg-black/60 transition-all duration-300 shadow-lg hover:shadow-accent/10 hover:-translate-y-1 group relative overflow-hidden border border-white/10 w-full sm:w-auto"
+                className="flex items-center justify-center bg-black/40 backdrop-blur-sm text-white px-10 py-5 rounded-xl hover:bg-black/60 transition-all duration-300 shadow-lg hover:shadow-accent/10 hover:-translate-y-1 group relative overflow-hidden border border-white/10"
               >
                 <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-accent/30 to-accent/10 bg-size-200 bg-pos-0 group-hover:bg-pos-100 transition-all duration-500 opacity-0 group-hover:opacity-100"></span>
                 <AppleIcon />
-                <div className="ml-2 sm:ml-3 md:ml-4 relative">
-                  <div className="text-xs sm:text-sm md:text-base">Download on the</div>
-                  <div className="text-sm sm:text-base md:text-lg font-medium">App Store</div>
+                <div className="ml-4 relative">
+                  <div className="text-base">Download on the</div>
+                  <div className="text-lg font-medium">App Store</div>
                 </div>
               </a>
             </div>
           </div>
           
-          <div className="relative mt-6 sm:mt-10 md:mt-0">
+          {/* Screenshot - order 1 on mobile, order 2 on desktop */}
+          <div className="relative mt-6 sm:mt-10 md:mt-0 order-1 md:order-2">
             <div className="flex justify-center md:justify-end">
                 {/* Phone frame details - removed transform hover effect */}
                 
@@ -82,6 +85,32 @@ const DownloadSection = () => {
               <div className="absolute top-8 -right-8 w-[300px] h-[620px] bg-black/30 rounded-[40px] blur-xl -z-10 hidden lg:block"></div>
             </div>
             
+            {/* Mobile buttons - shown only on mobile, below screenshot */}
+            <div className="flex md:hidden mt-6 flex-row space-x-3 justify-center">
+              <a 
+                href="https://play.google.com/store/apps/details?id=com.jathikka.thinaan&hl=en" 
+                className="flex items-center justify-center bg-black/40 backdrop-blur-sm text-white px-4 py-3 rounded-xl hover:bg-black/60 transition-all duration-300 shadow-lg hover:shadow-accent/10 hover:-translate-y-1 group relative overflow-hidden border border-white/10 flex-1 max-w-[160px]"
+              >
+                <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-accent/30 to-accent/10 bg-size-200 bg-pos-0 group-hover:bg-pos-100 transition-all duration-500 opacity-0 group-hover:opacity-100"></span>
+                <GoogleIcon />
+                <div className="ml-2 relative">
+                  <div className="text-[10px] leading-tight">GET IT ON</div>
+                  <div className="text-xs font-medium leading-tight">Google Play</div>
+                </div>
+              </a>
+              
+              <a 
+                href="https://apps.apple.com/fi/app/thinnan/id6502411893" 
+                className="flex items-center justify-center bg-black/40 backdrop-blur-sm text-white px-4 py-3 rounded-xl hover:bg-black/60 transition-all duration-300 shadow-lg hover:shadow-accent/10 hover:-translate-y-1 group relative overflow-hidden border border-white/10 flex-1 max-w-[160px]"
+              >
+                <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-accent/30 to-accent/10 bg-size-200 bg-pos-0 group-hover:bg-pos-100 transition-all duration-500 opacity-0 group-hover:opacity-100"></span>
+                <AppleIcon />
+                <div className="ml-2 relative">
+                  <div className="text-[10px] leading-tight">Download on the</div>
+                  <div className="text-xs font-medium leading-tight">App Store</div>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </div>
