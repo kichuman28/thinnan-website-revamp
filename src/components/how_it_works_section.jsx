@@ -248,13 +248,13 @@ const HowItWorksSection = () => {
     <section
       ref={sectionRef}
       id="how-it-works"
-      className="bg-white text-black py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16"
+      className="bg-white text-black py-12 py-[40px] md:py-[40px] lg:py-[80px] sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16"
     >
       <div className="max-w-[1400px] mx-auto flex flex-col gap-12 lg:gap-16">
         {/* Mobile layout */}
         {!isDesktop && (
           <div className="flex flex-col items-center text-center gap-5">
-            <div className="space-y-1.5">
+            <div className="space-y-1.5 md:py-[10px]">
               <p className="text-3xl font-semibold text-black">how it works?</p>
             </div>
 
