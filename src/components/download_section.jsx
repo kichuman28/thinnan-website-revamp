@@ -27,7 +27,7 @@ const DownloadSection = () => {
           <div className="text-white relative text-center md:text-left">
             <div className="absolute -top-10 -left-10 w-32 h-32 bg-accent/20 rounded-full opacity-40 blur-2xl"></div>
             
-            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 md:mb-10 relative leading-tight sm:leading-snug">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 md:mb-6 relative leading-tight sm:leading-snug">
               your social life,<br/>
               back in real life.<br/>
               <span className="mt-3 sm:mt-6 block">download thinnan now!</span>
@@ -35,7 +35,7 @@ const DownloadSection = () => {
           </div>
           
           {/* Screenshot */}
-          <div className="relative mt-6 sm:mt-10 md:mt-0">
+          <div className="relative mt-3 sm:mt-4 md:mt-0">
             <div className="flex justify-center md:justify-end">
                 {/* Phone frame details - removed transform hover effect */}
                 
@@ -60,7 +60,7 @@ const DownloadSection = () => {
           </div>
 
           {/* Buttons below screenshot */}
-          <div className="mt-6 md:mt-8 md:col-span-2 flex flex-row gap-3 sm:gap-4 md:gap-4 justify-center md:justify-start flex-wrap md:flex-nowrap">
+          <div className="mt-3 sm:mt-4 md:mt-5 md:col-span-2 flex flex-row gap-3 sm:gap-4 md:gap-4 justify-center md:justify-start flex-wrap md:flex-nowrap">
             <a 
               href="https://play.google.com/store/apps/details?id=com.jathikka.thinaan&hl=en" 
               className="flex items-center justify-center bg-black/40 backdrop-blur-sm text-white px-5 py-3 sm:px-6 sm:py-4 md:px-8 md:py-4 rounded-xl hover:bg-black/60 transition-all duration-300 shadow-lg hover:shadow-accent/10 hover:-translate-y-1 group relative overflow-hidden border border-white/10 min-w-[140px] sm:min-w-[150px] md:min-w-[160px] flex-1 sm:flex-none"
