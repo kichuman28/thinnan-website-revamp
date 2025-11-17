@@ -4,7 +4,7 @@ import downloadScreenshot from '../assets/images/download_section.webp';
 
 const DownloadSection = () => {
   return (
-    <section id="download" className="py-10 sm:py-16 md:py-24 bg-gray-dark text-white relative overflow-hidden">
+    <section id="download" className="py-10 sm:py-16 md:pt-24 md:pb-56 lg:py-24 bg-gray-dark text-white relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-dark to-black"></div>
       
