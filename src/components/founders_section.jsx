@@ -1,15 +1,15 @@
 import { useState, useEffect, useRef } from 'react';
 
 // import all founder images
-import kevinImg from '../assets/images/founders/kevin.png';
-import vishnuImg from '../assets/images/founders/vishnu.jpg';
-import annuImg from '../assets/images/founders/annu.png';
-import calImg from '../assets/images/founders/cal.png';
-import danaImg from '../assets/images/founders/dana.png';
-import kishoreImg from '../assets/images/founders/kishore.png';
-import abelImg from '../assets/images/founders/abel.png';
-import shivangiImg from '../assets/images/founders/shivangi.png';
-import anandImg from '../assets/images/founders/anand.png';
+import kevinImg from '../assets/images/founders/kevin.webp';
+import vishnuImg from '../assets/images/founders/vishnu.webp';
+import annuImg from '../assets/images/founders/annu.webp';
+import calImg from '../assets/images/founders/cal.webp';
+import danaImg from '../assets/images/founders/dana.webp';
+import kishoreImg from '../assets/images/founders/kishore.webp';
+import abelImg from '../assets/images/founders/abel.webp';
+import shivangiImg from '../assets/images/founders/shivangi.webp';
+import anandImg from '../assets/images/founders/anand.webp';
 
 const FoundersSection = () => {
   const [hasAnimated, setHasAnimated] = useState(false);
