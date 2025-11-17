@@ -19,38 +19,44 @@ const HowItWorksSection = () => {
     {
       id: 0,
       video: section1,
-      title: 'choose your friends',
-      subtitle: 'connect with the people who matter most',
+      title: 'add real friends',
+      subtitle: 'on thinnan, we add our friends\n— the ones we actually wish to\nhang out with.',
     },
     {
       id: 1,
       video: section2,
-      title: 'share your craving',
-      subtitle: "share what you're craving right now",
+      title: 'hit\ncrave',
+      subtitle: 'when something delicious\ncatches our eye',
     },
     {
       id: 2,
       video: section3,
-      title: 'match your cravings',
-      subtitle: 'find friends who want the same thing',
+      title: 'crave &\nmatch',
+      subtitle: 'friends who also want that\nsame experience',
     },
     {
       id: 3,
       video: section4,
-      title: 'open up a group chat',
-      subtitle: 'start the conversation with matched people',
+      title: 'start\ncravings chat',
+      subtitle: 'add a couple more friends, and\nturn it into a real hangout',
     },
     {
       id: 4,
       video: section5,
-      title: 'make plans together',
-      subtitle: 'make it happen together',
+      title: 'make\nplans together',
+      subtitle: 'turn it into a real hangout —\na spontaneous cookout or an\neatout.',
     },
     {
       id: 5,
       video: section6,
-      title: 'share your stories',
-      subtitle: 'capture and share your food adventures',
+      title: 'share stories',
+      subtitle: 'photos and moments as shared\nmemories, creating content\nborn from real experiences',
+    },
+    {
+      id: 6,
+      video: section6,
+      title: 'badges & streaks',
+      subtitle: 'gamify these moments\nwith cuisine badges and\nfriendship streaks',
     }
   ];
 
