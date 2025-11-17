@@ -126,18 +126,18 @@ const AchievementsSection = () => {
   };
 
   return (
-    <section id="achievements" className="pt-4 sm:pt-8 md:pt-12 lg:pt-16 pb-12 sm:pb-20 md:pb-28 lg:pb-36 relative overflow-hidden bg-background">
+    <section id="achievements" className="pt-4 sm:pt-8 md:pt-12 lg:pt-16 pb-16 sm:pb-24 md:pb-32 lg:pb-40 relative overflow-hidden bg-background" style={{ minHeight: '100vh' }}>
       
-      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 relative z-10 h-full">
         {/* Section Header */}
-        <div className="text-center mb-6 sm:mb-10 md:mb-12 lg:mb-16 xl:mb-20">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16 lg:mb-20 xl:mb-24">
           <div className="inline-block">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-black mb-2 sm:mb-3 relative" style={{ fontSize: 'clamp(1.5rem, 8vw, 3.75rem)' }}>
               our achievements
               <div className="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-0.5 sm:h-1 bg-gradient-to-r from-transparent via-accent to-transparent"></div>
             </h2>
           </div>
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-600 mt-3 sm:mt-4 md:mt-6 max-w-2xl mx-auto px-2" style={{ fontSize: 'clamp(0.875rem, 4vw, 1.5rem)' }}>
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-600 mt-4 sm:mt-5 md:mt-7 lg:mt-8 max-w-2xl mx-auto px-2" style={{ fontSize: 'clamp(0.875rem, 4vw, 1.5rem)' }}>
             milestones that mark our journey in connecting food lovers
           </p>
         </div>
@@ -289,7 +289,7 @@ const AchievementsSection = () => {
               >
                 
                 {/* Image Section */}
-                <div className="relative overflow-hidden" style={{ height: 'clamp(180px, 35vh, 400px)' }}>
+                <div className="relative overflow-hidden" style={{ height: 'clamp(220px, 45vh, 500px)' }}>
                   {/* Image with parallax effect on hover */}
                   <div className="absolute inset-0 transform group-hover:scale-110 transition-transform duration-1000" style={{ transition: 'transform 1000ms cubic-bezier(0.4, 0.0, 0.2, 1)' }}>
                     <img 
@@ -317,13 +317,13 @@ const AchievementsSection = () => {
                 </div>
 
                 {/* Content Section - Description below image */}
-                <div className="p-4 sm:p-5 md:p-6 lg:p-8">
+                <div className="p-5 sm:p-6 md:p-7 lg:p-9">
                   <p className="text-gray-600 leading-relaxed line-clamp-3" style={{ fontSize: 'clamp(0.875rem, 3.5vw, 1.125rem)' }}>
                     {achievements[selectedIndex].description}
                   </p>
                   
                   {/* Read More Button */}
-                  <div className="flex items-center gap-1.5 sm:gap-2 text-accent font-medium group-hover:gap-3 sm:group-hover:gap-4 transition-all duration-300 mt-4 sm:mt-5 md:mt-6">
+                  <div className="flex items-center gap-1.5 sm:gap-2 text-accent font-medium group-hover:gap-3 sm:group-hover:gap-4 transition-all duration-300 mt-5 sm:mt-6 md:mt-8">
                     <span className="text-xs sm:text-sm md:text-base" style={{ fontSize: 'clamp(0.75rem, 3vw, 1rem)' }}>Read full story</span>
                     <svg className="w-4 h-4 sm:w-5 sm:h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -335,7 +335,7 @@ const AchievementsSection = () => {
             </div>
 
             {/* Navigation Dots - for all achievements */}
-            <div className="flex justify-center gap-1.5 sm:gap-2 mt-4 sm:mt-6 md:mt-8 flex-wrap px-2">
+            <div className="flex justify-center gap-1.5 sm:gap-2 mt-6 sm:mt-8 md:mt-10 lg:mt-12 flex-wrap px-2">
               {achievements.map((_, index) => (
                 <button
                   key={index}
