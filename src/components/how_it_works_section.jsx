@@ -1,20 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
-// import section1Placeholder from '../assets/images/how_it_works/Slide 0.png';
-// import section2Placeholder from '../assets/images/how_it_works/Slide 1.png';
-// import section3Placeholder from '../assets/images/how_it_works/Slide 2.png';
-// import section4Placeholder from '../assets/images/how_it_works/Slide 3.png';
-// import section5Placeholder from '../assets/images/how_it_works/Slide 4.png';
-// import section6Placeholder from '../assets/images/how_it_works/Slide 5.png';
-// import section7Placeholder from '../assets/images/how_it_works/Slide 6.png';
-
-//TODO: Add actual videos with same naming convention as the slide_1.webm, slide_2.webm,...etc.
-import section1 from '../assets/videos/how_it_works/slide_0.webm';
-import section2 from '../assets/videos/how_it_works/slide_0.webm';
-import section3 from '../assets/videos/how_it_works/slide_0.webm';
-import section4 from '../assets/videos/how_it_works/slide_0.webm';
-import section5 from '../assets/videos/how_it_works/slide_0.webm';
-import section6 from '../assets/videos/how_it_works/slide_0.webm';
-import section7 from '../assets/videos/how_it_works/slide_0.webm';
+import section1 from '../assets/videos/how_it_works/slide_0.mp4';
+import section2 from '../assets/videos/how_it_works/slide_1.mp4';
+import section3 from '../assets/videos/how_it_works/slide_2.mp4';
+import section4 from '../assets/videos/how_it_works/slide_3.mp4';
+import section5 from '../assets/videos/how_it_works/slide_4.mp4';
+import section6 from '../assets/videos/how_it_works/slide_5.mp4';
+import section7 from '../assets/videos/how_it_works/slide_6.mp4';
 
 const HowItWorksSection = () => {
   const [currentStep, setCurrentStep] = useState(0);
