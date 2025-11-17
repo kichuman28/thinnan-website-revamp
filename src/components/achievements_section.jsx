@@ -126,24 +126,24 @@ const AchievementsSection = () => {
   };
 
   return (
-    <section id="achievements" className="pt-8 sm:pt-12 md:pt-16 pb-20 sm:pb-28 md:pb-36 relative overflow-hidden bg-background">
+    <section id="achievements" className="pt-4 sm:pt-8 md:pt-12 lg:pt-16 pb-12 sm:pb-20 md:pb-28 lg:pb-36 relative overflow-hidden bg-background">
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-12 sm:mb-16 md:mb-20">
+        <div className="text-center mb-6 sm:mb-10 md:mb-12 lg:mb-16 xl:mb-20">
           <div className="inline-block">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-3 relative">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-black mb-2 sm:mb-3 relative" style={{ fontSize: 'clamp(1.5rem, 8vw, 3.75rem)' }}>
               our achievements
-              <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent to-transparent"></div>
+              <div className="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-0.5 sm:h-1 bg-gradient-to-r from-transparent via-accent to-transparent"></div>
             </h2>
           </div>
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mt-6 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-600 mt-3 sm:mt-4 md:mt-6 max-w-2xl mx-auto px-2" style={{ fontSize: 'clamp(0.875rem, 4vw, 1.5rem)' }}>
             milestones that mark our journey in connecting food lovers
           </p>
         </div>
 
         {/* Dial Design Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-stretch">
           
           {/* Left Side - Dial/Navigation - Shows 3 items at a time */}
           <div className="hidden lg:flex lg:col-span-5 relative overflow-hidden">
@@ -272,7 +272,7 @@ const AchievementsSection = () => {
             >
               {/* Card Container */}
               <div 
-                className="relative rounded-3xl overflow-hidden bg-white transition-all duration-700 ease-out" 
+                className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-white transition-all duration-700 ease-out" 
                 style={{ 
                   transition: 'all 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                   border: '1px solid rgba(0, 0, 0, 0.1)',
@@ -289,7 +289,7 @@ const AchievementsSection = () => {
               >
                 
                 {/* Image Section */}
-                <div className="relative h-64 sm:h-80 md:h-96 overflow-hidden">
+                <div className="relative overflow-hidden" style={{ height: 'clamp(180px, 35vh, 400px)' }}>
                   {/* Image with parallax effect on hover */}
                   <div className="absolute inset-0 transform group-hover:scale-110 transition-transform duration-1000" style={{ transition: 'transform 1000ms cubic-bezier(0.4, 0.0, 0.2, 1)' }}>
                     <img 
@@ -303,13 +303,13 @@ const AchievementsSection = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                   
                   {/* Floating badge */}
-                  <div className="absolute top-4 right-4 bg-black/80 backdrop-blur-sm px-5 py-2.5 rounded-2xl border border-white/10 transition-all duration-700" style={{ transition: 'all 700ms cubic-bezier(0.4, 0.0, 0.2, 1)' }}>
-                    <span className="text-white text-sm font-medium">{achievements[selectedIndex].date}</span>
+                  <div className="absolute top-2 right-2 sm:top-3 sm:right-3 md:top-4 md:right-4 bg-black/80 backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 md:px-5 md:py-2.5 rounded-xl sm:rounded-2xl border border-white/10 transition-all duration-700" style={{ transition: 'all 700ms cubic-bezier(0.4, 0.0, 0.2, 1)' }}>
+                    <span className="text-white text-xs sm:text-sm font-medium">{achievements[selectedIndex].date}</span>
                   </div>
                   
                   {/* Click indicator */}
-                  <div className="absolute bottom-4 right-4 bg-accent/90 backdrop-blur-sm p-3 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-110" style={{ transition: 'all 500ms cubic-bezier(0.4, 0.0, 0.2, 1)' }}>
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 md:bottom-4 md:right-4 bg-accent/90 backdrop-blur-sm p-2 sm:p-2.5 md:p-3 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-110" style={{ transition: 'all 500ms cubic-bezier(0.4, 0.0, 0.2, 1)' }}>
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                     </svg>
@@ -317,15 +317,15 @@ const AchievementsSection = () => {
                 </div>
 
                 {/* Content Section - Description below image */}
-                <div className="p-6 sm:p-8">
-                  <p className="text-gray-600 text-base sm:text-lg leading-relaxed line-clamp-3">
+                <div className="p-4 sm:p-5 md:p-6 lg:p-8">
+                  <p className="text-gray-600 leading-relaxed line-clamp-3" style={{ fontSize: 'clamp(0.875rem, 3.5vw, 1.125rem)' }}>
                     {achievements[selectedIndex].description}
                   </p>
                   
                   {/* Read More Button */}
-                  <div className="flex items-center gap-2 text-accent font-medium group-hover:gap-4 transition-all duration-300 mt-6">
-                    <span>Read full story</span>
-                    <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="flex items-center gap-1.5 sm:gap-2 text-accent font-medium group-hover:gap-3 sm:group-hover:gap-4 transition-all duration-300 mt-4 sm:mt-5 md:mt-6">
+                    <span className="text-xs sm:text-sm md:text-base" style={{ fontSize: 'clamp(0.75rem, 3vw, 1rem)' }}>Read full story</span>
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </div>
@@ -335,15 +335,15 @@ const AchievementsSection = () => {
             </div>
 
             {/* Navigation Dots - for all achievements */}
-            <div className="flex justify-center gap-2 mt-8 flex-wrap">
+            <div className="flex justify-center gap-1.5 sm:gap-2 mt-4 sm:mt-6 md:mt-8 flex-wrap px-2">
               {achievements.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => handleDialClick(index)}
                   className="transition-all duration-1000 rounded-full"
                   style={{
-                    width: index === selectedIndex ? '48px' : '8px',
-                    height: '8px',
+                    width: index === selectedIndex ? 'clamp(32px, 12vw, 48px)' : 'clamp(6px, 2vw, 8px)',
+                    height: 'clamp(6px, 2vw, 8px)',
                     backgroundColor: index === selectedIndex ? '#7C310A' : '#D1D5DB',
                     transition: 'all 1000ms cubic-bezier(0.4, 0.0, 0.2, 1)',
                   }}
@@ -358,7 +358,7 @@ const AchievementsSection = () => {
       {/* Modal - Amazing UI with animations */}
       {selectedAchievement && (
         <div 
-          className="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center z-[100] p-1 sm:p-2 md:p-4 modal-backdrop animate-fadeIn"
+          className="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center z-[100] p-0.5 sm:p-1 md:p-2 lg:p-4 modal-backdrop animate-fadeIn"
           onClick={handleModalClick}
           onTouchStart={(e) => {
             handleTouchStart.current = {
@@ -368,22 +368,22 @@ const AchievementsSection = () => {
           }}
           onTouchEnd={handleTouchEnd}
         >
-          <div className="bg-white rounded-2xl sm:rounded-3xl md:rounded-[2rem] w-full max-w-6xl max-h-[98vh] sm:max-h-[95vh] overflow-hidden flex flex-col relative shadow-2xl animate-scaleIn m-1 sm:m-2 md:m-4">
+          <div className="bg-white rounded-none sm:rounded-xl md:rounded-2xl lg:rounded-3xl xl:rounded-[2rem] w-full max-w-6xl overflow-hidden flex flex-col relative shadow-2xl animate-scaleIn m-0 sm:m-0.5 md:m-2 lg:m-4 h-full sm:h-auto" style={{ maxHeight: '100vh', height: '100vh' }}>
             {/* Close button with beautiful hover effect */}
             <button 
-              className="absolute top-2 right-2 sm:top-3 sm:right-3 md:top-4 md:right-4 lg:top-6 lg:right-6 z-30 bg-white/90 hover:bg-accent rounded-full p-2 sm:p-2.5 md:p-3 text-black hover:text-white transition-all duration-300 shadow-lg hover:shadow-accent/50 transform hover:rotate-90 hover:scale-110 group"
+              className="absolute top-1.5 right-1.5 sm:top-2 sm:right-2 md:top-3 md:right-3 lg:top-4 lg:right-4 xl:top-6 xl:right-6 z-30 bg-white/90 hover:bg-accent rounded-full p-1.5 sm:p-2 md:p-2.5 lg:p-3 text-black hover:text-white transition-all duration-300 shadow-lg hover:shadow-accent/50 transform hover:rotate-90 hover:scale-110 group"
               onClick={closeModal}
               aria-label="Close modal"
             >
-              <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-6 lg:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
 
             
-            <div className="flex flex-col md:flex-row overflow-hidden h-full">
+            <div className="flex flex-col md:flex-row overflow-hidden flex-1 min-h-0">
               {/* Image side with stunning overlay */}
-              <div className="w-full md:w-1/2 h-48 sm:h-56 md:h-64 lg:h-80 xl:h-auto bg-black relative overflow-hidden flex-shrink-0">
+              <div className="w-full md:w-1/2 bg-black relative overflow-hidden flex-shrink-0" style={{ height: 'clamp(140px, 25vh, 500px)', minHeight: '140px' }}>
                 <img 
                   src={selectedAchievement.image} 
                   alt={selectedAchievement.title}
@@ -393,25 +393,25 @@ const AchievementsSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
                 
                 {/* Floating date badge */}
-                <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 md:bottom-6 md:left-6 bg-accent/90 backdrop-blur-md px-3 py-1.5 sm:px-4 sm:py-2 md:px-5 md:py-2.5 rounded-xl sm:rounded-2xl border border-white/20 shadow-lg animate-slideUp">
+                <div className="absolute bottom-2 left-2 sm:bottom-3 sm:left-3 md:bottom-4 md:left-4 lg:bottom-6 lg:left-6 bg-accent/90 backdrop-blur-md px-2.5 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 lg:px-5 lg:py-2.5 rounded-lg sm:rounded-xl md:rounded-2xl border border-white/20 shadow-lg animate-slideUp">
                   <span className="text-white font-semibold text-xs sm:text-sm">{selectedAchievement.date}</span>
                 </div>
               </div>
               
               {/* Content side */}
-              <div className="w-full md:w-1/2 relative flex flex-col min-h-0">
+              <div className="w-full md:w-1/2 relative flex flex-col min-h-0 flex-1">
                 <div 
                   ref={contentRef}
-                  className="p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 overflow-y-auto flex-1 custom-scrollbar"
+                  className="p-3 sm:p-4 md:p-6 lg:p-8 xl:p-10 overflow-y-auto flex-1 custom-scrollbar"
                 >
                   {/* Achievement title */}
-                  <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-black mb-4 sm:mb-5 md:mb-6 leading-tight animate-slideUp">
+                  <h3 className="font-bold text-black mb-3 sm:mb-4 md:mb-5 lg:mb-6 leading-tight animate-slideUp" style={{ fontSize: 'clamp(1.125rem, 6vw, 3rem)' }}>
                     {selectedAchievement.title}
                   </h3>
                   
                   {/* Full description */}
                   <div className="prose prose-sm sm:prose-base md:prose-lg max-w-none">
-                    <p className="text-gray-700 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed whitespace-pre-line animate-slideUp" style={{ animationDelay: '0.1s' }}>
+                    <p className="text-gray-700 leading-relaxed whitespace-pre-line animate-slideUp" style={{ fontSize: 'clamp(0.875rem, 3.5vw, 1.25rem)', animationDelay: '0.1s' }}>
                       {selectedAchievement.longDescription}
                     </p>
                   </div>
@@ -419,10 +419,10 @@ const AchievementsSection = () => {
                 
                 {/* Scroll indicator - beautiful animated arrow */}
                 {showScrollIndicator && (
-                  <div className="absolute bottom-0 left-0 right-0 flex justify-center pb-2 sm:pb-3 md:pb-4 pointer-events-none">
-                    <div className="h-16 sm:h-20 bg-gradient-to-t from-white via-white to-transparent w-full absolute bottom-0"></div>
-                    <div className="animate-bounce bg-accent/20 p-2 sm:p-2.5 md:p-3 rounded-xl sm:rounded-2xl z-10 backdrop-blur-sm border border-accent/30">
-                      <svg className="w-4 h-4 sm:w-5 sm:h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="absolute bottom-0 left-0 right-0 flex justify-center pb-1.5 sm:pb-2 md:pb-3 lg:pb-4 pointer-events-none">
+                    <div className="h-12 sm:h-16 md:h-20 bg-gradient-to-t from-white via-white to-transparent w-full absolute bottom-0"></div>
+                    <div className="animate-bounce bg-accent/20 p-1.5 sm:p-2 md:p-2.5 lg:p-3 rounded-lg sm:rounded-xl md:rounded-2xl z-10 backdrop-blur-sm border border-accent/30">
+                      <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                       </svg>
                     </div>
