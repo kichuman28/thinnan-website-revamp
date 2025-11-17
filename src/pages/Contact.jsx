@@ -4,9 +4,9 @@ import Footer from '../components/footer';
 import ScrollToTopButton from '../components/ScrollToTopButton';
 
 // Import founder images
-import kevinImg from '../assets/images/founders/kevin.png';
-import vishnuImg from '../assets/images/founders/vishnu.jpg';
-import annuImg from '../assets/images/founders/annu.png';
+import kevinImg from '../assets/images/founders/kevin.webp';
+import vishnuImg from '../assets/images/founders/vishnu.webp';
+import annuImg from '../assets/images/founders/annu.webp';
 
 const Contact = () => {
   const [isLoaded, setIsLoaded] = useState(false);
