@@ -1,17 +1,20 @@
 import { useState, useEffect, useRef } from 'react';
-import section1Placeholder from '../assets/images/how_it_works/Slide 0.png';
-import section2Placeholder from '../assets/images/how_it_works/Slide 1.png';
-import section3Placeholder from '../assets/images/how_it_works/Slide 2.png';
-import section4Placeholder from '../assets/images/how_it_works/Slide 3.png';
-import section5Placeholder from '../assets/images/how_it_works/Slide 4.png';
-import section6Placeholder from '../assets/images/how_it_works/Slide 5.png';
-import section7Placeholder from '../assets/images/how_it_works/Slide 6.png';
+// import section1Placeholder from '../assets/images/how_it_works/Slide 0.png';
+// import section2Placeholder from '../assets/images/how_it_works/Slide 1.png';
+// import section3Placeholder from '../assets/images/how_it_works/Slide 2.png';
+// import section4Placeholder from '../assets/images/how_it_works/Slide 3.png';
+// import section5Placeholder from '../assets/images/how_it_works/Slide 4.png';
+// import section6Placeholder from '../assets/images/how_it_works/Slide 5.png';
+// import section7Placeholder from '../assets/images/how_it_works/Slide 6.png';
+
+//TODO: Add actual videos with same naming convention as the slide_1.webm, slide_2.webm,...etc.
 import section1 from '../assets/videos/how_it_works/slide_0.webm';
-import section2 from '../assets/videos/how_it_works/section_2.webm';
-import section3 from '../assets/videos/how_it_works/section_3.webm';
-import section4 from '../assets/videos/how_it_works/section_4.webm';
-import section5 from '../assets/videos/how_it_works/section_5.webm';
-import section6 from '../assets/videos/how_it_works/section_6.webm';
+import section2 from '../assets/videos/how_it_works/slide_0.webm';
+import section3 from '../assets/videos/how_it_works/slide_0.webm';
+import section4 from '../assets/videos/how_it_works/slide_0.webm';
+import section5 from '../assets/videos/how_it_works/slide_0.webm';
+import section6 from '../assets/videos/how_it_works/slide_0.webm';
+import section7 from '../assets/videos/how_it_works/slide_0.webm';
 
 const HowItWorksSection = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -54,43 +57,43 @@ const HowItWorksSection = () => {
     },
     {
       id: 1,
-      video: section2Placeholder,
-      isImage: true,
+      video: section2,
+      isImage: false,
       title: 'hit\ncrave',
       subtitle: 'when something delicious\ncatches our eye',
     },
     {
       id: 2,
-      video: section3Placeholder,
-      isImage: true,
+      video: section3,
+      isImage: false,
       title: 'crave &\nmatch',
       subtitle: 'friends who also want that\nsame experience',
     },
     {
       id: 3,
-      video: section4Placeholder,
-      isImage: true,
+      video: section4,
+      isImage: false,
       title: 'start\ncravings chat',
       subtitle: 'add a couple more friends, and\nturn it into a real hangout',
     },
     {
       id: 4,
-      video: section5Placeholder,
-      isImage: true,
+      video: section5,
+      isImage: false,
       title: 'make\nplans together',
       subtitle: 'turn it into a real hangout —\na spontaneous cookout or an\neatout.',
     },
     {
       id: 5,
-      video: section6Placeholder,
-      isImage: true,
+      video: section6,
+      isImage: false,
       title: 'share stories',
       subtitle: 'photos and moments as shared\nmemories, creating content\nborn from real experiences',
     },
     {
       id: 6,
-      video: section7Placeholder,
-      isImage: true,
+      video: section7,
+      isImage: false,
       title: 'badges & streaks',
       subtitle: 'gamify these moments\nwith cuisine badges and\nfriendship streaks',
     }
@@ -145,11 +148,26 @@ const HowItWorksSection = () => {
       const video = videoRef.current;
       if (!video) return;
 
+      const getVideoDuration = () => {
+        if (video.duration && isFinite(video.duration) && video.duration > 0) {
+          return video.duration * 1000 + 500;
+        }
+        return AUTO_ADVANCE_DURATION;
+      };
+
+      let fallbackTimer = setTimeout(advance, getVideoDuration());
+
+      const handleLoadedMetadata = () => {
+        clearTimeout(fallbackTimer);
+        fallbackTimer = setTimeout(advance, getVideoDuration());
+      };
+
       video.addEventListener('ended', advance);
-      const fallbackTimer = setTimeout(advance, AUTO_ADVANCE_DURATION);
+      video.addEventListener('loadedmetadata', handleLoadedMetadata);
 
       cleanup = () => {
         video.removeEventListener('ended', advance);
+        video.removeEventListener('loadedmetadata', handleLoadedMetadata);
         clearTimeout(fallbackTimer);
       };
     }
@@ -240,7 +258,7 @@ const HowItWorksSection = () => {
               <p className="text-3xl font-semibold text-black">how it works?</p>
             </div>
 
-            <div className="relative mx-auto w-full max-w-[300px]" style={{ aspectRatio: currentAspectRatio }}>
+            <div className="relative mx-auto w-full max-w-[500px]" style={{ aspectRatio: currentAspectRatio }}>
               <div className="relative w-full h-full">
                 {steps.map((step, index) => {
                   const isActive = index === currentStep;
