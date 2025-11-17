@@ -77,7 +77,7 @@ const achievements = [
   },
   {
     id: 11,
-    title: "migrant.ai pitch competition",
+    title: "migrant.ai pitch event",
     description: "pitched thinnan's vision of connecting diverse communities through food at migrant.ai event.",
     longDescription: "we had the privilege of pitching at migrant.ai's startup competition, where we shared our vision of using food as a bridge to connect diverse communities.\n\nat thinnan, we're deeply aware of the challenges immigrants and expats face when building community in a new country. food is universal - it transcends language barriers and cultural differences. it's the perfect medium for creating meaningful connections.\n\nour pitch highlighted:\n• how thinnan helps newcomers feel at home\n• the power of shared meals in building trust\n• creating safe spaces for cultural exchange\n• turning strangers into friends, one meal at a time\n\nthe response was incredibly positive, with many sharing their own stories of finding community through food. these conversations remind us why we're building thinnan - to make everyone feel like they belong, no matter where they're from.",
     date: "july 2025",
