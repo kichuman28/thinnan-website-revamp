@@ -222,7 +222,7 @@ const HowItWorksSection = () => {
     <section
       ref={sectionRef}
       id="how-it-works"
-      className="bg-white text-black py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-8"
+      className="bg-white text-black py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16"
     >
       <div className="max-w-[1400px] mx-auto flex flex-col gap-12 lg:gap-16">
         {/* Mobile layout */}
@@ -356,7 +356,7 @@ const HowItWorksSection = () => {
         {/* Desktop / tablet layout */}
         <div className="hidden lg:flex lg:flex-row gap-12">
           {/* Left column */}
-          <div className="w-full lg:w-1/2 px-4 sm:px-6 lg:px-8 flex flex-col gap-10">
+          <div className="w-full lg:w-1/2 px-4 sm:px-6 lg:px-16 xl:px-36 flex flex-col gap-10">
             <div className="space-y-4">
               <p className="text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] font-bold leading-tight tracking-tight">
                 how it works?
@@ -429,7 +429,7 @@ const HowItWorksSection = () => {
           </div>
 
           {/* Right column */}
-          <div className="w-full lg:w-1/2 px-4 sm:px-6 lg:px-8 flex justify-center items-center">
+          <div className="w-full lg:w-1/2 px-4 sm:px-6 lg:px-10 xl:px-14 flex justify-center items-center">
             <div className="relative w-full max-w-[400px]" style={{ aspectRatio: currentAspectRatio }}>
               {steps.map((step, index) => {
                 const isActive = index === currentStep;
