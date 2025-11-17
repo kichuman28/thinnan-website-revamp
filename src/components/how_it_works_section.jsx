@@ -19,7 +19,7 @@ const HowItWorksSection = () => {
     {
       id: 0,
       video: section1,
-      title: 'add real friends',
+      title: 'add real \nfriends',
       subtitle: 'on thinnan, we add our friends\n— the ones we actually wish to\nhang out with.',
     },
     {
@@ -201,7 +201,7 @@ const HowItWorksSection = () => {
                 transform: isTransitioning ? 'translateY(-12px)' : 'translateY(0)',
               }}
             >
-              <h3 className="text-[42px] sm:text-[50px] md:text-[56px] lg:text-[60px] font-semibold leading-tight">
+              <h3 className="whitespace-pre-line text-[42px] sm:text-[50px] md:text-[56px] lg:text-[60px] font-semibold leading-tight">
                 {steps[currentStep].title}
               </h3>
             </div>
@@ -214,7 +214,7 @@ const HowItWorksSection = () => {
                 transitionDelay: isTransitioning ? '0ms' : '80ms',
               }}
             >
-              <p className="text-xl sm:text-2xl text-neutral-700 leading-relaxed">
+              <p className="whitespace-pre-line text-xl sm:text-2xl text-neutral-700 leading-relaxed">
                 {steps[currentStep].subtitle}
               </p>
             </div>
