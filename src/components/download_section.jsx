@@ -59,6 +59,33 @@ const DownloadSection = () => {
                 </div>
               </a>
             </div>
+
+            {/* Buttons - Horizontal on laptop/desktop only, positioned in left column */}
+            <div className="hidden lg:flex mt-12 lg:mt-20 xl:mt-24 flex flex-row gap-3 sm:gap-4 justify-start flex-wrap lg:flex-nowrap">
+              <a 
+                href="https://play.google.com/store/apps/details?id=com.jathikka.thinaan&hl=en" 
+                className="flex items-center justify-center bg-black/40 backdrop-blur-sm text-white px-5 py-3 sm:px-6 sm:py-4 md:px-8 md:py-4 rounded-xl hover:bg-black/60 transition-all duration-300 shadow-lg hover:shadow-accent/10 hover:-translate-y-1 group relative overflow-hidden border border-white/10 min-w-[140px] sm:min-w-[150px] md:min-w-[160px] flex-1 sm:flex-none"
+              >
+                <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-accent/30 to-accent/10 bg-size-200 bg-pos-0 group-hover:bg-pos-100 transition-all duration-500 opacity-0 group-hover:opacity-100"></span>
+                <GoogleIcon />
+                <div className="ml-2 sm:ml-3 md:ml-4 relative">
+                  <div className="text-xs sm:text-sm md:text-base">GET IT ON</div>
+                  <div className="text-sm sm:text-base md:text-lg font-medium">Google Play</div>
+                </div>
+              </a>
+              
+              <a 
+                href="https://apps.apple.com/fi/app/thinnan/id6502411893" 
+                className="flex items-center justify-center bg-black/40 backdrop-blur-sm text-white px-5 py-3 sm:px-6 sm:py-4 md:px-8 md:py-4 rounded-xl hover:bg-black/60 transition-all duration-300 shadow-lg hover:shadow-accent/10 hover:-translate-y-1 group relative overflow-hidden border border-white/10 min-w-[140px] sm:min-w-[150px] md:min-w-[160px] flex-1 sm:flex-none"
+              >
+                <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-accent/30 to-accent/10 bg-size-200 bg-pos-0 group-hover:bg-pos-100 transition-all duration-500 opacity-0 group-hover:opacity-100"></span>
+                <AppleIcon />
+                <div className="ml-2 sm:ml-3 md:ml-4 relative">
+                  <div className="text-xs sm:text-sm md:text-base">Download on the</div>
+                  <div className="text-sm sm:text-base md:text-lg font-medium">App Store</div>
+                </div>
+              </a>
+            </div>
           </div>
           
           {/* Screenshot */}
@@ -86,8 +113,8 @@ const DownloadSection = () => {
             </div>
           </div>
 
-          {/* Buttons below screenshot - Shown on mobile and desktop, hidden on tablet */}
-          <div className="mt-3 sm:mt-4 md:hidden lg:flex lg:col-span-2 lg:mt-5 flex flex-row gap-3 sm:gap-4 justify-center lg:justify-start flex-wrap lg:flex-nowrap">
+          {/* Buttons below screenshot - Shown on mobile only, hidden on tablet and desktop */}
+          <div className="mt-3 sm:mt-4 md:hidden flex flex-row gap-3 sm:gap-4 justify-center flex-wrap">
             <a 
               href="https://play.google.com/store/apps/details?id=com.jathikka.thinaan&hl=en" 
               className="flex items-center justify-center bg-black/40 backdrop-blur-sm text-white px-5 py-3 sm:px-6 sm:py-4 md:px-8 md:py-4 rounded-xl hover:bg-black/60 transition-all duration-300 shadow-lg hover:shadow-accent/10 hover:-translate-y-1 group relative overflow-hidden border border-white/10 min-w-[140px] sm:min-w-[150px] md:min-w-[160px] flex-1 sm:flex-none"
