@@ -355,7 +355,7 @@ const HowItWorksSection = () => {
             <div className="w-full lg:w-1/2 px-4 sm:px-6 lg:px-16 xl:px-36 flex flex-col gap-10">
               <div className="space-y-4">
                 <p className="text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] font-bold leading-tight tracking-tight">
-                  how it works?
+                  how it works
                 </p>
                 <div className="h-px w-16 bg-neutral-900/30" />
               </div>
