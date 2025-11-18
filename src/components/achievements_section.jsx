@@ -130,20 +130,20 @@ const AchievementsSection = () => {
       
       <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 relative z-10 h-full">
         {/* Section Header */}
-        <div className="text-center mb-8 sm:mb-12 md:mb-16 lg:mb-20 xl:mb-24">
+        <div className="text-center mb-12 sm:mb-12 md:mb-16 lg:mb-20 xl:mb-24">
            <div className="inline-block">
              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-black relative" style={{ fontSize: 'clamp(1.5rem, 8vw, 3.75rem)' }}>
                our achievements
                <div className="absolute top-full left-0 w-full mt-1 sm:mt-1.5 md:mt-3 lg:mt-2.5 bg-gradient-to-r from-transparent via-accent to-transparent" style={{ height: '2px' }}></div>
              </h2>
            </div>
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-600 mt-4 sm:mt-5 md:mt-7 lg:mt-8 max-w-2xl mx-auto px-2" style={{ fontSize: 'clamp(0.875rem, 4vw, 1.5rem)' }}>
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-600 mt-6 sm:mt-5 md:mt-7 lg:mt-8 max-w-2xl mx-auto px-2" style={{ fontSize: 'clamp(0.875rem, 4vw, 1.5rem)' }}>
             milestones that mark our journey in connecting food lovers
           </p>
         </div>
 
         {/* Dial Design Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-stretch mt-6 sm:mt-0">
           
           {/* Left Side - Dial/Navigation - Shows 3 items at a time */}
           <div className="hidden lg:flex lg:col-span-5 relative overflow-hidden">
@@ -335,7 +335,7 @@ const AchievementsSection = () => {
             </div>
 
             {/* Navigation Dots - for all achievements */}
-            <div className="flex justify-center gap-1.5 sm:gap-2 mt-6 sm:mt-8 md:mt-10 lg:mt-12 flex-wrap px-2">
+            <div className="flex justify-center gap-1.5 sm:gap-2 mt-10 sm:mt-8 md:mt-10 lg:mt-12 flex-wrap px-2">
               {achievements.map((_, index) => (
                 <button
                   key={index}
