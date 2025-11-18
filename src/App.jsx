@@ -11,7 +11,6 @@ import Footer from './components/footer';
 import SplashScreen from './components/splash_screen';
 import ScrollToTopButton from './components/ScrollToTopButton';
 import { SpeedInsights } from '@vercel/speed-insights/react';
-import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   const [showSplash, setShowSplash] = useState(() => {
@@ -63,7 +62,6 @@ function App() {
         <ScrollToTopButton />
       </div>
       
-      <Analytics />
       <SpeedInsights />
     </div>
   );
