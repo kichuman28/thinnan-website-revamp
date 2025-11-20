@@ -8,7 +8,7 @@ const ProblemSection = () => {
 
   const targetText = '1.6 billion';
   const targetValue = targetText.length;
-  const duration = 2000; // 3 seconds
+  const duration = 500; // 3 seconds
   const startTimeRef = useRef(null);
   const animationFrameRef = useRef(null);
 
