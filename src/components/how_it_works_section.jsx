@@ -43,7 +43,7 @@ const HowItWorksSection = () => {
       id: 0,
       video: section1,
       isImage: false,
-      title: 'add your best\nfriends',
+      title: 'add our best\nfriends',
       subtitle: 'the ones we actually wish to\nhang out with.',
     },
     {
