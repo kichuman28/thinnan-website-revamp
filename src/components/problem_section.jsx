@@ -6,8 +6,9 @@ const ProblemSection = () => {
   const [isComplete, setIsComplete] = useState(false);
   const sectionRef = useRef(null);
 
-  const targetValue = 1600000000; // 1.6 billion
-  const duration = 3000; // 3 seconds
+  const targetText = '1.6 billion';
+  const targetValue = targetText.length;
+  const duration = 2000; // 3 seconds
   const startTimeRef = useRef(null);
   const animationFrameRef = useRef(null);
 
@@ -77,35 +78,41 @@ const ProblemSection = () => {
     };
   }, [hasAnimated]);
 
-  // Format number with commas and line break
-  const formatNumber = (num) => {
-    const formatted = Math.floor(num).toLocaleString('en-US');
-    // Split "1,600,000,000" into "1,600," and "000,000"
-    // The formatted string is "1,600,000,000"
-    // We want to show "1,600," on first line and "000,000" on second line
-    if (num >= 1600000000) {
-      return "1,600,\n000,000";
-    } else if (num >= 1000000) {
-      // During animation, when number is between 1 million and 1.6 billion
-      // Format to always show two lines
-      const millions = Math.floor(num / 1000000);
-      const thousands = Math.floor((num % 1000000) / 1000);
-      const ones = Math.floor(num % 1000);
+  // // Format number with commas and line break
+  // const formatNumber = (num) => {
+  //   const formatted = Math.floor(num).toLocaleString('en-US');
+  //   // Split "1,600,000,000" into "1,600," and "000,000"
+  //   // The formatted string is "1,600,000,000"
+  //   // We want to show "1,600," on first line and "000,000" on second line
+  //   if (num >= 1600000000) {
+  //     return "1,600,\n000,000";
+  //   } else if (num >= 1000000) {
+  //     // During animation, when number is between 1 million and 1.6 billion
+  //     // Format to always show two lines
+  //     const millions = Math.floor(num / 1000000);
+  //     const thousands = Math.floor((num % 1000000) / 1000);
+  //     const ones = Math.floor(num % 1000);
       
-      if (millions >= 1600) {
-        return `1,600,\n${thousands.toString().padStart(3, '0')},${ones.toString().padStart(3, '0')}`;
-      } else if (millions >= 1000) {
-        const millionsStr = millions.toLocaleString('en-US');
-        return `${millionsStr},\n${thousands.toString().padStart(3, '0')},${ones.toString().padStart(3, '0')}`;
-      } else {
-        return `${millions},\n${thousands.toString().padStart(3, '0')},${ones.toString().padStart(3, '0')}`;
-      }
-    } else {
-      // For numbers less than 1 million, still show on two lines
-      const thousands = Math.floor(num / 1000);
-      const ones = Math.floor(num % 1000);
-      return `${thousands},\n${ones.toString().padStart(3, '0')}`;
-    }
+  //     if (millions >= 1600) {
+  //       return `1,600,\n${thousands.toString().padStart(3, '0')},${ones.toString().padStart(3, '0')}`;
+  //     } else if (millions >= 1000) {
+  //       const millionsStr = millions.toLocaleString('en-US');
+  //       return `${millionsStr},\n${thousands.toString().padStart(3, '0')},${ones.toString().padStart(3, '0')}`;
+  //     } else {
+  //       return `${millions},\n${thousands.toString().padStart(3, '0')},${ones.toString().padStart(3, '0')}`;
+  //     }
+  //   } else {
+  //     // For numbers less than 1 million, still show on two lines
+  //     const thousands = Math.floor(num / 1000);
+  //     const ones = Math.floor(num % 1000);
+  //     return `${thousands},\n${ones.toString().padStart(3, '0')}`;
+  //   }
+  // };
+
+  // Reveal "1.6 billion" letter by letter
+  const formatNumber = (num) => {
+    const length = Math.max(0, Math.min(targetText.length, Math.floor(num)));
+    return targetText.slice(0, length);
   };
 
   // Source links data
